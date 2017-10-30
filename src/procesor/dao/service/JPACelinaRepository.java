@@ -36,4 +36,10 @@ public class JPACelinaRepository {
 				+ "WHERE d.identyfikatorDokumentu = '" + idDok +"'", DokumentZCentralaDokumenty.class)
 				.getSingleResult();
 	}
+	
+	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws NoResultException, Exception {
+		return menedzerEncji.createQuery("SELECT d FROM DokumentZCentralaDokumenty d "
+				+ "WHERE d.symbolDokumentu = '" + symDok +"'", DokumentZCentralaDokumenty.class)
+				.getSingleResult();
+	}
 }

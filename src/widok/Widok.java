@@ -120,7 +120,7 @@ public class Widok extends Application {
             } else if (opcjaNumerSystemowy.isSelected() == true) {
             	kontroler.wyszukajWCentraliIdDok(walidujDane());
             } else {
-            	//kontroler.wyszukajWCentraliSymDok(walidujDane());
+            	kontroler.wyszukajWCentraliSymDok(walidujDane());
             }         	
 		});
         
@@ -161,7 +161,7 @@ public class Widok extends Application {
 
         ustawReferencje(primaryStage);
         
-        primaryStage.setTitle("CelinaDokumenty v2.0.0 (rev. 20171019)");
+        primaryStage.setTitle("CelinaDokumenty v2.0.0 (rev. 20171030)");
         primaryStage.setScene(scena);
         primaryStage.show();
     }

@@ -74,4 +74,37 @@ public class Kontroler {
 			}		
 		}
 	}
+	
+    /**
+     * Metoda wyszukuj¹ca dokumenty w bazie centralnej po podanych symbolach dokumentów i tworz¹ca z otrzymanych danych raporty.
+     * 
+     * @param symDok
+     * 			 Lista numerów symboli dokumentów po których nastapi wyszukiwanie w bazie.
+     */ 
+	public void wyszukajWCentraliSymDok(ArrayList<String> symDok) {
+		ArrayList<Dokument> dokumenty = new ArrayList<>();
+		
+		for (String symbolDokumentu : symDok) {
+			Dokument dokument = new Dokument(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);
+			dokumenty.add(dokument);
+			
+			try {
+				DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findBySymDokInDokumenty(symbolDokumentu);
+				
+				dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);
+			
+				//TEST
+				if (dokumentZTabeliDokumenty == null) {
+					//TEST
+					widok.wyœwietlRaport("brak w dokumentach\n");
+				} else {
+					//TEST
+					widok.wyœwietlRaport(dokumentZTabeliDokumenty.getSymbolDokumentu());
+				}
+			} catch (Exception ex) {
+				widok.wyœwietlKomunikatB³edu();
+				break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+			}
+		}
+	}
 }

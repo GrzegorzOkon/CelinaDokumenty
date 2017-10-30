@@ -41,4 +41,18 @@ public class Model {
 
 		 return dok;
 	}
+	
+	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws Exception {			      
+	      DokumentZCentralaDokumenty dok;
+	      
+	      try {
+	    	  dok = JPACelinaRepository.pobierzInstancje().findBySymDokInDokumenty(symDok);
+	      } catch (NoResultException ex) {
+	    	  dok = null;
+	      } catch (Exception ex) {
+	    	  throw ex;
+	      }
+
+		 return dok;
+	}
 }
