@@ -116,7 +116,7 @@ public class Widok extends Application {
 		// Przypisanie dzi¹³ania do przycisku sprawdzenia w centrali
         SprawdzWCentrali.setOnAction((event) -> {		    
             if (opcjaNumerW³asny.isSelected() == true) {
-            	//kontroler.wyszukajWCentraliNrAkt(walidujDane());
+            	kontroler.wyszukajWCentraliNrAkt(walidujDane());
             } else if (opcjaNumerSystemowy.isSelected() == true) {
             	kontroler.wyszukajWCentraliIdDok(walidujDane());
             } else {

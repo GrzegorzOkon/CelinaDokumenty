@@ -1,12 +1,12 @@
 package kontroler;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
 import procesor.Model;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-//import procesor.dao.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
 import widok.Widok;
 
@@ -30,6 +30,38 @@ public class Kontroler {
 	public Kontroler(Widok widok, Model model) {
 		this.widok = widok;
 		this.model = model;
+	}
+	
+	public void wyszukajWCentraliNrAkt(ArrayList<String> numeryAkt) {
+		ArrayList<Dokument> dokumenty = new ArrayList<>();
+		
+		for (String numerAkt : numeryAkt) {
+			Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
+			dokumenty.add(dokument);
+			
+			try {
+				List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok = model.findByNrAktInCntrValidDok(numerAkt);
+				dokument.setDokumentyZCentralaCntrValidDok(dokumentyZTabeliCntrValidDok);
+			
+				//TEST
+				//widok.wyœwietlRaport("wykonano select\n");
+				
+				if (dokumentyZTabeliCntrValidDok != null && dokumentyZTabeliCntrValidDok.size() > 0) {				
+					for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
+						if (dokumentZTabeliCntrValidDok != null && dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
+							DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
+							dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);					
+						}
+					}				
+				}
+			} catch (Exception ex) {
+				widok.wyœwietlKomunikatB³edu();
+				break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+			}	
+		}
+		
+		// Wyœwietla odpowiedni raport
+		//model.generujRaporty(dokumenty);
 	}
 	
 	//

@@ -15,7 +15,6 @@ public class Dokument {
 	
 	public Dokument(Identyfikator szukanyRodzaj, String szukanaWartoœæ) {
 		szukanyNumer.put(szukanyRodzaj, szukanaWartoœæ);
-		dokumentyZCentralaCntrValidDok = new ArrayList<>();
 	}
 
 	public HashMap<Identyfikator, String> getSzukanyNumer() {
@@ -27,12 +26,13 @@ public class Dokument {
 	}*/
 	
 	public void setDokumentyZCentralaCntrValidDok(DokumentZCentralaCntrValidDok dokumentZCentralaCntrValidDok) {
+		dokumentyZCentralaCntrValidDok = new ArrayList<>();
 		this.dokumentyZCentralaCntrValidDok.add(dokumentZCentralaCntrValidDok);
 	}
 	
-	/*public void setDokumentyZCentralaCntrValidDok(List<DokumentZCentralaCntrValidDok> dokumentyZCentralaCntrValidDok) {
+	public void setDokumentyZCentralaCntrValidDok(List<DokumentZCentralaCntrValidDok> dokumentyZCentralaCntrValidDok) {
 		this.dokumentyZCentralaCntrValidDok = dokumentyZCentralaCntrValidDok;
-	}*/
+	}
 	
 	public DokumentZCentralaDokumenty getDokumentZCentralaDokumenty() {
 		return dokumentZCentralaDokumenty;

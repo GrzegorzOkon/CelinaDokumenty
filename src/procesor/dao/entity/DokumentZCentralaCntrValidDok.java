@@ -15,6 +15,9 @@ public class DokumentZCentralaCntrValidDok {
 	
 	@Column(name = "id_dok")
 	private String identyfikatorDokumentu;
+		
+	@Column(name = "nr_akt")
+	private String numerWlasny;
 	
 	@Column(name = "id_rodz_dok")
 	private String identyfikatorRodzajuDokumentu;
@@ -30,8 +33,9 @@ public class DokumentZCentralaCntrValidDok {
 
 	public DokumentZCentralaCntrValidDok() {}
 	
-	public DokumentZCentralaCntrValidDok(String identyfikatorDokumentu, String identyfikatorRodzajuDokumentu, String jednostkaPrzeznaczenia, String statusPrzetwarzania, String dataPrzyjecia) {
+	public DokumentZCentralaCntrValidDok(String identyfikatorDokumentu, String numerWlasny, String identyfikatorRodzajuDokumentu, String jednostkaPrzeznaczenia, String statusPrzetwarzania, String dataPrzyjecia) {
 		this.identyfikatorDokumentu = identyfikatorDokumentu;
+		this.numerWlasny = numerWlasny;
 		this.identyfikatorRodzajuDokumentu = identyfikatorRodzajuDokumentu;
 		this.jednostkaPrzeznaczenia = jednostkaPrzeznaczenia;
 		this.statusPrzetwarzania = statusPrzetwarzania;
@@ -44,6 +48,14 @@ public class DokumentZCentralaCntrValidDok {
 	
 	public void setIdentyfikatorDokumentu(String identyfikatorDokumentu) {
 		this.identyfikatorDokumentu = identyfikatorDokumentu;
+	}
+	
+	public String getNumerWlasny() {
+		return numerWlasny;
+	}
+	
+	public void setNumerWlasny(String numerWlasny) {
+		this.numerWlasny = numerWlasny;
 	}
 	
 	public String getIdentyfikatorRodzajuDokumentu() {

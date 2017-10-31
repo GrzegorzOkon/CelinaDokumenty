@@ -1,6 +1,6 @@
 package procesor.dao.service;
 
-//import java.util.List;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -23,6 +23,12 @@ public class JPACelinaRepository {
 		} 
 		
 		return jpaCelinaRepository;
+	}
+	
+	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {
+		return menedzerEncji.createQuery("SELECT d FROM DokumentZCentralaCntrValidDok d "
+				+ "WHERE d.numerWlasny = '" + numerAkt +"'", DokumentZCentralaCntrValidDok.class)
+				.getResultList();
 	}
 	
 	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws NoResultException, Exception {
