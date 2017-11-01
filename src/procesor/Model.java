@@ -3,7 +3,6 @@ package procesor;
 import java.util.List;
 
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
