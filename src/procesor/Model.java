@@ -14,58 +14,50 @@ import procesor.dao.service.JPACelinaRepository;
  * @author Grzegorz Okoñ
  */
 public class Model {
-	
-	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {	
-		List<DokumentZCentralaCntrValidDok> dok;
-		
+	/**
+	 * Zwraca listê dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok.
+	 * 
+	 * @param numerAkt - numer po którym nast¹pi wyszukiwanie.
+	 * 
+	 * @return lista dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok
+	 * 
+	 * @throws Exception - je¿eli zajdzie wyj¹tek inny ni¿ NoResultException.
+	 */
+	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {		
 		try {
-			dok = JPACelinaRepository.pobierzInstancje().findByNrAktInCntrValidDok(numerAkt);
+			return JPACelinaRepository.pobierzInstancje().findByNrAktInCntrValidDok(numerAkt);
 	    } catch (Exception ex) {
 	    	throw ex;
 	    }
-		
-		return dok;
 	}
 	
-	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws Exception {	      
-	      DokumentZCentralaCntrValidDok dok;
-	      
-	      try {
-	    	  dok = JPACelinaRepository.pobierzInstancje().findByIdDokInCntrValidDok(idDok);
-	      } catch (NoResultException ex) {
-	    	  dok = null;
-	      } catch (Exception ex) {
-	    	  throw ex;
-	      }
-
-		 return dok;
+	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws Exception {	            
+		try {
+			return JPACelinaRepository.pobierzInstancje().findByIdDokInCntrValidDok(idDok);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw ex;
+		}
 	}
 	
-	public DokumentZCentralaDokumenty findByIdDokInDokumenty(String idDok) throws Exception {			      
-	      DokumentZCentralaDokumenty dok;
-	      
-	      try {
-	    	  dok = JPACelinaRepository.pobierzInstancje().findByIdDokInDokumenty(idDok);
-	      } catch (NoResultException ex) {
-	    	  dok = null;
-	      } catch (Exception ex) {
-	    	  throw ex;
-	      }
-
-		 return dok;
+	public DokumentZCentralaDokumenty findByIdDokInDokumenty(String idDok) throws Exception {			          
+		try {
+			return JPACelinaRepository.pobierzInstancje().findByIdDokInDokumenty(idDok);
+	    } catch (NoResultException ex) {
+	    	return null;
+	    } catch (Exception ex) {
+	    	throw ex;
+	    }
 	}
 	
-	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws Exception {			      
-	      DokumentZCentralaDokumenty dok;
-	      
-	      try {
-	    	  dok = JPACelinaRepository.pobierzInstancje().findBySymDokInDokumenty(symDok);
-	      } catch (NoResultException ex) {
-	    	  dok = null;
-	      } catch (Exception ex) {
-	    	  throw ex;
-	      }
-
-		 return dok;
+	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws Exception {			         
+		try {
+			return JPACelinaRepository.pobierzInstancje().findBySymDokInDokumenty(symDok);
+	    } catch (NoResultException ex) {
+	    	return null;
+	    } catch (Exception ex) {
+	    	throw ex;
+	    }
 	}
 }
