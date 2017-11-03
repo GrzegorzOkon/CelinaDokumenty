@@ -15,20 +15,29 @@ import procesor.dao.service.JPACelinaRepository;
  */
 public class Model {
 	/**
-	 * Zwraca listê dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok.
+	 * Zwraca listê dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok. 
+	 * Gdy nie ma nic w liœcie wtedy jest zwracany null.
 	 * 
 	 * @param numerAkt - numer po którym nast¹pi wyszukiwanie.
 	 * 
-	 * @return lista dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok
+	 * @return lista dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok lub null w przypadku pustej listy.
 	 * 
-	 * @throws Exception - je¿eli zajdzie wyj¹tek inny ni¿ NoResultException.
+	 * @throws Exception - je¿eli zajdzie jakikolwiek wyj¹tek.
 	 */
-	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {		
+	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {
+		List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok;
+		
 		try {
-			return JPACelinaRepository.pobierzInstancje().findByNrAktInCntrValidDok(numerAkt);
+			dokumentyZTabeliCntrValidDok = JPACelinaRepository.pobierzInstancje().findByNrAktInCntrValidDok(numerAkt);
+			
+			if (dokumentyZTabeliCntrValidDok.isEmpty() == true) {
+				return null;
+			}
 	    } catch (Exception ex) {
 	    	throw ex;
 	    }
+		
+		return dokumentyZTabeliCntrValidDok;
 	}
 	
 	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws Exception {	            

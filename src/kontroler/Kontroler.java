@@ -44,13 +44,17 @@ public class Kontroler {
 				dokument.setDokumentyZCentralaCntrValidDok(dokumentyZTabeliCntrValidDok);
 			
 				//TEST
-				//widok.wyœwietlRaport("wykonano select\n");
+				widok.wyœwietlRaport("wykonano select po numerze akt\n");
 				
-				if (dokumentyZTabeliCntrValidDok != null && dokumentyZTabeliCntrValidDok.size() > 0) {				
+				if (dokumentyZTabeliCntrValidDok != null) {				
 					for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
-						if (dokumentZTabeliCntrValidDok != null && dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
+						if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
 							DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
-							dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);					
+							dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);	
+							
+							//TEST
+							widok.wyœwietlRaport(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu() + "\n");
+							widok.wyœwietlRaport(dokumentZTabeliDokumenty.getSymbolDokumentu() + "\n");
 						}
 					}				
 				}
