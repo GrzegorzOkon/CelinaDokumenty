@@ -63,9 +63,6 @@ public class Kontroler {
 				break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 			}	
 		}
-		
-		// Wyœwietla odpowiedni raport
-		//model.generujRaporty(dokumenty);
 	}
 	
 	//
