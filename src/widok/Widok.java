@@ -34,7 +34,7 @@ public class Widok extends Application {
     private Font czcionkaPochylona;
     private ToggleGroup grupaOpcji;
     private RadioButton opcjaNumerW³asny, opcjaNumerSystemowy, opcjaNumerEwidencyjny;
-    private TextArea poleWyszukiwania, poleRaportuDlaHelpDesku, poleRaportyDlaAdministratora, poleDziennikaZdarzeñ;
+    private TextArea poleWyszukiwania, poleRaportuDlaHelpDesku, poleRaportuDlaAdministratora, poleDziennikaZdarzeñ;
     private Button SprawdzWCentrali, SprawdzLokalnie, Wyczysc, Zamknij;
     private HBox kontenerprzyciskow;
 	
@@ -130,8 +130,8 @@ public class Widok extends Application {
         poleRaportuDlaHelpDesku = new TextArea();
         zakladka1.setContent(poleRaportuDlaHelpDesku);
         
-        poleRaportyDlaAdministratora = new TextArea();
-        zakladka2.setContent(poleRaportyDlaAdministratora);
+        poleRaportuDlaAdministratora = new TextArea();
+        zakladka2.setContent(poleRaportuDlaAdministratora);
         
         poleDziennikaZdarzeñ = new TextArea();
         zakladka3.setContent(poleDziennikaZdarzeñ);
@@ -147,7 +147,7 @@ public class Widok extends Application {
      */ 
     private void ustawReferencje(Stage primaryStage)
     {
-    	model = new Model();
+    	model = new Model(this);
     	kontroler = new Kontroler(this, model);    //inicjalizuje obiekt kontrolera przekazuj¹c m.in. obiekt samej siebie (this)   
     	
     }
@@ -190,14 +190,9 @@ public class Widok extends Application {
 		return wiersze;
 	}
     
-    /**
-     * Metoda wyœwietlajaca raport helpdeskowy.
-     * 
-     * @param raport
-     * 			 Treœæ raportu do wyœwietlenia.
-     */ 
-	public void wyœwietlRaport(String raport) {
-		poleRaportuDlaHelpDesku.appendText(raport);
+	public void wyœwietlRaporty(List<String> raporty) {
+		poleRaportuDlaHelpDesku.appendText(raporty.get(0));
+		poleRaportuDlaAdministratora.appendText(raporty.get(1));
 	}
 	
 	public void wyœwietlKomunikatB³edu() { 

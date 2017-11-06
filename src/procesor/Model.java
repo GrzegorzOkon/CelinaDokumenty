@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
+import kontroler.wejscie.Dokument;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
 import procesor.dao.service.JPACelinaRepository;
+import procesor.raporty.GeneratorRaportów;
+import widok.Widok;
 
 /**
  * Klasa modelu w architekturze mvc.
@@ -14,6 +17,12 @@ import procesor.dao.service.JPACelinaRepository;
  * @author Grzegorz Okoñ
  */
 public class Model {
+	private Widok widok;
+	
+	public Model (Widok widok) {
+		this.widok = widok;
+	}
+	
 	/**
 	 * Zwraca listê dokumentów wyszukanych po numerze w³asnym w tabeli cntr_vaid_dok. 
 	 * Gdy nie ma nic w liœcie wtedy jest zwracany null.
@@ -68,5 +77,9 @@ public class Model {
 	    } catch (Exception ex) {
 	    	throw ex;
 	    }
+	}
+	
+	public void generujRaporty(List<Dokument> dokumenty) {
+		widok.wyœwietlRaporty(new GeneratorRaportów().utwórzRaport(dokumenty)); ;
 	}
 }

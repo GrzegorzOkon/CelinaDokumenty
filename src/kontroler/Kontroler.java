@@ -44,7 +44,7 @@ public class Kontroler {
 				dokument.setDokumentyZCentralaCntrValidDok(dokumentyZTabeliCntrValidDok);
 			
 				//TEST
-				widok.wyœwietlRaport("wykonano select po numerze akt\n");
+				//widok.wyœwietlRaport("wykonano select po numerze akt\n");
 				
 				if (dokumentyZTabeliCntrValidDok != null) {				
 					for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
@@ -53,8 +53,8 @@ public class Kontroler {
 							dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);	
 							
 							//TEST
-							widok.wyœwietlRaport(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu() + "\n");
-							widok.wyœwietlRaport(dokumentZTabeliDokumenty.getSymbolDokumentu() + "\n");
+							//widok.wyœwietlRaport(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu() + "\n");
+							//widok.wyœwietlRaport(dokumentZTabeliDokumenty.getSymbolDokumentu() + "\n");
 						}
 					}				
 				}
@@ -63,6 +63,9 @@ public class Kontroler {
 				break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 			}	
 		}
+		
+		// Wyœwietla odpowiedni raport
+		model.generujRaporty(dokumenty);
 	}
 	
 	//
@@ -83,29 +86,32 @@ public class Kontroler {
 				
 				if (dokumentZTabeliDokumenty == null) {
 					//TEST
-					widok.wyœwietlRaport("brak w dokumentach\n");
+					//widok.wyœwietlRaport("brak w dokumentach\n");
 					
 					DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
 					dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
 					
 					//TEST
-					if (dokumentZTabeliCntrValidDok == null) {
+					/*if (dokumentZTabeliCntrValidDok == null) {
 						widok.wyœwietlRaport("brak w cntr_valid_dok\n");
 					} else {
 						widok.wyœwietlRaport(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
-					}
+					}*/
 				} 
 				//TEST
-				else {
+				//else {
 					//TEST
-					widok.wyœwietlRaport(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "\n");
-				}
+					//widok.wyœwietlRaport(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "\n");
+				//}
 				
 			} catch (Exception ex) {
 				widok.wyœwietlKomunikatB³edu();
 				break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 			}		
 		}
+		
+		// Wyœwietla odpowiedni raport
+		model.generujRaporty(dokumenty);
 	}
 	
     /**
@@ -127,17 +133,20 @@ public class Kontroler {
 				dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);
 			
 				//TEST
-				if (dokumentZTabeliDokumenty == null) {
+				/*if (dokumentZTabeliDokumenty == null) {
 					//TEST
 					widok.wyœwietlRaport("brak w dokumentach\n");
 				} else {
 					//TEST
 					widok.wyœwietlRaport(dokumentZTabeliDokumenty.getSymbolDokumentu());
-				}
+				}*/
 			} catch (Exception ex) {
 				widok.wyœwietlKomunikatB³edu();
 				break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 			}
 		}
+		
+		// Wyœwietla odpowiedni raport
+		model.generujRaporty(dokumenty);
 	}
 }

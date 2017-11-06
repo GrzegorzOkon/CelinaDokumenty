@@ -21,9 +21,9 @@ public class Dokument {
 		return szukanyNumer;
 	}
 	
-	/*public List<DokumentZCentralaCntrValidDokPOJO> getDokumentyZCentralaCntrValidDok() {
+	public List<DokumentZCentralaCntrValidDok> getDokumentyZCentralaCntrValidDok() {
 		return dokumentyZCentralaCntrValidDok;
-	}*/
+	}
 	
 	public void setDokumentyZCentralaCntrValidDok(DokumentZCentralaCntrValidDok dokumentZCentralaCntrValidDok) {
 		dokumentyZCentralaCntrValidDok = new ArrayList<>();
