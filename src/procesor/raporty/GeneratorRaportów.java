@@ -36,21 +36,24 @@ public class GeneratorRaportów {
 								? "numer w³asny dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
 								: "")
 						+ " znajduje siê w bazie centralnej. \n\n";
-			} else if (dokument.getDokumentyZCentralaCntrValidDok() != null && dokument.getDokumentZCentralaDokumenty() != null) {  //numer jest w dokumentach
-				raportDlaHelpDesku += "Szukany "
-						+ ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true)
-								? "numer w³asny dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-								: "")
-						+ " znajduje siê w bazie centralnej. "
-						+ ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == false && dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() != null)
-								? "Ma nadany numer systemowy " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + ". "
-								: "")
-						+ ((dokument.getSzukanyNumer().containsKey(Identyfikator.SYMBOL_DOKUMENTU) == false && dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
-								? "Posiada numer ewidencyjny  " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + ". "
-								: "")
-						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
-								? "Jest w statusie " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() + ". "
-								: "");
+			} else if (dokument.getDokumentZCentralaDokumenty() != null) {  //numer jest w dokumentach
+				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
+					raportDlaHelpDesku += "Szukany numer w³asny dokumentu '" + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + "'" 
+								+ " znajduje siê w bazie centralnej.\n"
+							+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() != null) 
+									? "Ma nadany numer systemowy '" + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "'.\n"
+									: "")
+							+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
+									? "Posiada numer ewidencyjny '" + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "'.\n"
+									: "")
+							+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
+									? "Jest w statusie '" + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() + "'. "
+									: "");
+				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
+					
+				} else {
+					
+				}
 			}
 		}
 		

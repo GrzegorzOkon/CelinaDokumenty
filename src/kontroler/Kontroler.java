@@ -92,8 +92,10 @@ public class Kontroler {
 						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);					
 				
 						//TEST
-						//widok.wyœwietlRaport("" + dokumentZTabeliDokumenty.getIdentyfikatorDokumentu());
-				
+						//widok.w("" + dokumentZTabeliDokumenty.getIdentyfikatorDokumentu());
+						//System.out.println(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu());
+						
+						
 						dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);
 				
 						if (dokumentZTabeliDokumenty == null) {
