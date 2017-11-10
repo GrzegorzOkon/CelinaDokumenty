@@ -7,7 +7,23 @@ import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
 
 public class GeneratorRaportów {
-	public List<String> utwórzRaport(List<Dokument> dokumenty) {
+	private static volatile GeneratorRaportów instancja;
+	
+	private GeneratorRaportów() {	
+	}
+	
+	public static GeneratorRaportów pobierzInstancjê() {
+		if (instancja == null) {
+			synchronized(GeneratorRaportów.class) {
+				if(instancja == null) {
+					instancja = new GeneratorRaportów();
+				}
+			}
+		} 		
+		return instancja;
+	}
+	
+	public List<String> utwórzRaport(List<Dokument> dokumenty) {		
 		String raportDlaHelpDesku = "";
 		String raportDlaAdministratora = "";
 		List<String> raporty = new ArrayList<>();

@@ -190,7 +190,7 @@ public class Widok extends Application {
 		return wiersze;
 	}
     
-	public void wyœwietlRaporty(List<String> raporty) {
+	public synchronized void wyœwietlRaporty(List<String> raporty) {
 		poleRaportuDlaHelpDesku.appendText(raporty.get(0));
 		poleRaportuDlaAdministratora.appendText(raporty.get(1));
 	}

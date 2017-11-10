@@ -80,6 +80,6 @@ public class Model {
 	}
 	
 	public void generujRaporty(List<Dokument> dokumenty) {
-		widok.wyœwietlRaporty(new GeneratorRaportów().utwórzRaport(dokumenty)); ;
+		widok.wyœwietlRaporty(GeneratorRaportów.pobierzInstancjê().utwórzRaport(dokumenty)); ;
 	}
 }
