@@ -31,44 +31,55 @@ public class GeneratorRaportów {
 		for (Dokument dokument : dokumenty) {
 			// Generowanie raportu dla numerów dla których nie ma dokumentów
 			if (dokument.getDokumentyZCentralaCntrValidDok() == null && dokument.getDokumentZCentralaDokumenty() == null) {
-				raportDlaHelpDesku += "Szukanego " 
-						+ ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) 
-								? "numeru w³asnego dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-								: ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) 
-									? "identyfikatora dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-									: "")) 
+				raportDlaHelpDesku += "Szukanego " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) 
+						? "numeru w³asnego dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
+						: ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) 
+							? "identyfikatora dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
+							: "")) 
 						+ " brak w bazie centralnej.\n\n";
 				
-				raportDlaAdministratora += "Szukanego " 
-						+ ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) 
-								? "numeru w³asnego dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-								: ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) 
-									? "identyfikatora dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-									: "")) 
-						+ " brak w bazie centralnej.\n\n";				
+				raportDlaAdministratora += "Szukanego " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) 
+							? "numeru w³asnego dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
+							: ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) 
+								? "identyfikatora dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
+								: "")) 
+							+ " brak w bazie centralnej.\n\n";				
 			} else if (dokument.getDokumentyZCentralaCntrValidDok() != null && dokument.getDokumentZCentralaDokumenty() == null) {  //numery s¹ jedynie w cntr_valid_dok
-				raportDlaHelpDesku += "Szukany "
-						+ ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true)
-								? "numer w³asny dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-								: "")
+				raportDlaHelpDesku += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true)
+							? "numer w³asny dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
+							: "")
 						+ " znajduje siê w bazie centralnej. \n\n";
 			} else if (dokument.getDokumentZCentralaDokumenty() != null) {  //numer jest w dokumentach
 				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
-					raportDlaHelpDesku += "Szukany numer w³asny dokumentu '" + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + "'" 
-								+ " znajduje siê w bazie centralnej.\n"
-							+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() != null) 
-									? "Ma nadany numer systemowy '" + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "'.\n"
-									: "")
-							+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
-									? "Posiada numer ewidencyjny '" + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "'.\n"
-									: "")
-							+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
-									? "Jest w statusie '" + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() + "'. "
-									: "");
+					raportDlaHelpDesku += "Szukany numer w³asny '" + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + "'" 
+							+ " znajduje siê w bazie centralnej.\n"
+						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() != null) 
+							? "Dokument ma nadany numer systemowy '" + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "'.\n"
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
+							? "Posiada numer ewidencyjny '" + dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() + "'.\n"
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
+							? "Jest w statusie '" + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() + "'.\n\n"
+							: "");
 				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
-					
+					raportDlaHelpDesku += "Szukany numer systemowy '" + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + "'" 
+							+ " znajduje siê w bazie centralnej.\n"
+						+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
+							? "Dokument posiada numer ewidencyjny '" + dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() + "'.\n"
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
+							? "Jest w statusie '" + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() + "'.\n\n"
+							: "");					
 				} else {
-					
+					raportDlaHelpDesku += "Szukany numer ewidencyjny '" + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) + "'" 
+							+ " znajduje siê w bazie centralnej.\n"
+						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() != null) 
+							? "Dokument ma nadany numer systemowy '" + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "'.\n"
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
+							? "Jest w statusie '" + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() + "'.\n\n"
+							: "");					
 				}
 			}
 		}
