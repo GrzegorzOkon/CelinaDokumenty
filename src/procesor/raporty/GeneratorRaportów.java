@@ -32,19 +32,16 @@ public class GeneratorRaportów {
 		for (Dokument dokument : dokumenty) {
 			// Generowanie raportu dla numerów dla których nie ma dokumentów
 			if (dokument.getDokumentyZCentralaCntrValidDok() == null && dokument.getDokumentZCentralaDokumenty() == null) {
-				raportDlaHelpDesku += "Szukanego " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) 
-						? "numeru w³asnego dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-						: ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) 
-							? "identyfikatora dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-							: "")) 
-						+ " brak w bazie centralnej.\n\n";
-				
-				raportDlaAdministratora += "Szukanego " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) 
-							? "numeru w³asnego dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-							: ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) 
-								? "identyfikatora dokumentu " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-								: "")) 
-							+ " brak w bazie centralnej.\n\n";				
+				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {				
+					raportDlaHelpDesku += "Szukanego numeru w³asnego '" + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
+							+ "' brak w bazie centralnej.\n\n";
+				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
+					raportDlaHelpDesku += "Szukanego numeru systemowego '" + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
+							+ "' brak w bazie centralnej.\n\n";
+				} else {
+					raportDlaHelpDesku += "Szukanego numeru ewidencyjnego '" + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
+							+ "' brak w bazie centralnej.\n\n";					
+				}
 			} else if (dokument.getDokumentyZCentralaCntrValidDok() != null && dokument.getDokumentZCentralaDokumenty() == null) {  //numery s¹ jedynie w cntr_valid_dok
 				for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
 					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {

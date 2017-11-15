@@ -25,13 +25,13 @@ public class Dokument {
 		return dokumentyZCentralaCntrValidDok;
 	}
 	
-	public void setDokumentyZCentralaCntrValidDok(DokumentZCentralaCntrValidDok dokumentZCentralaCntrValidDok) {
-		dokumentyZCentralaCntrValidDok = new ArrayList<>();
-		this.dokumentyZCentralaCntrValidDok.add(dokumentZCentralaCntrValidDok);
-	}
-	
-	public void setDokumentyZCentralaCntrValidDok(List<DokumentZCentralaCntrValidDok> dokumentyZCentralaCntrValidDok) {
-		this.dokumentyZCentralaCntrValidDok = dokumentyZCentralaCntrValidDok;
+	public void setDokumentyZCentralaCntrValidDok(Object dokumentyZCentralaCntrValidDok) {
+		if (dokumentyZCentralaCntrValidDok instanceof DokumentZCentralaCntrValidDok) {
+			dokumentyZCentralaCntrValidDok = new ArrayList<>();
+			this.dokumentyZCentralaCntrValidDok.add((DokumentZCentralaCntrValidDok)dokumentyZCentralaCntrValidDok);
+		} else if (dokumentyZCentralaCntrValidDok instanceof List<?>) {
+			this.dokumentyZCentralaCntrValidDok = (List<DokumentZCentralaCntrValidDok>)dokumentyZCentralaCntrValidDok;
+		}
 	}
 	
 	public DokumentZCentralaDokumenty getDokumentZCentralaDokumenty() {
