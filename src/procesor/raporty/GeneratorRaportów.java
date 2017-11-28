@@ -6,6 +6,7 @@ import java.util.List;
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
+import procesor.raporty.wejscie.KodyOddzia³ów;
 import procesor.raporty.wejscie.StatusyPrzetwarzania;
 
 public class GeneratorRaportów {
@@ -111,7 +112,7 @@ public class GeneratorRaportów {
 							: "");					
 				}
 			}
-		}
+		}	
 		
 		raporty.add(raportDlaHelpDesku);
 		raporty.add(raportDlaAdministratora);

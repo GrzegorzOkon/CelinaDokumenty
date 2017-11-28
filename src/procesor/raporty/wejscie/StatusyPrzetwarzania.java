@@ -3,7 +3,7 @@ package procesor.raporty.wejscie;
 import java.util.*;
 
 /**
- * Klasa inicjalizuj¹ca i zwracaj¹ca opisy statusów dokumentów dla przes³anych symboli.
+ * Klasa wzorca singleton inicjalizuj¹ca i zwracaj¹ca opisy statusów dokumentów.
  * 
  * @author Grzegorz Okoñ
  */
