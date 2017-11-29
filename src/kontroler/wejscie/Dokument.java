@@ -27,7 +27,7 @@ public class Dokument {
 	
 	public void setDokumentyZCentralaCntrValidDok(Object dokumentyZCentralaCntrValidDok) {
 		if (dokumentyZCentralaCntrValidDok instanceof DokumentZCentralaCntrValidDok) {
-			dokumentyZCentralaCntrValidDok = new ArrayList<>();
+			this.dokumentyZCentralaCntrValidDok = new ArrayList<>();
 			this.dokumentyZCentralaCntrValidDok.add((DokumentZCentralaCntrValidDok)dokumentyZCentralaCntrValidDok);
 		} else if (dokumentyZCentralaCntrValidDok instanceof List<?>) {
 			this.dokumentyZCentralaCntrValidDok = (List<DokumentZCentralaCntrValidDok>)dokumentyZCentralaCntrValidDok;

@@ -89,35 +89,13 @@ public class Kontroler {
 					dokumenty.add(dokument);
 			
 					try {
-						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);					
-				
-						//TEST
-						//widok.w("" + dokumentZTabeliDokumenty.getIdentyfikatorDokumentu());
-						//System.out.println(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu());
-						
-						
+						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);										
 						dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);
 				
-						if (dokumentZTabeliDokumenty == null) {
-							//TEST
-							//widok.wyœwietlRaport("brak w dokumentach\n");
-					
+						if (dokumentZTabeliDokumenty == null) {					
 							DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
 							dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
-					
-							//TEST
-							/*if (dokumentZTabeliCntrValidDok == null) {
-								widok.wyœwietlRaport("brak w cntr_valid_dok\n");
-							} else {
-								widok.wyœwietlRaport(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
-							}*/
-						} 
-						//TEST
-						//else {
-						//TEST
-						//widok.wyœwietlRaport(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + "\n");
-						//}
-				
+						} 	
 					} catch (Exception ex) {
 						widok.wyœwietlKomunikatB³edu();
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów

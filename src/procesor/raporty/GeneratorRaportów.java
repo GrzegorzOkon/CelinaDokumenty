@@ -35,39 +35,51 @@ public class GeneratorRaportów {
 			// Generowanie raportu dla numerów dla których nie ma dokumentów
 			if (dokument.getDokumentyZCentralaCntrValidDok() == null && dokument.getDokumentZCentralaDokumenty() == null) {
 				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {				
-					raportDlaHelpDesku += "Szukanego numeru w³asnego '" + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-							+ "' brak w bazie centralnej.\n\n";
+					raportDlaHelpDesku += "Szukanego numeru w³asnego " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
+							+ " brak w bazie centralnej.\n\n";
 				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
-					raportDlaHelpDesku += "Szukanego numeru systemowego '" + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-							+ "' brak w bazie centralnej.\n\n";
+					raportDlaHelpDesku += "Szukanego numeru systemowego " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
+							+ " brak w bazie centralnej.\n\n";
 				} else {
-					raportDlaHelpDesku += "Szukanego numeru ewidencyjnego '" + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
-							+ "' brak w bazie centralnej.\n\n";					
+					raportDlaHelpDesku += "Szukanego numeru ewidencyjnego " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
+							+ " brak w bazie centralnej.\n\n";					
 				}
 			} else if (dokument.getDokumentyZCentralaCntrValidDok() != null && dokument.getDokumentZCentralaDokumenty() == null) {  //numery s¹ jedynie w cntr_valid_dok
 				for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
 					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
 						raportDlaHelpDesku += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true)
-							? "numer w³asny '" + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + "'"
+							? "numer w³asny " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT)
 							: "")
 							+ " znajduje siê w bazie centralnej.\n"
 						+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
-							? "Dokument ma nadany numer systemowy '" + dokumentCntrValidDok.getIdentyfikatorDokumentu() + "'.\n"
+							? "Dokument ma nadany numer systemowy " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
 							: "\n")
 						+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
-							? "Jest w statusie '" + dokumentCntrValidDok.getStatusPrzetwarzania() + "'.\n\n"
+							? "Jest w statusie " + dokumentCntrValidDok.getStatusPrzetwarzania() + ".\n"
+							: "")
+						+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
+							? "Zosta³ wys³any na placówkê " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
+									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
+									: ".\n\n")
 							: "");	
 					} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
 						raportDlaHelpDesku += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true)
-								? "numer systemowy '" + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + "'"
+								? "numer systemowy " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU)
 								: "")
 								+ " znajduje siê w bazie centralnej.\n"
 							+ ((dokumentCntrValidDok.getNumerWlasny() != null) 
-								? "Dokument ma nadany numer w³asny '" + dokumentCntrValidDok.getNumerWlasny() + "'.\n"
+								? "Dokument ma nadany numer w³asny " + dokumentCntrValidDok.getNumerWlasny() + ".\n"
 								: "\n")
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
-								? "Jest w statusie '" + dokumentCntrValidDok.getStatusPrzetwarzania() + "'.\n\n"
-								: "");							
+								? "Jest w statusie " + dokumentCntrValidDok.getStatusPrzetwarzania() + ".\n"
+								: "")	
+							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
+								? "Zosta³ wys³any na placówkê " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
+										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
+										: ".\n\n")
+								: "");	
 					}
 				}
 			} else if (dokument.getDokumentZCentralaDokumenty() != null) {  //numer jest w dokumentach
@@ -83,7 +95,13 @@ public class GeneratorRaportów {
 						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
 							? "Jest w statusie " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()
 								+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) != null)
-									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n\n"
+									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n"
+									: ".\n")
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
+							? "Zosta³ wys³any na placówkê " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
+								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
+									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: ".\n\n")
 							: "");	
 				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
@@ -95,9 +113,15 @@ public class GeneratorRaportów {
 						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
 							? "Jest w statusie " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()
 								+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) != null)
-									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n\n"
+									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n"
+									: ".\n")
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
+							? "Zosta³ wys³any na placówkê " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
+								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
+									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: ".\n\n")
-							: "");					
+							: "");	
 				} else {
 					raportDlaHelpDesku += "Szukany numer ewidencyjny " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU)
 							+ " znajduje siê w bazie centralnej.\n"
@@ -107,9 +131,15 @@ public class GeneratorRaportów {
 						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
 							? "Jest w statusie " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()
 								+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) != null)
-									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n\n"
+									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n"
+									: ".\n")
+							: "")	
+						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
+							? "Zosta³ wys³any na placówkê " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
+								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
+									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: ".\n\n")
-							: "");					
+							: "");	
 				}
 			}
 		}	
