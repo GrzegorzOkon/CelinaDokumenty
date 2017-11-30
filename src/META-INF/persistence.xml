@@ -20,7 +20,7 @@
       <class>procesor.dao.entity.DokumentZCentralaDokumenty</class>
 
       <properties>
-         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.22.33.44:5555/celina_centr"/>
+         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.11.22.33:4444/celina_centr"/>
          <property name="javax.persistence.jdbc.user" value="xx"/>
          <property name="javax.persistence.jdbc.password" value="yy"/>
          <property name="javax.persistence.jdbc.driver" value="com.sybase.jdbc4.jdbc.SybDriver"/>

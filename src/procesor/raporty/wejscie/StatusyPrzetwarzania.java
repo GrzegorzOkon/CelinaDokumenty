@@ -8,15 +8,20 @@ import java.util.*;
  * @author Grzegorz Okoñ
  */
 public class StatusyPrzetwarzania {
-	private static StatusyPrzetwarzania instancja;
+	private static volatile StatusyPrzetwarzania instancja;
 	
 	private Map<String, String> statusyPWD2;
 	private Map<String, String> statusySAD2;
 	
 	public static StatusyPrzetwarzania pobierzInstancjê() {
 		if (instancja == null) {
-			instancja = new StatusyPrzetwarzania();
-		} 		
+			synchronized(StatusyPrzetwarzania.class) {
+				if(instancja == null) {
+					instancja = new StatusyPrzetwarzania();
+				}
+			}
+		} 	
+		
 		return instancja;
 	}
 	
