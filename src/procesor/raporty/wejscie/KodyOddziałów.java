@@ -34,6 +34,20 @@ public class KodyOddzia³ów {
 	}
 	
 	private void inicjalizujKody() {
+		kodyOddzia³ów.put("301010", "Oddzia³ Celny w Bia³ej Podlaskiej, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("301020", "Oddzia³ Celny w Ma³aszewiczach, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("301040", "Oddzia³ Celny w Koroszczynie, Oddzia³ Celny w Ma³aszewiczach, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("302010", "Oddzia³ Celny w Lublinie, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("302020", "Oddzia³ Celny w Pu³awach, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("302040", "Oddzia³ Celny w Che³mie, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("302050", "Oddzia³ Celny w Dorohusku, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("302060", "Oddzia³ Celny Drogowy w Dorohusku, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("302070", "Oddzia³ Celny Port Lotniczy Lublin, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("303010", "Oddzia³ Celny w Zamoœciu, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("303020", "Oddzia³ Celny w Hrebennem, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("303030", "Oddzia³ Celny w Hrubieszowie, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("303080", "Oddzia³ Celny w Tomaszowie Lubelskim, Izba Administracji Skarbowej w Lublinie");
+		
 		kodyOddzia³ów.put("321010", "Oddzia³ Celny „Basen V” w Gdyni, Izba Administracji Skarbowej w Gdañsku");
 		kodyOddzia³ów.put("321030", "Oddzia³ Celny „Baza Kontenerowa” w Gdyni, Izba Administracji Skarbowej w Gdañsku");
 		kodyOddzia³ów.put("321050", "Oddzia³ Celny „Basen IV” w Gdyni, Izba Administracji Skarbowej w Gdañsku");
