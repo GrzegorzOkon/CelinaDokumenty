@@ -33,7 +33,7 @@ public class KodyOddzia³ów {
 		return kodyOddzia³ów.get(kod);
 	}
 	
-	private void inicjalizujKody() {
+	private void inicjalizujKody() {	
 		kodyOddzia³ów.put("301010", "Oddzia³ Celny w Bia³ej Podlaskiej, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("301020", "Oddzia³ Celny w Ma³aszewiczach, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("301040", "Oddzia³ Celny w Koroszczynie, Oddzia³ Celny w Ma³aszewiczach, Izba Administracji Skarbowej w Lublinie");
@@ -47,6 +47,14 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("303020", "Oddzia³ Celny w Hrebennem, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("303030", "Oddzia³ Celny w Hrubieszowie, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("303080", "Oddzia³ Celny w Tomaszowie Lubelskim, Izba Administracji Skarbowej w Lublinie");
+		
+		kodyOddzia³ów.put("311010", "Oddzia³ Celny w Bia³ymstoku, Izba Administracji Skarbowej w Bia³ymstoku");
+		kodyOddzia³ów.put("311020", "Oddzia³ Celny Kolejowy w KuŸnicy, Izba Administracji Skarbowej w Bia³ymstoku");
+		kodyOddzia³ów.put("311030", "Oddzia³ Celny Drogowy w KuŸnicy, Izba Administracji Skarbowej w Bia³ymstoku");
+		kodyOddzia³ów.put("311050", "Oddzia³ Celny w Siemianówce, Izba Administracji Skarbowej w Bia³ymstoku");
+		kodyOddzia³ów.put("311070", "Oddzia³ Celny w Bobrownikach, Izba Administracji Skarbowej w Bia³ymstoku");
+		kodyOddzia³ów.put("312010", "Oddzia³ Celny w £om¿y, Izba Administracji Skarbowej w Bia³ymstoku");
+		kodyOddzia³ów.put("313010", "Oddzia³ Celny w Suwa³kach, Izba Administracji Skarbowej w Bia³ymstoku");
 		
 		kodyOddzia³ów.put("321010", "Oddzia³ Celny „Basen V” w Gdyni, Izba Administracji Skarbowej w Gdañsku");
 		kodyOddzia³ów.put("321030", "Oddzia³ Celny „Baza Kontenerowa” w Gdyni, Izba Administracji Skarbowej w Gdañsku");

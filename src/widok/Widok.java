@@ -161,7 +161,7 @@ public class Widok extends Application {
 
         ustawReferencje(primaryStage);
         
-        primaryStage.setTitle("CelinaDokumenty v2.0.0 (rev. 20171129)");
+        primaryStage.setTitle("JCelinaDokumenty v2.0.0 (rev. 20171204)");
         primaryStage.setScene(scena);
         primaryStage.show();
     }
