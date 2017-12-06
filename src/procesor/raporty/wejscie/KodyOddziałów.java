@@ -70,6 +70,17 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("322090", "Oddzia³ Celny Pocztowy w Pruszczu Gdañskim, Izba Administracji Skarbowej w Gdañsku");
 		kodyOddzia³ów.put("323010", "Oddzia³ Celny w S³upsku, Izba Administracji Skarbowej w Gdañsku");
 		
+		kodyOddzia³ów.put("331010", "Oddzia³ Celny w Chorzowie, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("331020", "Oddzia³ Celny w Tychach, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("331030", "Oddzia³ Celny w S³awkowie, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("331040", "Oddzia³ Celny Towarowy Port Lotniczy Katowice-Pyrzowice, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("331050", "Oddzia³ Celny Osobowy Port Lotniczy Katowice-Pyrzowice, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("332010", "Oddzia³ Celny w Gliwicach, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("332030", "Oddzia³ Celny w Raciborzu, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("332040", "Oddzia³ Celny Pocztowy w Zabrzu, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("333010", "Oddzia³ Celny w Czêstochowie, Izba Administracji Skarbowej w Katowicach");
+		kodyOddzia³ów.put("335010", "Oddzia³ Celny w Czechowicach-Dziedzicach, Izba Administracji Skarbowej w Katowicach");
+		
 		kodyOddzia³ów.put("351020", "Oddzia³ Celny II w Krakowie, Izba Administracji Skarbowej w Krakowie");
 		kodyOddzia³ów.put("351030", "Oddzia³ Celny Port Lotniczy Kraków-Balice, Izba Administracji Skarbowej w Krakowie");
 		kodyOddzia³ów.put("351050", "Oddzia³ Celny w Chy¿nem, Izba Administracji Skarbowej w Krakowie");

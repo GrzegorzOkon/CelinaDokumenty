@@ -77,7 +77,7 @@ public class GeneratorRaportów {
 								? "Dokument ma nadany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
 								: "\n")
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
-								? "Jego status_przetw to " + dokumentCntrValidDok.getStatusPrzetwarzania() + ".\n"
+								? "Jest w status_przetw " + dokumentCntrValidDok.getStatusPrzetwarzania() + ".\n"
 								: "")
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
 								? "Ma przypisan¹ jedn_przezn " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
@@ -97,10 +97,26 @@ public class GeneratorRaportów {
 								? "Jest w statusie " + dokumentCntrValidDok.getStatusPrzetwarzania() + ".\n"
 								: "")	
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? "Zosta³ wys³any na placówkê " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? "Ma przypisany kod oddzia³u " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: ".\n\n")
+								: "");	
+						raportDlaAdministratora += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true)
+								? "id_dok " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU)
+								: "")
+								+ " znajduje siê w tabeli cntr_valid_dok.\n"
+							+ ((dokumentCntrValidDok.getNumerWlasny() != null) 
+								? "Dokument ma nadany nr_akt " + dokumentCntrValidDok.getNumerWlasny() + ".\n"
+								: "\n")
+							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
+								? "Jest w status_przetw " + dokumentCntrValidDok.getStatusPrzetwarzania() + ".\n"
+								: "")	
+							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
+								? "Ma przypisan¹ jedn_przezn " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
+										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
+										: " - brak opisu dla danego kodu.\n\n")
 								: "");	
 					}
 				}
