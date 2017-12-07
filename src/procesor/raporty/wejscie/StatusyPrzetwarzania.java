@@ -10,6 +10,8 @@ import java.util.*;
 public class StatusyPrzetwarzania {
 	private static volatile StatusyPrzetwarzania instancja;
 	
+	private Map<String, String> statusyCntrValidDok;
+	
 	private Map<String, String> statusyPWD2;
 	private Map<String, String> statusySAD2;
 	
@@ -25,13 +27,44 @@ public class StatusyPrzetwarzania {
 		return instancja;
 	}
 	
-	public String pobierzStatus(String rodzajDokumentu, String statusPrzetwarzania) {
-		switch(rodzajDokumentu) {
-			case "PWD2" : return pobierzStatusPWD2(statusPrzetwarzania);
-			case "SAD2" : return pobierzStatusSAD2(statusPrzetwarzania);
+	public String pobierzStatus(String rodzajDokumentu, String statusPrzetwarzania, String tabela) {
+		if (tabela.equals("cntr_valid_dok")) {
+			switch(rodzajDokumentu) {
+				case "PWD2" : return pobierzStatusCntrValidDok(statusPrzetwarzania);
 			
-			default : return null;
+				default : return null;
+			}
+		} else {
+			switch(rodzajDokumentu) {
+				case "PWD2" : return pobierzStatusPWD2(statusPrzetwarzania);
+				case "SAD2" : return pobierzStatusSAD2(statusPrzetwarzania);
+				
+				default : return null;
+			}
 		}
+	}
+	
+	private String pobierzStatusCntrValidDok(String statusPrzetwarzania) {
+		if (statusyCntrValidDok == null) {
+			inicjalizujStatusyCntrValidDok();
+		} 	
+		
+		return statusyCntrValidDok.get(statusPrzetwarzania);
+	}
+	
+	private void inicjalizujStatusyCntrValidDok() {
+		statusyCntrValidDok = new HashMap<>();
+		
+		statusyCntrValidDok.put("F", "walidacja formalna (w trakcie)");
+		statusyCntrValidDok.put("N", "dokument niepoprawny");
+		statusyCntrValidDok.put("O", "oczekiwanie na przes³anie do jednostki");
+		statusyCntrValidDok.put("S", "inicjalny, oczekiwanie na walidacjê formaln¹");
+		statusyCntrValidDok.put("U", "anulowany przez u¿ytkownika ");
+		statusyCntrValidDok.put("X", "status nie wystêpuje w kodzie aplikacji, prawdopodobnie nadawany rêcznie");
+		statusyCntrValidDok.put("Z", "zakoñczono obs³ugê");
+		statusyCntrValidDok.put("W", "dokument oczekuje na ponown¹ weryfikacjê podpisu");
+		statusyCntrValidDok.put("_", "inicjalny dla dokumentów IST przes³anych webcel-em");
+		statusyCntrValidDok.put("*", "nadawany dla deklaracji Intrastat, dla których wyst¹pi³ b³¹d");
 	}
 	
 	private String pobierzStatusPWD2(String statusPrzetwarzania) {

@@ -81,6 +81,9 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("333010", "Oddzia³ Celny w Czêstochowie, Izba Administracji Skarbowej w Katowicach");
 		kodyOddzia³ów.put("335010", "Oddzia³ Celny w Czechowicach-Dziedzicach, Izba Administracji Skarbowej w Katowicach");
 		
+		kodyOddzia³ów.put("341010", "Oddzia³ Celny w Kielcach, Izba Administracji Skarbowej w Kielcach");
+		kodyOddzia³ów.put("341020", "Oddzia³ Celny w Starachowicach, Izba Administracji Skarbowej w Kielcach");
+		
 		kodyOddzia³ów.put("351020", "Oddzia³ Celny II w Krakowie, Izba Administracji Skarbowej w Krakowie");
 		kodyOddzia³ów.put("351030", "Oddzia³ Celny Port Lotniczy Kraków-Balice, Izba Administracji Skarbowej w Krakowie");
 		kodyOddzia³ów.put("351050", "Oddzia³ Celny w Chy¿nem, Izba Administracji Skarbowej w Krakowie");
