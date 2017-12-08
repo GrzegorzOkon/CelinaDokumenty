@@ -91,6 +91,12 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("353010", "Oddzia³ Celny w Nowym S¹czu, Izba Administracji Skarbowej w Krakowie");
 		kodyOddzia³ów.put("353030", "Oddzia³ Celny w Tarnowie, Izba Administracji Skarbowej w Krakowie");
 		
+		kodyOddzia³ów.put("361010", "Oddzia³ Celny I w £odzi, Izba Administracji Skarbowej w £odzi");
+		kodyOddzia³ów.put("361030", "Oddzia³ Celny w Sieradzu, Izba Administracji Skarbowej w £odzi");
+		kodyOddzia³ów.put("362010", "Oddzia³ Celny II w £odzi, Izba Administracji Skarbowej w £odzi");
+		kodyOddzia³ów.put("362030", "Oddzia³ Celny w Kutnie, Izba Administracji Skarbowej w £odzi");
+		kodyOddzia³ów.put("363010", "Oddzia³ Celny w Piotrkowie Trybunalskim, Izba Administracji Skarbowej w £odzi");
+		
 		kodyOddzia³ów.put("441040", "Oddzia³ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia³ów.put("442020", "Oddzia³ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia³ów.put("443010", "Oddzia³ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");

@@ -27,7 +27,7 @@ public class StatusyPrzetwarzania {
 		return instancja;
 	}
 	
-	public String pobierzStatus(String rodzajDokumentu, String statusPrzetwarzania, String tabela) {
+	public String pobierzOpisStatusu(String rodzajDokumentu, String statusPrzetwarzania, String tabela) {
 		if (tabela.equals("cntr_valid_dok")) {
 			switch(rodzajDokumentu) {
 				case "PWD2" : return pobierzStatusCntrValidDok(statusPrzetwarzania);
