@@ -66,7 +66,7 @@ public class GeneratorRaportów {
 										: ".\n")
 								: "")	
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? "Ma przypisany kod oddzia³u " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? "Ma przypisan¹ jednostkê przeznaczenia " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: ".\n\n")
@@ -105,7 +105,7 @@ public class GeneratorRaportów {
 										: ".\n")
 								: "")	
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? "Ma przypisany kod oddzia³u " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? "Ma przypisan¹ jednostkê przeznaczenia " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: ".\n\n")
@@ -124,7 +124,7 @@ public class GeneratorRaportów {
 										: ".\n")
 								: "")
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? "Ma przypisany kod oddzia³u " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? "Ma przypisan¹ jedn_przezn " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: " - brak opisu dla danego kodu.\n\n")
@@ -147,38 +147,39 @@ public class GeneratorRaportów {
 									: ".\n")
 							: "")	
 						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
-							? "Ma przypisany kod oddzia³u " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
+							? "Ma przypisan¹ jednostkê przeznaczenia " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
 								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: ".\n\n")
 							: "");	
-				//for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
-					/*raportDlaHelpDesku += "Szukany numer w³asny " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-							+ " znajduje siê w bazie centralnej.\n"
-						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() != null) 
-							? "Dokument ma nadany numer systemowy " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorDokumentu() + ".\n"
-							: "\n")
-						+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
-							? "Posiada numer ewidencyjny " + dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() + ".\n"
-							: "\n")
-						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
-							? "Jest w statusie " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()
-								+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) != null)
-									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzStatus(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()) + ".\n"
-									: ".\n")
-							: "")
-						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
-							? "Zosta³ wys³any na placówkê " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
-								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
-									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
-									: ".\n\n")
-							: "");	*/
+				
+					for (DokumentZCentralaCntrValidDok dokumentZCentralaCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {  //wyœwietla wszystkie znalezione dokumenty z tabeli cntr_valid_dok
+						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
+							+ " znajduje siê w tabeli cntr_valid_dok.\n"
+							+ ((dokumentZCentralaCntrValidDok.getIdentyfikatorDokumentu() != null) 
+								? "Dokument ma nadany id_dok " + dokumentZCentralaCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
+								: "\n")
+							+ ((dokumentZCentralaCntrValidDok.getStatusPrzetwarzania() != null)
+								? "Jest w status_przetw " + dokumentZCentralaCntrValidDok.getStatusPrzetwarzania()
+									+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentZCentralaCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentZCentralaCntrValidDok.getStatusPrzetwarzania(), "cntr_valid_dok") != null)
+										? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentZCentralaCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentZCentralaCntrValidDok.getStatusPrzetwarzania(), "cntr_valid_dok") + ".\n"
+										: ".\n")
+								: "")
+							+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
+								? "Ma przypisan¹ jedn_przezn " + dokumentZCentralaCntrValidDok.getJednostkaPrzeznaczenia()
+									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentZCentralaCntrValidDok.getJednostkaPrzeznaczenia()) != null)
+										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentZCentralaCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
+										: " - brak opisu dla danego kodu.\n\n")
+								: "");	
+					}				
 				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
-					raportDlaHelpDesku += "Szukany numer systemowy " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
+					raportDlaHelpDesku += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true)
+							? "numer systemowy " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU)
+							: "")
 							+ " znajduje siê w bazie centralnej.\n"
 						+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null)
 							? "Dokument posiada numer ewidencyjny " + dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() + ".\n"
-							: "")
+							: "\n")
 						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
 							? "Jest w statusie " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()
 								+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania(), "dokumenty") != null)
@@ -186,11 +187,12 @@ public class GeneratorRaportów {
 									: ".\n")
 							: "")
 						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
-							? "Zosta³ wys³any na placówkê " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
+							? "Ma przypisan¹ jednostkê przeznaczenia " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
 								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: ".\n\n")
 							: "");	
+					
 				} else {
 					raportDlaHelpDesku += "Szukany numer ewidencyjny " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU)
 							+ " znajduje siê w bazie centralnej.\n"

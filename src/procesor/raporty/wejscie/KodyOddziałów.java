@@ -97,6 +97,15 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("362030", "Oddzia³ Celny w Kutnie, Izba Administracji Skarbowej w £odzi");
 		kodyOddzia³ów.put("363010", "Oddzia³ Celny w Piotrkowie Trybunalskim, Izba Administracji Skarbowej w £odzi");
 		
+		kodyOddzia³ów.put("371010", "Oddzia³ Celny w Olsztynie, Izba Administracji Skarbowej w Olsztynie");		
+		kodyOddzia³ów.put("371020", "Oddzia³ Celny w Korszach, Izba Administracji Skarbowej w Olsztynie");
+		kodyOddzia³ów.put("371030", "Oddzia³ Celny w Bezledach, Izba Administracji Skarbowej w Olsztynie");		
+		kodyOddzia³ów.put("371050", "Oddzia³ Celny w E³ku, Izba Administracji Skarbowej w Olsztynie");
+		kodyOddzia³ów.put("372010", "Oddzia³ Celny w Elbl¹gu, Izba Administracji Skarbowej w Olsztynie");		
+		kodyOddzia³ów.put("372020", "Oddzia³ Celny w Braniewie, Izba Administracji Skarbowej w Olsztynie");
+		kodyOddzia³ów.put("372040", "Oddzia³ Celny w I³awie, Izba Administracji Skarbowej w Olsztynie");		
+		kodyOddzia³ów.put("372050", "Oddzia³ Celny w Grzechotkach, Izba Administracji Skarbowej w Olsztynie");
+		
 		kodyOddzia³ów.put("441040", "Oddzia³ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia³ów.put("442020", "Oddzia³ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia³ów.put("443010", "Oddzia³ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");
