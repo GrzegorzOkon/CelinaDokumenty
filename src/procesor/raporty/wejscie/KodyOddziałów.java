@@ -106,6 +106,10 @@ public class KodyOddzia≥Ûw {
 		kodyOddzia≥Ûw.put("372040", "Oddzia≥ Celny w I≥awie, Izba Administracji Skarbowej w Olsztynie");		
 		kodyOddzia≥Ûw.put("372050", "Oddzia≥ Celny w Grzechotkach, Izba Administracji Skarbowej w Olsztynie");
 		
+		kodyOddzia≥Ûw.put("381010", "Oddzia≥ Celny w Opolu, Izba Administracji Skarbowej w Opolu");
+		kodyOddzia≥Ûw.put("381030", "Oddzia≥ Celny w KÍdzierzynie-Koülu, Izba Administracji Skarbowej w Opolu");	
+		kodyOddzia≥Ûw.put("381040", "Oddzia≥ Celny w Nysie, Izba Administracji Skarbowej w Opolu");
+		
 		kodyOddzia≥Ûw.put("441040", "Oddzia≥ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia≥Ûw.put("442020", "Oddzia≥ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia≥Ûw.put("443010", "Oddzia≥ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");

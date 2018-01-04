@@ -110,6 +110,7 @@ public class GeneratorRaportów {
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: ".\n\n")
 								: "");	
+						
 						raportDlaAdministratora += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true)
 								? "id_dok " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU)
 								: "")
@@ -191,6 +192,26 @@ public class GeneratorRaportów {
 								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: ".\n\n")
+							: "");	
+					
+					raportDlaAdministratora += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true)
+							? "id_dok " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU)
+							: "")
+							+ " znajduje siê w tabeli dokumenty.\n"
+						+ ((dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() != null) 
+							? "Dokument ma nadany sym_dok " + dokument.getDokumentZCentralaDokumenty().getSymbolDokumentu() + ".\n"
+							: "\n")
+						+ ((dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania() != null)
+							? "Jest w status_przetw " + dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania()
+								+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania(), "dokumenty") != null)
+									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorRodzajuDokumentu(), dokument.getDokumentZCentralaDokumenty().getStatusPrzetwarzania(), "dokumenty") + ".\n"
+									: ".\n")
+							: "")
+						+ ((dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki() != null)
+							? "Ma przypisan¹ jedn_przezn " + dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()
+								+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) != null)
+									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
+									: " - brak opisu dla danego kodu.\n\n")
 							: "");	
 					
 				} else {
