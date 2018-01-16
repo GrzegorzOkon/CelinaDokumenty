@@ -110,6 +110,16 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("381030", "Oddzia³ Celny w Kêdzierzynie-KoŸlu, Izba Administracji Skarbowej w Opolu");	
 		kodyOddzia³ów.put("381040", "Oddzia³ Celny w Nysie, Izba Administracji Skarbowej w Opolu");
 		
+		kodyOddzia³ów.put("391010", "Oddzia³ Celny w Poznaniu, Izba Administracji Skarbowej w Poznaniu");		
+		kodyOddzia³ów.put("391020", "Oddzia³ Celny „MTP” w Poznaniu, Izba Administracji Skarbowej w Poznaniu");	
+		kodyOddzia³ów.put("391030", "Oddzia³ Celny Port Lotniczy Poznañ-£awica, Izba Administracji Skarbowej w Poznaniu");		
+		kodyOddzia³ów.put("391040", "Oddzia³ Celny w G¹dkach, Izba Administracji Skarbowej w Poznaniu");	
+		kodyOddzia³ów.put("392010", "Oddzia³ Celny w Pile, Izba Administracji Skarbowej w Poznaniu");		
+		kodyOddzia³ów.put("393010", "Oddzia³ Celny w Lesznie, Izba Administracji Skarbowej w Poznaniu");	
+		kodyOddzia³ów.put("393020", "Oddzia³ Celny w Nowym Tomyœlu, Izba Administracji Skarbowej w Poznaniu");		
+		kodyOddzia³ów.put("394010", "Oddzia³ Celny w Kaliszu, Izba Administracji Skarbowej w Poznaniu");	
+		kodyOddzia³ów.put("394020", "Oddzia³ Celny w Koninie, Izba Administracji Skarbowej w Poznaniu");	
+		
 		kodyOddzia³ów.put("441040", "Oddzia³ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia³ów.put("442020", "Oddzia³ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia³ów.put("443010", "Oddzia³ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");
