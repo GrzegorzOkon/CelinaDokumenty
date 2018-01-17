@@ -120,6 +120,16 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("394010", "Oddzia³ Celny w Kaliszu, Izba Administracji Skarbowej w Poznaniu");	
 		kodyOddzia³ów.put("394020", "Oddzia³ Celny w Koninie, Izba Administracji Skarbowej w Poznaniu");	
 		
+		kodyOddzia³ów.put("401010", "Oddzia³ Celny w Przemyœlu, Izba Administracji Skarbowej w Rzeszowie");		
+		kodyOddzia³ów.put("401030", "Oddzia³ Celny w Medyce, Izba Administracji Skarbowej w Rzeszowie");	
+		kodyOddzia³ów.put("401040", "Oddzia³ Celny Kolejowy Przemyœl-Medyka, Izba Administracji Skarbowej w Rzeszowie");		
+		kodyOddzia³ów.put("401060", "Oddzia³ Celny w Korczowej, Izba Administracji Skarbowej w Rzeszowie");
+		kodyOddzia³ów.put("402010", "Oddzia³ Celny w Rzeszowie, Izba Administracji Skarbowej w Rzeszowie");		
+		kodyOddzia³ów.put("402020", "Oddzia³ Celny Port Lotniczy Rzeszów-Jasionka, Izba Administracji Skarbowej w Rzeszowie");	
+		kodyOddzia³ów.put("402050", "Oddzia³ Celny w Stalowej Woli, Izba Administracji Skarbowej w Rzeszowie");		
+		kodyOddzia³ów.put("402060", "Oddzia³ Celny w Mielcu, Izba Administracji Skarbowej w Rzeszowie");	
+		kodyOddzia³ów.put("404010", "Oddzia³ Celny w Kroœnie, Izba Administracji Skarbowej w Rzeszowie");	
+		
 		kodyOddzia³ów.put("441040", "Oddzia³ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia³ów.put("442020", "Oddzia³ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia³ów.put("443010", "Oddzia³ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");

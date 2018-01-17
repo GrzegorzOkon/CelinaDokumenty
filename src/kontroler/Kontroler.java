@@ -2,6 +2,7 @@ package kontroler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
@@ -32,7 +33,7 @@ public class Kontroler {
 		this.model = model;
 	}
 	
-	public void wyszukajWCentraliNrAkt(ArrayList<String> numeryAkt) {
+	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {
 		Thread watek = new Thread(new Runnable() {
 
 			@Override
@@ -77,7 +78,7 @@ public class Kontroler {
 	}
 	
 	//
-	public void wyszukajWCentraliIdDok(ArrayList<String> idDoki) {
+	public void wyszukajWCentraliIdDok(TreeSet<String> idDoki) {
 		Thread watek = new Thread(new Runnable() {
 
 			@Override
@@ -116,7 +117,7 @@ public class Kontroler {
      * @param symDok
      * 			 Lista numerów symboli dokumentów po których nastapi wyszukiwanie w bazie.
      */ 
-	public void wyszukajWCentraliSymDok(ArrayList<String> symDok) {
+	public void wyszukajWCentraliSymDok(TreeSet<String> symDok) {
 		Thread watek = new Thread(new Runnable() {
 
 			@Override

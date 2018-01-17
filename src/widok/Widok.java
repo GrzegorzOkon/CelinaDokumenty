@@ -1,10 +1,7 @@
 package widok;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -14,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import kontroler.Kontroler;
 import procesor.Model;
@@ -113,7 +109,7 @@ public class Widok extends Application {
         kontenerprzyciskow.getChildren().add(Wyczysc);
         kontenerprzyciskow.getChildren().add(Zamknij);
         
-		// Przypisanie dzi¹³ania do przycisku sprawdzenia w centrali
+		// Przypisanie dzia³ania do przycisku sprawdzenia w centrali
         SprawdzWCentrali.setOnAction((event) -> {		    
             if (opcjaNumerW³asny.isSelected() == true) {
             	kontroler.wyszukajWCentraliNrAkt(walidujDane());
@@ -161,7 +157,7 @@ public class Widok extends Application {
 
         ustawReferencje(primaryStage);
         
-        primaryStage.setTitle("JCelinaDokumenty v2.0.0 (rev. 20171204)");
+        primaryStage.setTitle("JCelinaDokumenty v2.0.0 (rev. 20180117)");
         primaryStage.setScene(scena);
         primaryStage.show();
     }
@@ -174,22 +170,22 @@ public class Widok extends Application {
     }
     
     /**
-     * Metoda spradzaj¹ca wprowadzone dane do formatki.
+     * Metoda spradzaj¹ca wprowadzone dane do formatki pod k¹tem duplikatów i usuwania spacji.
      * 
      * @return wiersze
-     * 			 Lista obiektów reprezentj¹cych poszczególne numery dokumentów.
+     * 			 Lista posortowanych alfabetycznie numerów dokumentów.
      */   
-	private ArrayList<String> walidujDane() {
-		ArrayList<String> wiersze = new ArrayList<>();
+	private TreeSet<String> walidujDane() {
 		String[] nieobrobioneWiersze = poleWyszukiwania.getText().split("\n");
+		TreeSet<String> uporzadkowaneWiersze = new TreeSet<>();
 
 		for (String nieobrobionyWiersz : nieobrobioneWiersze) {
-			wiersze.add(nieobrobionyWiersz);
+			uporzadkowaneWiersze.add(nieobrobionyWiersz.trim());	//usuwa spacje i nie dopisuje duplikatów
 		}
 		
-		return wiersze;
+		return uporzadkowaneWiersze;
 	}
-    
+	
 	public synchronized void wyœwietlRaporty(List<String> raporty) {
 		poleRaportuDlaHelpDesku.appendText(raporty.get(0));
 		poleRaportuDlaAdministratora.appendText(raporty.get(1));
