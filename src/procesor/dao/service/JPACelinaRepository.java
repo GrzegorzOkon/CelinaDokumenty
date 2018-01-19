@@ -19,7 +19,7 @@ public class JPACelinaRepository {
 	private EntityManager menedzerEncji;
 	
 	private JPACelinaRepository() {
-		menedzerEncjiFabryka = Persistence.createEntityManagerFactory( "MySQL_JPA" );
+		menedzerEncjiFabryka = Persistence.createEntityManagerFactory( "Sybase_JPA" );
 		//menedzerEncji = menedzerEncjiFabryka.createEntityManager();
 	}
 	
@@ -43,10 +43,6 @@ public class JPACelinaRepository {
 		menedzerEncji.close();
 		
 		return dokumenty;
-	
-		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
-				.setParameter("numerAkt", numerAkt)
-				.getResultList();*/
 	}
 	
 	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws NoResultException, Exception {
@@ -61,10 +57,6 @@ public class JPACelinaRepository {
 		menedzerEncji.close();
 		
 		return dokument;
-		
-		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
-				.setParameter("idDok", idDok)
-				.getSingleResult();*/
 	}
 	
 	public DokumentZCentralaDokumenty findByIdDokInDokumenty(String idDok) throws NoResultException, Exception {
@@ -79,10 +71,6 @@ public class JPACelinaRepository {
 		menedzerEncji.close();
 		
 		return dokument;
-		
-		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
-				.setParameter("idDok", idDok)
-				.getSingleResult();*/
 	}
 	
 	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws NoResultException, Exception {
@@ -97,9 +85,5 @@ public class JPACelinaRepository {
 		menedzerEncji.close();
 		
 		return dokument;
-		
-		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
-				.setParameter("symDok", symDok)
-				.getSingleResult();*/
 	}
 }

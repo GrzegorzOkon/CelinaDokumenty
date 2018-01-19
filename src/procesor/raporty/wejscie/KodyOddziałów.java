@@ -130,6 +130,11 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("402060", "Oddzia³ Celny w Mielcu, Izba Administracji Skarbowej w Rzeszowie");	
 		kodyOddzia³ów.put("404010", "Oddzia³ Celny w Kroœnie, Izba Administracji Skarbowej w Rzeszowie");	
 		
+		kodyOddzia³ów.put("411010", "Oddzia³ Celny w Zielonej Górze, Izba Administracji Skarbowej w Zielonej Górze");	
+		kodyOddzia³ów.put("411020", "Oddzia³ Celny w Olszynie, Izba Administracji Skarbowej w Zielonej Górze");		
+		kodyOddzia³ów.put("412010", "Oddzia³ Celny w Gorzowie Wielkopolskim, Izba Administracji Skarbowej w Zielonej Górze");	
+		kodyOddzia³ów.put("412020", "Oddzia³ Celny w Œwiecku, Izba Administracji Skarbowej w Zielonej Górze");		
+		
 		kodyOddzia³ów.put("441040", "Oddzia³ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia³ów.put("442020", "Oddzia³ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia³ów.put("443010", "Oddzia³ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");
