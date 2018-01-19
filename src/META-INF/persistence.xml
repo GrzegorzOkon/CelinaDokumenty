@@ -10,6 +10,7 @@
          <property name="javax.persistence.jdbc.user" value="root"/>
          <property name="javax.persistence.jdbc.password" value="root"/>
          <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
       </properties>
  
    </persistence-unit>
@@ -24,6 +25,7 @@
          <property name="javax.persistence.jdbc.user" value="xx"/>
          <property name="javax.persistence.jdbc.password" value="yy"/>
          <property name="javax.persistence.jdbc.driver" value="com.sybase.jdbc4.jdbc.SybDriver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
       </properties>
       
    </persistence-unit>

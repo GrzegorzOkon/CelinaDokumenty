@@ -20,7 +20,7 @@ public class JPACelinaRepository {
 	
 	private JPACelinaRepository() {
 		menedzerEncjiFabryka = Persistence.createEntityManagerFactory( "MySQL_JPA" );
-		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		//menedzerEncji = menedzerEncjiFabryka.createEntityManager();
 	}
 	
 	public static JPACelinaRepository pobierzInstancje() {
@@ -32,26 +32,74 @@ public class JPACelinaRepository {
 	}
 	
 	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {
-		return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
+		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		menedzerEncji.getTransaction().begin();
+		
+		List<DokumentZCentralaCntrValidDok> dokumenty = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
 				.setParameter("numerAkt", numerAkt)
 				.getResultList();
+		
+		menedzerEncji.getTransaction().commit();
+		menedzerEncji.close();
+		
+		return dokumenty;
+	
+		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
+				.setParameter("numerAkt", numerAkt)
+				.getResultList();*/
 	}
 	
 	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws NoResultException, Exception {
-		return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
+		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		menedzerEncji.getTransaction().begin();
+		
+		DokumentZCentralaCntrValidDok dokument = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
 				.setParameter("idDok", idDok)
 				.getSingleResult();
+		
+		menedzerEncji.getTransaction().commit();
+		menedzerEncji.close();
+		
+		return dokument;
+		
+		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
+				.setParameter("idDok", idDok)
+				.getSingleResult();*/
 	}
 	
 	public DokumentZCentralaDokumenty findByIdDokInDokumenty(String idDok) throws NoResultException, Exception {
-		return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
+		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		menedzerEncji.getTransaction().begin();
+		
+		DokumentZCentralaDokumenty dokument = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
 				.setParameter("idDok", idDok)
 				.getSingleResult();
+		
+		menedzerEncji.getTransaction().commit();
+		menedzerEncji.close();
+		
+		return dokument;
+		
+		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
+				.setParameter("idDok", idDok)
+				.getSingleResult();*/
 	}
 	
 	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws NoResultException, Exception {
-		return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
+		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		menedzerEncji.getTransaction().begin();
+		
+		DokumentZCentralaDokumenty dokument = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
 				.setParameter("symDok", symDok)
 				.getSingleResult();
+		
+		menedzerEncji.getTransaction().commit();
+		menedzerEncji.close();
+		
+		return dokument;
+		
+		/*return menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
+				.setParameter("symDok", symDok)
+				.getSingleResult();*/
 	}
 }
