@@ -135,6 +135,15 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("412010", "Oddzia³ Celny w Gorzowie Wielkopolskim, Izba Administracji Skarbowej w Zielonej Górze");	
 		kodyOddzia³ów.put("412020", "Oddzia³ Celny w Œwiecku, Izba Administracji Skarbowej w Zielonej Górze");		
 		
+		kodyOddzia³ów.put("421010", "Oddzia³ Celny w Szczecinie, Izba Administracji Skarbowej w Szczecinie");		
+		kodyOddzia³ów.put("421030", "Oddzia³ Celny „Nabrze¿e £asztownia” w Szczecinie, Izba Administracji Skarbowej w Szczecinie");	
+		kodyOddzia³ów.put("421050", "Oddzia³ Celny Port Lotniczy Szczecin-Goleniów, Izba Administracji Skarbowej w Szczecinie");		
+		kodyOddzia³ów.put("421060", "Oddzia³ Celny w Stargardzie, Izba Administracji Skarbowej w Szczecinie");
+		kodyOddzia³ów.put("421080", "Oddzia³ Celny w Œwinoujœciu, Izba Administracji Skarbowej w Szczecinie");		
+		kodyOddzia³ów.put("422010", "Oddzia³ Celny w Koszalinie, Izba Administracji Skarbowej w Szczecinie");	
+		kodyOddzia³ów.put("422020", "Oddzia³ Celny w Ko³obrzegu, Izba Administracji Skarbowej w Szczecinie");		
+		kodyOddzia³ów.put("422030", "Oddzia³ Celny w Szczecinku, Izba Administracji Skarbowej w Szczecinie");
+		
 		kodyOddzia³ów.put("441040", "Oddzia³ Celny IV w Warszawie, Izba Administracji Skarbowej w Warszawie");		
 		kodyOddzia³ów.put("442020", "Oddzia³ Celny VI w Warszawie, Izba Administracji Skarbowej w Warszawie");	
 		kodyOddzia³ów.put("443010", "Oddzia³ Celny Osobowy w Warszawie, Izba Administracji Skarbowej w Warszawie");
