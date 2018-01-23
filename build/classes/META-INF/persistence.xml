@@ -23,9 +23,9 @@
       <class>procesor.dao.entity.DokumentZCentralaDokumenty</class>
 
       <properties>
-         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.00.0.00:0000/celina_centr"/>
+         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.00.00.00:0000/celina_centr"/>
          <property name="javax.persistence.jdbc.user" value="xx"/>
-         <property name="javax.persistence.jdbc.password" value="zz"/>
+         <property name="javax.persistence.jdbc.password" value="yy"/>
          <property name="javax.persistence.jdbc.driver" value="com.sybase.jdbc4.jdbc.SybDriver"/>
          <property name="eclipselink.cache.shared.default" value="false"/>
          <property name="eclipselink.connection-pool.max" value="1"/>
