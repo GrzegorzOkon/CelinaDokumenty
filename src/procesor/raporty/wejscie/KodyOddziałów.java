@@ -157,6 +157,15 @@ public class KodyOddzia³ów {
 		kodyOddzia³ów.put("445010", "Oddzia³ Celny I w Pruszkowie, Izba Administracji Skarbowej w Warszawie");
 		kodyOddzia³ów.put("446010", "Oddzia³ Celny w Siedlcach, Izba Administracji Skarbowej w Warszawie");
 		kodyOddzia³ów.put("446020", "Oddzia³ Celny w Garwolinie, Izba Administracji Skarbowej w Warszawie");
-		kodyOddzia³ów.put("447010", "Oddzia³ Celny w Ciechanowie, Izba Administracji Skarbowej w Warszawie");
+		kodyOddzia³ów.put("447010", "Oddzia³ Celny w Ciechanowie, Izba Administracji Skarbowej w Warszawie"); 
+		
+		kodyOddzia³ów.put("451010", "Oddzia³ Celny I we Wroc³awiu, Izba Administracji Skarbowej we Wroc³awiu");	
+		kodyOddzia³ów.put("451020", "Oddzia³ Celny II we Wroc³awiu, Izba Administracji Skarbowej we Wroc³awiu");
+		kodyOddzia³ów.put("451030", "Oddzia³ Celny Towarowy Port Lotniczy Wroc³aw-Strachowice, Izba Administracji Skarbowej we Wroc³awiu");	
+		kodyOddzia³ów.put("451040", "Oddzia³ Celny Osobowy Port Lotniczy Wroc³aw-Strachowice, Izba Administracji Skarbowej we Wroc³awiu");
+		kodyOddzia³ów.put("452010", "Oddzia³ Celny w Legnicy, Izba Administracji Skarbowej we Wroc³awiu");	
+		kodyOddzia³ów.put("452020", "Oddzia³ Celny w Polkowicach, Izba Administracji Skarbowej we Wroc³awiu");
+		kodyOddzia³ów.put("452030", "Oddzia³ Celny w ¯arskiej Wsi, Izba Administracji Skarbowej we Wroc³awiu");	
+		kodyOddzia³ów.put("454010", "Oddzia³ Celny w Wa³brzychu, Izba Administracji Skarbowej we Wroc³awiu");		
 	}
 }
