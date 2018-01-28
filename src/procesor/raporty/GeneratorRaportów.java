@@ -174,7 +174,7 @@ public class GeneratorRaportów {
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokument.getDokumentZCentralaDokumenty().getIdentyfikatorJednostki()) + ".\n\n"
 									: " - brak opisu dla danego kodu.\n\n")
 							: "");
-					}				
+					
 				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
 					raportDlaHelpDesku += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true)
 							? "numer systemowy " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU)
@@ -257,6 +257,7 @@ public class GeneratorRaportów {
 							: "");
 				}
 			}
+		}
 		
 		raporty.add(raportDlaHelpDesku);
 		raporty.add(raportDlaAdministratora);

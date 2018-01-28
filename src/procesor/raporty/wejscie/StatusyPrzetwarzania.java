@@ -12,6 +12,7 @@ public class StatusyPrzetwarzania {
 	
 	private Map<String, String> statusyCntrValidDok;
 	
+	private Map<String, String> statusyDHU;
 	private Map<String, String> statusyPWD2;
 	private Map<String, String> statusySAD2;
 	
@@ -27,8 +28,8 @@ public class StatusyPrzetwarzania {
 		return instancja;
 	}
 	
-	public String pobierzOpisStatusu(String rodzajDokumentu, String statusPrzetwarzania, String tabela) {
-		if (tabela.equals("cntr_valid_dok")) {
+	public String pobierzOpisStatusu(String rodzajDokumentu, String statusPrzetwarzania, Tabela tabela) {
+		if (tabela.equals(tabela.CNTR_VALID_DOK)) {
 			switch(rodzajDokumentu) {
 				case "PWD2" : return pobierzStatusCntrValidDok(statusPrzetwarzania);
 			
@@ -36,6 +37,7 @@ public class StatusyPrzetwarzania {
 			}
 		} else {
 			switch(rodzajDokumentu) {
+				case "DHU" : return pobierzStatusDHU(statusPrzetwarzania);
 				case "PWD2" : return pobierzStatusPWD2(statusPrzetwarzania);
 				case "SAD2" : return pobierzStatusSAD2(statusPrzetwarzania);
 				
@@ -65,6 +67,29 @@ public class StatusyPrzetwarzania {
 		statusyCntrValidDok.put("W", "dokument oczekuje na ponown¹ weryfikacjê podpisu");
 		statusyCntrValidDok.put("_", "inicjalny dla dokumentów IST przes³anych webcel-em");
 		statusyCntrValidDok.put("*", "nadawany dla deklaracji Intrastat, dla których wyst¹pi³ b³¹d");
+	}
+	
+	private String pobierzStatusDHU(String statusPrzetwarzania) {
+		if (statusyDHU == null) {
+			inicjalizujStatusyDHU();
+		} 	
+		
+		return statusyDHU.get(statusPrzetwarzania);
+	}
+	
+	private void inicjalizujStatusyDHU() {
+		statusyDHU = new HashMap<>();
+		
+		statusyDHU.put("A", "po awarii");
+		statusyDHU.put("F", "po awarii");
+		statusyDHU.put("G", "po kontroli");
+		statusyDHU.put("N", "do wyjaœnienia");
+		statusyDHU.put("O", "w rejestracji");
+		statusyDHU.put("Q", "odrzucony");
+		statusyDHU.put("T", "dla prawnika");
+		statusyDHU.put("U", "anulowany");
+		statusyDHU.put("X", "zamkniêty");
+		statusyDHU.put("Y", "przyjêty");
 	}
 	
 	private String pobierzStatusPWD2(String statusPrzetwarzania) {
@@ -115,8 +140,6 @@ public class StatusyPrzetwarzania {
 		statusySAD2.put("X", "zamkniêty");
 		statusySAD2.put("Y", "przyjêty");
 	}
-	
-	private void inicjalizujStatusyDHU() {}
 	
 	private void inicjalizujStatusyDP() {}
 	
