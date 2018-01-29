@@ -73,17 +73,17 @@ public class JPACelinaRepository {
 		return dokument;
 	}
 	
-	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws NoResultException, Exception {
+	public List<DokumentZCentralaDokumenty> findBySymDokInDokumenty(String symDok) throws Exception {
 		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
 		menedzerEncji.getTransaction().begin();
 		
-		DokumentZCentralaDokumenty dokument = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
+		List<DokumentZCentralaDokumenty> dokumenty = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
 				.setParameter("symDok", symDok)
-				.getSingleResult();
+				.getResultList();
 		
 		menedzerEncji.getTransaction().commit();
 		menedzerEncji.close();
 		
-		return dokument;
+		return dokumenty;
 	}
 }
