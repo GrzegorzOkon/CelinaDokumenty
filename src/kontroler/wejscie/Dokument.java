@@ -1,8 +1,7 @@
 package kontroler.wejscie;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import kontroler.wejscie.Identyfikator;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
@@ -11,7 +10,7 @@ import procesor.dao.entity.DokumentZCentralaDokumenty;
 public class Dokument {
 	private final HashMap<Identyfikator, String> szukanyNumer = new HashMap<>();
 	private List<DokumentZCentralaCntrValidDok> dokumentyZCentralaCntrValidDok;
-	private DokumentZCentralaDokumenty dokumentZCentralaDokumenty;
+	private List<DokumentZCentralaDokumenty> dokumentyZCentralaDokumenty;
 	
 	public Dokument(Identyfikator szukanyRodzaj, String szukanaWartoœæ) {
 		szukanyNumer.put(szukanyRodzaj, szukanaWartoœæ);
@@ -34,11 +33,16 @@ public class Dokument {
 		}
 	}
 	
-	public DokumentZCentralaDokumenty getDokumentZCentralaDokumenty() {
-		return dokumentZCentralaDokumenty;
+	public List<DokumentZCentralaDokumenty> getDokumentyZCentralaDokumenty() {
+		return dokumentyZCentralaDokumenty;
 	}
 	
-	public void setDokumentZCentralaDokumenty(DokumentZCentralaDokumenty dokumentZCentralaDokumenty) {
-		this.dokumentZCentralaDokumenty = dokumentZCentralaDokumenty;
+	public void setDokumentyZCentralaDokumenty(Object dokumentyZCentralaDokumenty) {	
+		if (dokumentyZCentralaDokumenty instanceof DokumentZCentralaDokumenty) {
+			this.dokumentyZCentralaDokumenty = new ArrayList<>();
+			this.dokumentyZCentralaDokumenty.add((DokumentZCentralaDokumenty)dokumentyZCentralaDokumenty);
+		} else if (dokumentyZCentralaDokumenty instanceof List<?>) {
+			this.dokumentyZCentralaDokumenty = (List<DokumentZCentralaDokumenty>)dokumentyZCentralaDokumenty;
+		}
 	}
 }
