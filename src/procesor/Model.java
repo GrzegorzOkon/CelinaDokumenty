@@ -69,14 +69,20 @@ public class Model {
 	    }
 	}
 	
-	public DokumentZCentralaDokumenty findBySymDokInDokumenty(String symDok) throws Exception {			         
+	public List<DokumentZCentralaDokumenty> findBySymDokInDokumenty(String symDok) throws Exception {			         
+		List<DokumentZCentralaDokumenty> dokumentyZTabeliDokumenty;
+		
 		try {
-			return JPACelinaRepository.pobierzInstancje().findBySymDokInDokumenty(symDok);
-	    } catch (NoResultException ex) {
-	    	return null;
+			dokumentyZTabeliDokumenty = JPACelinaRepository.pobierzInstancje().findBySymDokInDokumenty(symDok);
+			
+			if (dokumentyZTabeliDokumenty.isEmpty() == true) {
+				return null;
+			}
 	    } catch (Exception ex) {
 	    	throw ex;
 	    }
+		
+		return dokumentyZTabeliDokumenty;
 	}
 	
 	public void generujRaporty(List<Dokument> dokumenty) {
