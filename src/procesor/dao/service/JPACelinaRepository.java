@@ -19,8 +19,8 @@ public class JPACelinaRepository {
 	private EntityManager menedzerEncji;
 	
 	private JPACelinaRepository() {
-		menedzerEncjiFabryka = Persistence.createEntityManagerFactory( "MySQL_JPA" );
-		//menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		menedzerEncjiFabryka = Persistence.createEntityManagerFactory("MySQL_JPA");
+		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
 	}
 	
 	public static JPACelinaRepository pobierzInstancje() {
@@ -32,57 +32,33 @@ public class JPACelinaRepository {
 	}
 	
 	public List<DokumentZCentralaCntrValidDok> findByNrAktInCntrValidDok(String numerAkt) throws Exception {
-		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
-		menedzerEncji.getTransaction().begin();
-		
 		List<DokumentZCentralaCntrValidDok> dokumenty = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
 				.setParameter("numerAkt", numerAkt)
 				.getResultList();
-		
-		menedzerEncji.getTransaction().commit();
-		menedzerEncji.close();
 		
 		return dokumenty;
 	}
 	
 	public DokumentZCentralaCntrValidDok findByIdDokInCntrValidDok(String idDok) throws NoResultException, Exception {
-		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
-		menedzerEncji.getTransaction().begin();
-		
 		DokumentZCentralaCntrValidDok dokument = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_CNTRVALIDDOK, DokumentZCentralaCntrValidDok.class)
 				.setParameter("idDok", idDok)
 				.getSingleResult();
-		
-		menedzerEncji.getTransaction().commit();
-		menedzerEncji.close();
 		
 		return dokument;
 	}
 	
 	public DokumentZCentralaDokumenty findByIdDokInDokumenty(String idDok) throws NoResultException, Exception {
-		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
-		menedzerEncji.getTransaction().begin();
-		
 		DokumentZCentralaDokumenty dokument = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_IDDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
 				.setParameter("idDok", idDok)
 				.getSingleResult();
-		
-		menedzerEncji.getTransaction().commit();
-		menedzerEncji.close();
 		
 		return dokument;
 	}
 	
 	public List<DokumentZCentralaDokumenty> findBySymDokInDokumenty(String symDok) throws Exception {
-		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
-		menedzerEncji.getTransaction().begin();
-		
 		List<DokumentZCentralaDokumenty> dokumenty = menedzerEncji.createQuery(SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY, DokumentZCentralaDokumenty.class)
 				.setParameter("symDok", symDok)
 				.getResultList();
-		
-		menedzerEncji.getTransaction().commit();
-		menedzerEncji.close();
 		
 		return dokumenty;
 	}

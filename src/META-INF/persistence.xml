@@ -12,7 +12,7 @@
          <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="eclipselink.cache.shared.default" value="false"/>
          <property name="eclipselink.connection-pool.max" value="1"/>
-         
+         <property name="eclipselink.session-name" value="JPACelinaDokumenty 2.0.0"/>
       </properties>
  
    </persistence-unit>
@@ -23,7 +23,7 @@
       <class>procesor.dao.entity.DokumentZCentralaDokumenty</class>
 
       <properties>
-         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.00.0.00:0000/celina_centr"/>
+         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.11.22.33:4444/celina_centr"/>
          <property name="javax.persistence.jdbc.user" value="xx"/>
          <property name="javax.persistence.jdbc.password" value="yy"/>
          <property name="javax.persistence.jdbc.driver" value="com.sybase.jdbc4.jdbc.SybDriver"/>
