@@ -1,7 +1,6 @@
 package widok;
 
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -12,6 +11,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.stage.Stage;
+
 import kontroler.Kontroler;
 import procesor.Model;
 
