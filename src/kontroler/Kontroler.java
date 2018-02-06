@@ -9,6 +9,7 @@ import kontroler.wejscie.Identyfikator;
 import procesor.Model;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
+import procesor.wersja.wejscie.Wersja;
 import widok.Widok;
 
 /**
@@ -33,6 +34,10 @@ public class Kontroler {
 		this.model = model;
 	}
 	
+	public String pobierzWersjê() {
+		return new Wersja().pobierzWersjê();
+	}
+	
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {
 		Thread watek = new Thread(new Runnable() {
 
@@ -55,7 +60,7 @@ public class Kontroler {
 							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
 								if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
 									DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
-									dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);	
+									dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);	
 									
 									//TEST
 									//widok.wyœwietlRaport(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu() + "\n");
@@ -91,7 +96,7 @@ public class Kontroler {
 			
 					try {
 						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);										
-						dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);
+						dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
 				
 						if (dokumentZTabeliDokumenty == null) {					
 							DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
@@ -129,9 +134,9 @@ public class Kontroler {
 					dokumenty.add(dokument);
 					
 					try {
-						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findBySymDokInDokumenty(symbolDokumentu);
+						List<DokumentZCentralaDokumenty> dokumentyZTabeliDokumenty = model.findBySymDokInDokumenty(symbolDokumentu);
 						
-						dokument.setDokumentZCentralaDokumenty(dokumentZTabeliDokumenty);
+						dokument.setDokumentyZCentralaDokumenty(dokumentyZTabeliDokumenty);
 					} catch (Exception ex) {
 						widok.wyœwietlKomunikatB³edu();
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
