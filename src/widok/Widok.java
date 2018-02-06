@@ -120,6 +120,14 @@ public class Widok extends Application {
             }         	
 		});
         
+		// Przypisuje czyszczenie pól do przycisku Wyczyœæ
+        Wyczysc.setOnAction((event) -> {		    
+        	poleWyszukiwania.clear();
+        	poleRaportuDlaHelpDesku.clear();
+        	poleRaportuDlaAdministratora.clear();
+        	poleDziennikaZdarzeñ.clear();
+		});
+        
         konternerDolny.setRight(kontenerprzyciskow);
         kontenerGlowny.setBottom(konternerDolny);
         
@@ -157,7 +165,7 @@ public class Widok extends Application {
 
         ustawReferencje(primaryStage);
         
-        primaryStage.setTitle("JCelinaDokumenty v2.0.0 (rev. 20180117)");
+        primaryStage.setTitle(kontroler.pobierzWersjê());
         primaryStage.setScene(scena);
         primaryStage.show();
     }
