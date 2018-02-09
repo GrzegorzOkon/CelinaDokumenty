@@ -9,7 +9,7 @@ import kontroler.wejscie.Identyfikator;
 import procesor.Model;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
-import procesor.wersja.wejscie.Wersja;
+import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
 
 /**
@@ -35,7 +35,7 @@ public class Kontroler {
 	}
 	
 	public String pobierzWersjê() {
-		return new Wersja().pobierzWersjê();
+		return new AktualnaWersja().pobierzWersjê();
 	}
 	
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {

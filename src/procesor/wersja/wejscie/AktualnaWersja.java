@@ -1,6 +1,6 @@
 package procesor.wersja.wejscie;
 
-public class Wersja {
+public class AktualnaWersja {
     private String lokalnaNazwa = "JCelinaDokumenty";
     private int lokalnyMajor = 2;
     private int lokalnyMinor = 0;

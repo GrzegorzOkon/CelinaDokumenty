@@ -8,12 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="dokumenty")
+@Table(name="dokumenty")
 public class DokumentZCentralaDokumenty {
 
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO) 	
-   
    @Column(name = "id_dok")
    private String identyfikatorDokumentu;
    
