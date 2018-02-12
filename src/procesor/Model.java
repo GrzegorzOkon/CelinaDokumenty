@@ -8,6 +8,8 @@ import kontroler.wejscie.Dokument;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
 import procesor.dao.service.JPACelinaRepository;
+import procesor.dao.wersja.entity.WystawionaWersja;
+import procesor.dao.wersja.service.JPAWersjaRepozytorium;
 import procesor.raporty.GeneratorRaportów;
 import widok.Widok;
 
@@ -21,6 +23,16 @@ public class Model {
 	
 	public Model (Widok widok) {
 		this.widok = widok;
+	}
+	
+	public void porównajWersje() {
+		try {
+			WystawionaWersja wersja = new JPAWersjaRepozytorium().findInVersion();
+			System.out.println(wersja.getNazwa());
+		
+		} catch (Exception ex) {
+			
+		}
 	}
 	
 	/**

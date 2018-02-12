@@ -13,6 +13,7 @@ public class StatusyPrzetwarzania {
 	private Map<String, String> statusyCntrValidDok;
 	
 	private Map<String, String> statusyDHU;
+	private Map<String, String> statusyDP;
 	private Map<String, String> statusyDS2;
 	private Map<String, String> statusyPWD2;
 	private Map<String, String> statusySAD2;
@@ -39,6 +40,7 @@ public class StatusyPrzetwarzania {
 		} else {
 			switch(rodzajDokumentu) {
 				case "DHU" : return pobierzStatusDHU(statusPrzetwarzania);
+				case "DP" : return pobierzStatusDP(statusPrzetwarzania);
 				case "DS2" : return pobierzStatusDS2(statusPrzetwarzania);
 				case "PWD2" : return pobierzStatusPWD2(statusPrzetwarzania);
 				case "SAD2" : return pobierzStatusSAD2(statusPrzetwarzania);
@@ -92,6 +94,23 @@ public class StatusyPrzetwarzania {
 		statusyDHU.put("U", "anulowany");
 		statusyDHU.put("X", "zamkniêty");
 		statusyDHU.put("Y", "przyjêty");
+	}
+	
+	private String pobierzStatusDP(String statusPrzetwarzania) {
+		if (statusyDP == null) {
+			inicjalizujStatusyDP();
+		} 	
+		
+		return statusyDP.get(statusPrzetwarzania);
+	}
+	
+	private void inicjalizujStatusyDP() {
+		statusyDP = new HashMap<>();
+		
+		statusyDP.put("F", "po awarii");
+		statusyDP.put("O", "w rejestracji");
+		statusyDP.put("U", "anulowany");
+		statusyDP.put("Y", "zarejestrowany");
 	}
 	
 	private String pobierzStatusDS2(String statusPrzetwarzania) {
@@ -167,8 +186,6 @@ public class StatusyPrzetwarzania {
 		statusySAD2.put("X", "zamkniêty");
 		statusySAD2.put("Y", "przyjêty");
 	}
-	
-	private void inicjalizujStatusyDP() {}
 	
 	private void inicjalizujStatusyDPDZ() {}
 	

@@ -35,7 +35,8 @@ public class Kontroler {
 	}
 	
 	public String pobierzWersjê() {
-		return new AktualnaWersja().pobierzWersjê();
+		model.porównajWersje();
+		return new AktualnaWersja().pobierzWersjê();	
 	}
 	
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {

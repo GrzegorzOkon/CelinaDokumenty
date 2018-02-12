@@ -55,4 +55,68 @@ public class WystawionaWersja {
 	public void setIdentyfikator(int identyfikator) {
 		this.identyfikator = identyfikator;
 	}
+	
+	public String getNazwa() {
+		return nazwa;
+	}
+	
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
+	}
+	
+	public int getMajor() {
+		return major;
+	}
+	
+	public void setMajor(int major) {
+		this.major = major;
+	}
+	
+	public int getMinor() {
+		return minor;
+	}
+	
+	public void setMinor(int minor) {
+		this.minor = minor;
+	}
+	
+	public int getRelease() {
+		return release;
+	}
+	
+	public void setRelease(int release) {
+		this.release = release;
+	}
+
+	public int getBuild() {
+		return build;
+	}
+
+	public void setBuild(int build) {
+		this.build = build;
+	}
+
+	public String getTyp() {
+		return typ;
+	}
+
+	public void setTyp(String typ) {
+		this.typ = typ;
+	}
+
+	public int getKompilacja() {
+		return kompilacja;
+	}
+
+	public void setKompilacja(int kompilacja) {
+		this.kompilacja = kompilacja;
+	}
+
+	public String getåcieøka() {
+		return úcieøka;
+	}
+
+	public void setåcieøka(String úcieøka) {
+		this.úcieøka = úcieøka;
+	}
 }
