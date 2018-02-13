@@ -44,7 +44,7 @@ public class GeneratorRaportów {
 					raportDlaHelpDesku += "Szukanego numeru systemowego " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
 						+ " brak w bazie centralnej.\n\n";
 					raportDlaAdministratora += "Szukany id_dok " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-						+ " nie wystêpuje w tabelach cntr_valid_dok oraz dokumenty\n\n";
+						+ " nie wystêpuje w tabelach cntr_valid_dok oraz dokumenty.\n\n";
 				} else {
 					raportDlaHelpDesku += "Szukanego numeru ewidencyjnego " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
 						+ " brak w bazie centralnej.\n\n";	

@@ -34,9 +34,14 @@ public class Kontroler {
 		this.model = model;
 	}
 	
-	public String pobierzWersjê() {
-		model.porównajWersje();
-		return new AktualnaWersja().pobierzWersjê();	
+	public String pobierzOpis() {
+		return model.pobierzOpis();	
+	}
+	
+	public void porównajWersje() {
+		if (!model.porównajWersje()) {
+			widok.wyœwietlKomunikatOWersji();
+		} 
 	}
 	
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {

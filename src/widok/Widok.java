@@ -165,7 +165,7 @@ public class Widok extends Application {
 
         ustawReferencje(primaryStage);
         
-        primaryStage.setTitle(kontroler.pobierzWersjê());
+        primaryStage.setTitle(kontroler.pobierzOpis());
         primaryStage.setScene(scena);
         primaryStage.show();
     }
@@ -197,6 +197,14 @@ public class Widok extends Application {
 	public synchronized void wyœwietlRaporty(List<String> raporty) {
 		poleRaportuDlaHelpDesku.appendText(raporty.get(0));
 		poleRaportuDlaAdministratora.appendText(raporty.get(1));
+	}
+	
+	public void wyœwietlKomunikatOWersji() {
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setTitle("Komunikat o nowej wersji...");
+	    alert.setHeaderText("Jest wystawiona nowa wersja aplikacji!");
+	    alert.setContentText("...");
+	    alert.showAndWait();
 	}
 	
 	public void wyœwietlKomunikatB³edu() { 

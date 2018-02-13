@@ -11,6 +11,8 @@ import procesor.dao.service.JPACelinaRepository;
 import procesor.dao.wersja.entity.WystawionaWersja;
 import procesor.dao.wersja.service.JPAWersjaRepozytorium;
 import procesor.raporty.GeneratorRaportów;
+import procesor.wersja.KontrolerWersji;
+import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
 
 /**
@@ -25,14 +27,21 @@ public class Model {
 		this.widok = widok;
 	}
 	
-	public void porównajWersje() {
-		try {
-			WystawionaWersja wersja = new JPAWersjaRepozytorium().findInVersion();
-			System.out.println(wersja.getNazwa());
+	public String pobierzOpis() {
+		return KontrolerWersji.pobierzInstancjê().pobierzOpis();
+	}
+	
+	public boolean porównajWersje() {
+		AktualnaWersja aktualnaWersja = KontrolerWersji.pobierzInstancjê().pobierzAktualn¹Wersjê();
+		WystawionaWersja wersja = null;
 		
+		try {
+			wersja = new JPAWersjaRepozytorium().findInVersion();
 		} catch (Exception ex) {
-			
+	
 		}
+		
+		return aktualnaWersja.equals(wersja);	
 	}
 	
 	/**
