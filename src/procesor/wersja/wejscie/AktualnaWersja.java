@@ -12,7 +12,7 @@ public class AktualnaWersja {
     private int lokalnyRelease = 0;
     private int lokalnyBuild = 0;
     private String lokalnyTyp = "GA";
-    private int lokalnaKomplilacja = 20180213;
+    private int lokalnaKomplilacja = 20180214;
     
 	private AktualnaWersja() {}
 	
@@ -23,6 +23,34 @@ public class AktualnaWersja {
 		return instancja;
 	}
     
+	public String getLokalnaNazwa() {
+		return lokalnaNazwa;
+	}
+	
+	public int getLokalnyMajor() {
+		return lokalnyMajor;
+	}
+	
+	public int getLokalnyMinor() {
+		return lokalnyMinor;
+	}
+	
+	public int getLokalnyRelease() {
+		return lokalnyRelease;
+	}
+	
+	public int getLokalnyBuild() {
+		return lokalnyBuild;
+	}
+	
+	public String getLokalnyTyp() {
+		return lokalnyTyp;
+	}
+	
+	public int getLokalnaKomplilacja() {
+		return lokalnaKomplilacja;
+	}
+	
     public String pobierzOpis() {
         //zwraca w formacie JCelinaDokumenty v1.5.14 (rev. 20150627)
         return "" + lokalnaNazwa + " v" + lokalnyMajor + "." + lokalnyMinor + "." + lokalnyRelease + " (rev. " + lokalnaKomplilacja + ")";

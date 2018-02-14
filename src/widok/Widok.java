@@ -168,6 +168,8 @@ public class Widok extends Application {
         primaryStage.setTitle(kontroler.pobierzOpis());
         primaryStage.setScene(scena);
         primaryStage.show();
+        
+        kontroler.porównajWersje();
     }
 
     // =============================================================================
@@ -199,11 +201,11 @@ public class Widok extends Application {
 		poleRaportuDlaAdministratora.appendText(raporty.get(1));
 	}
 	
-	public void wyœwietlKomunikatOWersji() {
+	public void wyœwietlKomunikatWersji(String tytu³, String nag³ówek, String treœæ) {
 	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-	    alert.setTitle("Komunikat o nowej wersji...");
-	    alert.setHeaderText("Jest wystawiona nowa wersja aplikacji!");
-	    alert.setContentText("...");
+	    alert.setTitle(tytu³);
+	    alert.setHeaderText(nag³ówek);
+	    alert.setContentText(treœæ);
 	    alert.showAndWait();
 	}
 	

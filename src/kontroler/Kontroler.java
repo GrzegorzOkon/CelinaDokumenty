@@ -39,9 +39,7 @@ public class Kontroler {
 	}
 	
 	public void porównajWersje() {
-		if (!model.porównajWersje()) {
-			widok.wyœwietlKomunikatOWersji();
-		} 
+		model.porównajWersje();
 	}
 	
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {

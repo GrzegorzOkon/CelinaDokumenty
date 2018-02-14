@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
+import javafx.scene.control.Alert;
 import kontroler.wejscie.Dokument;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
@@ -31,17 +32,25 @@ public class Model {
 		return KontrolerWersji.pobierzInstancjê().pobierzOpis();
 	}
 	
-	public boolean porównajWersje() {
+	public void porównajWersje() {
 		AktualnaWersja aktualnaWersja = KontrolerWersji.pobierzInstancjê().pobierzAktualn¹Wersjê();
-		WystawionaWersja wersja = null;
+		WystawionaWersja wystawionaWersja = null;
 		
 		try {
-			wersja = new JPAWersjaRepozytorium().findInVersion();
+			wystawionaWersja = new JPAWersjaRepozytorium().findInVersion();
 		} catch (Exception ex) {
 	
 		}
 		
-		return aktualnaWersja.equals(wersja);	
+		if (!aktualnaWersja.equals(wystawionaWersja)) {
+			String tytu³ = "Komunikat o wersji...";
+			String nag³ówek = "Pojawi³a siê aktualizacja oprogramowania.";
+			String treœæ = "Na serwerze jest wystawiona aplikacja " + wystawionaWersja.getNazwa() + " v" + wystawionaWersja.getMajor() + "." + wystawionaWersja.getMinor() + "." + wystawionaWersja.getRelease() + " (rev. " + wystawionaWersja.getKompilacja() + ").\n" 
+				+ "Posiadasz wersjê " + aktualnaWersja.getLokalnyMajor() + "." + aktualnaWersja.getLokalnyMinor() + "." + aktualnaWersja.getLokalnyRelease() + " (rev. " + aktualnaWersja.getLokalnaKomplilacja() + ").\n\n" 
+				+ wystawionaWersja.getŒcie¿ka();
+			
+			widok.wyœwietlKomunikatWersji(tytu³, nag³ówek, treœæ);
+		}
 	}
 	
 	/**
