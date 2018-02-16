@@ -33,7 +33,7 @@ public class Widok extends Application {
     private TextArea poleWyszukiwania, poleRaportuDlaHelpDesku, poleRaportuDlaAdministratora, poleDziennikaZdarzeñ;
     private Button SprawdzWCentrali, SprawdzLokalnie, Wyczysc, Zamknij;
     private HBox kontenerprzyciskow;
-	
+    
     // =============================================================================
     
     private void prepareScene(Stage primaryStage) {   
@@ -153,7 +153,6 @@ public class Widok extends Application {
     {
     	model = new Model(this);
     	kontroler = new Kontroler(this, model);    //inicjalizuje obiekt kontrolera przekazuj¹c m.in. obiekt samej siebie (this)   
-    	
     }
     
     // =============================================================================
@@ -169,7 +168,7 @@ public class Widok extends Application {
         primaryStage.setScene(scena);
         primaryStage.show();
         
-        kontroler.porównajWersje();
+		kontroler.porównajWersje();
     }
 
     // =============================================================================
@@ -202,11 +201,11 @@ public class Widok extends Application {
 	}
 	
 	public void wyœwietlKomunikatWersji(String tytu³, String nag³ówek, String treœæ) {
-	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
 	    alert.setTitle(tytu³);
 	    alert.setHeaderText(nag³ówek);
 	    alert.setContentText(treœæ);
-	    alert.showAndWait();
+	    alert.showAndWait();*/
 	}
 	
 	public void wyœwietlKomunikatB³edu() { 

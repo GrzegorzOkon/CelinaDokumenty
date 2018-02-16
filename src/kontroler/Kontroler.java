@@ -35,11 +35,19 @@ public class Kontroler {
 	}
 	
 	public String pobierzOpis() {
-		return model.pobierzOpis();	
+		return model.pobierzOpis();
 	}
 	
 	public void porównajWersje() {
-		model.porównajWersje();
+		Thread w¹tek = new Thread(new Runnable() {
+		
+			@Override
+			public void run() {				
+				model.porównajWersje();
+			}
+		});
+
+		w¹tek.start();
 	}
 	
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {
