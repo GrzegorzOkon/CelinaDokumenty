@@ -4,13 +4,12 @@ import java.util.List;
 
 import javax.persistence.NoResultException;
 
-import javafx.scene.control.Alert;
 import kontroler.wejscie.Dokument;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
 import procesor.dao.service.JPACelinaRepository;
-import procesor.dao.wersja.entity.WystawionaWersja;
-import procesor.dao.wersja.service.JPAWersjaRepozytorium;
+import procesor.dao.sqlite.entity.WystawionaWersja;
+import procesor.dao.sqlite.service.JPASQLiteRepozytorium;
 import procesor.raporty.GeneratorRaportów;
 import procesor.wersja.KontrolerWersji;
 import procesor.wersja.wejscie.AktualnaWersja;
@@ -37,7 +36,7 @@ public class Model {
 		WystawionaWersja wystawionaWersja = null;
 		
 		try {
-			wystawionaWersja = new JPAWersjaRepozytorium().findInVersion();
+			wystawionaWersja = JPASQLiteRepozytorium.pobierzInstancjê().findInVersion();
 		} catch (Exception ex) {
 	
 		}
@@ -49,7 +48,6 @@ public class Model {
 				+ "Posiadasz wersjê " + aktualnaWersja.getLokalnyMajor() + "." + aktualnaWersja.getLokalnyMinor() + "." + aktualnaWersja.getLokalnyRelease() + " (rev. " + aktualnaWersja.getLokalnaKomplilacja() + ").\n\n" 
 				+ wystawionaWersja.getŒcie¿ka();
 			
-			widok.wyœwietlKomunikatWersji(tytu³, nag³ówek, treœæ);
 		}
 	}
 	
@@ -115,7 +113,11 @@ public class Model {
 		return dokumentyZTabeliDokumenty;
 	}
 	
-	public void generujRaporty(List<Dokument> dokumenty) {
-		widok.wyœwietlRaporty(GeneratorRaportów.pobierzInstancjê().utwórzRaport(dokumenty)); ;
+	public List<String> generujRaporty(List<Dokument> dokumenty) {
+		return GeneratorRaportów.pobierzInstancjê().utwórzRaport(dokumenty);
+	}
+	
+	public void zapiszDoAnalizy(List<String> raporty) {
+		JPASQLiteRepozytorium.pobierzInstancjê().insertInReports();
 	}
 }

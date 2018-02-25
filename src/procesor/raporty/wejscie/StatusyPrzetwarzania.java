@@ -15,6 +15,7 @@ public class StatusyPrzetwarzania {
 	private Map<String, String> statusyDHU;
 	private Map<String, String> statusyDP;
 	private Map<String, String> statusyDPDZ;
+	private Map<String, String> statusyDPZ2;
 	private Map<String, String> statusyDS2;
 	private Map<String, String> statusyPWD2;
 	private Map<String, String> statusySAD2;
@@ -43,6 +44,7 @@ public class StatusyPrzetwarzania {
 				case "DHU" : return pobierzStatusDHU(statusPrzetwarzania);
 				case "DP" : return pobierzStatusDP(statusPrzetwarzania);
 				case "DPDZ" : return pobierzStatusDPDZ(statusPrzetwarzania);
+				case "DPZ2" : return pobierzStatusDPZ2(statusPrzetwarzania);
 				case "DS2" : return pobierzStatusDS2(statusPrzetwarzania);
 				case "PWD2" : return pobierzStatusPWD2(statusPrzetwarzania);
 				case "SAD2" : return pobierzStatusSAD2(statusPrzetwarzania);
@@ -137,6 +139,28 @@ public class StatusyPrzetwarzania {
 		statusyDPDZ.put("Y", "przyjêty");
 	}
 	
+	private String pobierzStatusDPZ2(String statusPrzetwarzania) {
+		if (statusyDPZ2 == null) {
+			inicjalizujStatusyDPZ2();
+		} 	
+		
+		return statusyDPZ2.get(statusPrzetwarzania);
+	}
+	
+	private void inicjalizujStatusyDPZ2() {
+		statusyDPZ2 = new HashMap<>();
+		
+		statusyDPZ2.put("F", "po awarii");
+		statusyDPZ2.put("G", "po kontroli");
+		statusyDPZ2.put("N", "do wyjaœnienia");
+		statusyDPZ2.put("O", "w rejestracji");
+		statusyDPZ2.put("Q", "odrzucony");
+		statusyDPZ2.put("T", "dla prawnika");
+		statusyDPZ2.put("U", "anulowany");
+		statusyDPZ2.put("X", "zamkniêty");
+		statusyDPZ2.put("Y", "przyjêty");
+	}
+
 	private String pobierzStatusDS2(String statusPrzetwarzania) {
 		if (statusyDS2 == null) {
 			inicjalizujStatusyDS2();
@@ -210,8 +234,6 @@ public class StatusyPrzetwarzania {
 		statusySAD2.put("X", "zamkniêty");
 		statusySAD2.put("Y", "przyjêty");
 	}
-	
-	private void inicjalizujStatusyDPZ2() {}
 	
 	private void inicjalizujStatusyDS() {}
 		

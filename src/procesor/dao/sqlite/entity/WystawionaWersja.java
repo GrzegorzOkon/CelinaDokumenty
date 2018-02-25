@@ -1,10 +1,11 @@
-package procesor.dao.wersja.entity;
+package procesor.dao.sqlite.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="version")
 public class WystawionaWersja {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")

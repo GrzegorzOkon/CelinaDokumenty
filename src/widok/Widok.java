@@ -120,6 +120,15 @@ public class Widok extends Application {
             }         	
 		});
         
+		// Przypisanie dzia³ania do przycisku sprawdzenia we wszystkich izbach
+        SprawdzLokalnie.setOnAction((event) -> {		    
+            if (opcjaNumerW³asny.isSelected() == true) {
+            	kontroler.wyszukajLokalnieNrAkt(walidujDane());
+            } else if (opcjaNumerSystemowy.isSelected() == true) {
+            } else {	
+            }         	
+		});
+        
 		// Przypisuje czyszczenie pól do przycisku Wyczyœæ
         Wyczysc.setOnAction((event) -> {		    
         	poleWyszukiwania.clear();
@@ -198,21 +207,5 @@ public class Widok extends Application {
 	public synchronized void wyœwietlRaporty(List<String> raporty) {
 		poleRaportuDlaHelpDesku.appendText(raporty.get(0));
 		poleRaportuDlaAdministratora.appendText(raporty.get(1));
-	}
-	
-	public void wyœwietlKomunikatWersji(String tytu³, String nag³ówek, String treœæ) {
-	    /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
-	    alert.setTitle(tytu³);
-	    alert.setHeaderText(nag³ówek);
-	    alert.setContentText(treœæ);
-	    alert.showAndWait();*/
-	}
-	
-	public void wyœwietlKomunikatB³edu() { 
-	    Alert alert = new Alert(Alert.AlertType.ERROR);
-	    alert.setTitle("Komunikat o b³êdzie...");
-	    alert.setHeaderText("Wyst¹pi³ nieoczekiwany b³¹d!");
-	    alert.setContentText("Sprawdz log programu...");
-	    alert.showAndWait();
 	}
 }

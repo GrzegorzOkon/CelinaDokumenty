@@ -8,12 +8,12 @@ import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
 
 public class JPACelinaRepository {
-	private static JPACelinaRepository jpaCelinaRepository;
-	
 	private static final String SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK = "SELECT d FROM DokumentZCentralaCntrValidDok d WHERE d.numerWlasny = :numerAkt";
 	private static final String SELECT_DOKUMENT_BY_IDDOK_IN_CNTRVALIDDOK = "SELECT d FROM DokumentZCentralaCntrValidDok d WHERE d.identyfikatorDokumentu = :idDok";
 	private static final String SELECT_DOKUMENT_BY_IDDOK_IN_DOKUMENTY = "SELECT d FROM DokumentZCentralaDokumenty d WHERE d.identyfikatorDokumentu = :idDok";
 	private static final String SELECT_DOKUMENT_BY_SYMDOK_IN_DOKUMENTY = "SELECT d FROM DokumentZCentralaDokumenty d WHERE d.symbolDokumentu = :symDok";	
+	
+	private static JPACelinaRepository jpaCelinaRepository;
 	
 	private EntityManagerFactory menedzerEncjiFabryka;
 	private EntityManager menedzerEncji;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+import javafx.scene.control.Alert;
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
 import procesor.Model;
@@ -56,6 +57,7 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
+				List<String> raporty = new ArrayList<>();
 				
 				for (String numerAkt : numeryAkt) {
 					Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
@@ -64,30 +66,25 @@ public class Kontroler {
 					try {
 						List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok = model.findByNrAktInCntrValidDok(numerAkt);
 						dokument.setDokumentyZCentralaCntrValidDok(dokumentyZTabeliCntrValidDok);
-					
-						//TEST
-						//widok.wyœwietlRaport("wykonano select po numerze akt\n");
 						
 						if (dokumentyZTabeliCntrValidDok != null) {				
 							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
 								if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
 									DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
 									dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);	
-									
-									//TEST
-									//widok.wyœwietlRaport(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu() + "\n");
-									//widok.wyœwietlRaport(dokumentZTabeliDokumenty.getSymbolDokumentu() + "\n");
 								}
 							}				
 						}
 					} catch (Exception ex) {
-						widok.wyœwietlKomunikatB³edu();
+
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 					}	
 				}
 				
-				// Wyœwietla odpowiedni raport
-				model.generujRaporty(dokumenty);
+				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
+				raporty = model.generujRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
@@ -101,6 +98,7 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
+				List<String> raporty = new ArrayList<>();
 		
 				for (String identyfikatorDokumentu : idDoki) {
 					Dokument dokument = new Dokument(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);
@@ -115,13 +113,15 @@ public class Kontroler {
 							dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
 						} 	
 					} catch (Exception ex) {
-						widok.wyœwietlKomunikatB³edu();
+
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 					}		
 				}
 		
-				// Wyœwietla odpowiedni raport
-				model.generujRaporty(dokumenty);
+				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
+				raporty = model.generujRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
@@ -140,6 +140,7 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
+				List<String> raporty = new ArrayList<>();
 				
 				for (String symbolDokumentu : symDok) {
 					Dokument dokument = new Dokument(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);
@@ -150,16 +151,21 @@ public class Kontroler {
 						
 						dokument.setDokumentyZCentralaDokumenty(dokumentyZTabeliDokumenty);
 					} catch (Exception ex) {
-						widok.wyœwietlKomunikatB³edu();
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 					}
 				}
 				
-				// Wyœwietla odpowiedni raport
-				model.generujRaporty(dokumenty);
+				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
+				raporty = model.generujRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
 		watek.start();
+	}
+	
+	public void wyszukajLokalnieNrAkt(TreeSet<String> numeryAkt) {
+		//model.zapiszTESTOWO();
 	}
 }

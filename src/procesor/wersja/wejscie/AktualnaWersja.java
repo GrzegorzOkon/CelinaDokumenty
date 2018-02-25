@@ -1,6 +1,6 @@
 package procesor.wersja.wejscie;
 
-import procesor.dao.wersja.entity.WystawionaWersja;
+import procesor.dao.sqlite.entity.WystawionaWersja;
 import procesor.wersja.KontrolerWersji;
 
 public class AktualnaWersja {
