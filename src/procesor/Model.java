@@ -1,5 +1,7 @@
 package procesor;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -118,6 +120,28 @@ public class Model {
 	}
 	
 	public void zapiszDoAnalizy(List<String> raporty) {
-		JPASQLiteRepozytorium.pobierzInstancjê().insertInReports();
+		String data = pobierzSpersonalizowan¹Datê();
+		String u¿ytkownik = null;
+		
+		try {
+			u¿ytkownik = System.getProperty("user.name"); 
+		} catch(Exception ex) {
+			return;
+		}
+		
+		for (String raport : raporty) {
+			JPASQLiteRepozytorium.pobierzInstancjê().insertInReports(data, u¿ytkownik, raport);
+		}
 	}
+	
+    /**
+     * Bie¿¹ca data jest podana w formacie 15-07-2015, 14:17:45.
+     */
+    private static String pobierzSpersonalizowan¹Datê() {
+        Date bie¿¹cyCzas = new Date(); 
+        SimpleDateFormat spersonalizowanyFormatDaty = new SimpleDateFormat("dd-MM-yyyy, HH:mm:ss");
+        String spersonalizowanaData = spersonalizowanyFormatDaty.format(bie¿¹cyCzas);
+        
+        return spersonalizowanaData;
+    } 
 }

@@ -39,7 +39,7 @@ public class JPASQLiteRepozytorium {
 		return wersja;
 	}
 	
-	public void insertInReports() {
+	public void insertInReports(String data, String u¿ytkownik, String raport) {
 		/*menedzerEncji.getTransaction( ).begin( );
 		
 		procesor.dao.wersja.entity.Raport raport = new procesor.dao.wersja.entity.Raport();
@@ -78,9 +78,9 @@ public class JPASQLiteRepozytorium {
 		raport.setRaport("TEST");*/
 		
 		Query query = menedzerEncji.createNativeQuery("INSERT INTO raports (date, user, raport) VALUES(?, ?, ?)");
-		query.setParameter(1, "18-02-2018, 11:06:05");
-		query.setParameter(2, "okongrzegorz");
-		query.setParameter(3, "TEST2");
+		query.setParameter(1, data);
+		query.setParameter(2, u¿ytkownik);
+		query.setParameter(3, "RAPORT: " + raport);
 		query.executeUpdate();
 		
 		//menedzerEncji.close( );

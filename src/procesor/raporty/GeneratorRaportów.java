@@ -137,22 +137,22 @@ public class GeneratorRaportów {
 			} else if (dokument.getDokumentyZCentralaDokumenty() != null) {  //numer jest w dokumentach
 				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
 					for (DokumentZCentralaDokumenty dok : dokument.getDokumentyZCentralaDokumenty()) {		
-						raportDlaHelpDesku += "Szukany numer w³asny " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej.\n"					
+						raportDlaHelpDesku += "Szukany numer w³asny " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej."					
 							+ ((dok.getIdentyfikatorDokumentu() != null) 
-								? "Dokument ma nadany numer systemowy " + dok.getIdentyfikatorDokumentu() + ".\n"
-								: "\n")
+								? " Dokument ma nadany numer systemowy " + dok.getIdentyfikatorDokumentu() + "."
+								: "")
 							+ ((dok.getSymbolDokumentu() != null)
-								? "Posiada numer ewidencyjny " + dok.getSymbolDokumentu() + ".\n"
-								: "\n")
+								? " Posiada numer ewidencyjny " + dok.getSymbolDokumentu() + ".\n"
+								: "")
 							+ ((dok.getStatusPrzetwarzania() != null)
-								? "Jest w statusie " + dok.getStatusPrzetwarzania() + ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dok.getIdentyfikatorRodzajuDokumentu(), dok.getStatusPrzetwarzania(), Tabela.DOKUMENTY) != null)
-									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dok.getIdentyfikatorRodzajuDokumentu(), dok.getStatusPrzetwarzania(), Tabela.DOKUMENTY) + ".\n"
-									: ".\n")
+								? " Jest w statusie " + dok.getStatusPrzetwarzania() + ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dok.getIdentyfikatorRodzajuDokumentu(), dok.getStatusPrzetwarzania(), Tabela.DOKUMENTY) != null)
+									? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dok.getIdentyfikatorRodzajuDokumentu(), dok.getStatusPrzetwarzania(), Tabela.DOKUMENTY) + "."
+									: ".")
 								: "")	
 							+ ((dok.getIdentyfikatorJednostki() != null)
-								? "Ma przypisan¹ jednostkê przeznaczenia " + dok.getIdentyfikatorJednostki() + ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) != null)
-									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) + ".\n\n"
-									: ".\n\n")
+								? " Ma przypisan¹ jednostkê przeznaczenia " + dok.getIdentyfikatorJednostki() + ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) != null)
+									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) + ".\n"
+									: ".\n")
 								: "");	
 				
 						raportDlaAdministratora += "Dla szukanego nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znaleziono odpowiadaj¹cy dokument w tabeli dokumenty.\n"
