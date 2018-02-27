@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import kontroler.Kontroler;
 import procesor.Model;
+import procesor.raporty.wejscie.Raport;
 
 public class Widok extends Application {
 	
@@ -204,8 +205,10 @@ public class Widok extends Application {
 		return uporzadkowaneWiersze;
 	}
 	
-	public synchronized void wyœwietlRaporty(List<String> raporty) {
-		poleRaportuDlaHelpDesku.appendText(raporty.get(0));
-		poleRaportuDlaAdministratora.appendText(raporty.get(1));
+	public synchronized void wyœwietlRaporty(List<Raport> raporty) {
+		for(Raport raport : raporty) {
+			poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku());
+			poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora());
+		}
 	}
 }

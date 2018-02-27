@@ -13,6 +13,7 @@ import procesor.dao.service.JPACelinaRepository;
 import procesor.dao.sqlite.entity.WystawionaWersja;
 import procesor.dao.sqlite.service.JPASQLiteRepozytorium;
 import procesor.raporty.GeneratorRaportów;
+import procesor.raporty.wejscie.Raport;
 import procesor.wersja.KontrolerWersji;
 import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
@@ -115,11 +116,11 @@ public class Model {
 		return dokumentyZTabeliDokumenty;
 	}
 	
-	public List<String> generujRaporty(List<Dokument> dokumenty) {
+	public List<Raport> generujRaporty(List<Dokument> dokumenty) {
 		return GeneratorRaportów.pobierzInstancjê().utwórzRaport(dokumenty);
 	}
 	
-	public void zapiszDoAnalizy(List<String> raporty) {
+	public void zapiszDoAnalizy(List<Raport> raporty) {
 		String data = pobierzSpersonalizowan¹Datê();
 		String u¿ytkownik = null;
 		
@@ -129,8 +130,8 @@ public class Model {
 			return;
 		}
 		
-		for (String raport : raporty) {
-			JPASQLiteRepozytorium.pobierzInstancjê().insertInReports(data, u¿ytkownik, raport);
+		for (Raport raport : raporty) {
+			JPASQLiteRepozytorium.pobierzInstancjê().insertInReports(data, u¿ytkownik, raport.getRaportDlaHelpDesku());
 		}
 	}
 	

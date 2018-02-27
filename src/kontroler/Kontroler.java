@@ -10,6 +10,7 @@ import kontroler.wejscie.Identyfikator;
 import procesor.Model;
 import procesor.dao.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.entity.DokumentZCentralaDokumenty;
+import procesor.raporty.wejscie.Raport;
 import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
 
@@ -57,7 +58,7 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
-				List<String> raporty = new ArrayList<>();
+				List<Raport> raporty = new ArrayList<>();
 				
 				for (String numerAkt : numeryAkt) {
 					Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
@@ -98,7 +99,7 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
-				List<String> raporty = new ArrayList<>();
+				List<Raport> raporty = new ArrayList<>();
 		
 				for (String identyfikatorDokumentu : idDoki) {
 					Dokument dokument = new Dokument(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);
@@ -140,7 +141,7 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
-				List<String> raporty = new ArrayList<>();
+				List<Raport> raporty = new ArrayList<>();
 				
 				for (String symbolDokumentu : symDok) {
 					Dokument dokument = new Dokument(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);
