@@ -206,8 +206,9 @@ public class Widok extends Application {
 	}
 	
 	public synchronized void wyœwietlRaporty(List<Raport> raporty) {
+		
 		for(Raport raport : raporty) {
-			poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku());
+			poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku() + "\n\n");
 			poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora());
 		}
 	}
