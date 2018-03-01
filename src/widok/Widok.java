@@ -142,9 +142,12 @@ public class Widok extends Application {
         kontenerGlowny.setBottom(konternerDolny);
         
         poleRaportuDlaHelpDesku = new TextArea();
+        poleRaportuDlaHelpDesku.setEditable(false);
+        poleRaportuDlaHelpDesku.setWrapText(true);
         zakladka1.setContent(poleRaportuDlaHelpDesku);
         
         poleRaportuDlaAdministratora = new TextArea();
+        poleRaportuDlaAdministratora.setEditable(false);
         zakladka2.setContent(poleRaportuDlaAdministratora);
         
         poleDziennikaZdarzeñ = new TextArea();

@@ -140,9 +140,13 @@ public class Model {
 			return;
 		}
 
+		JPASQLiteRepozytorium.pobierzInstancjê().rozpocznijTransakcjê();
+		
 		for (Raport raport : raporty) {
 			JPASQLiteRepozytorium.pobierzInstancjê().insertInReports(data, u¿ytkownik, raport.getRaportDlaHelpDesku());
 		}
+		
+		JPASQLiteRepozytorium.pobierzInstancjê().zamknijTransakcjê();
 	}
 
 	/**

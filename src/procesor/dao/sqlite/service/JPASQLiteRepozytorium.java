@@ -39,83 +39,19 @@ public class JPASQLiteRepozytorium {
 		return wersja;
 	}
 	
-	public void insertInReports(String data, String u¿ytkownik, String raport) {
-		/*menedzerEncji.getTransaction( ).begin( );
-		
-		procesor.dao.wersja.entity.Raport raport = new procesor.dao.wersja.entity.Raport();
-		raport.setIdentyfikator(2553);
-		raport.setData("17-02-2018, 11:06:05");
-		raport.setU¿ytkownik("okongrzegorz");
-		raport.setRaport("TEST");
-		
-		menedzerEncji.persist(raport);
-		menedzerEncji.getTransaction().commit();*/
-		
-	    /*Query query = entityManager.createNativeQuery("INSERT INTO topic (ID, TITLE,CREATION_DATE) " +
-	            " VALUES(?,?,?)");
-	        query.setParameter(1, id);
-	        query.setParameter(2, title);
-	        query.setParameter(3, creationDate);
-	        query.executeUpdate();
-	    }*/
-		
-	    /*EntityManagerFactory factory = Persistence
-	            .createEntityManagerFactory("SQLite_JPA");
-	    EntityManager  entityManager = factory.createEntityManager();
-	    entityManager.getTransaction().begin();*/
-
-	    /*em.createNativeQuery("INSERT INTO emp (EMP_ID, name) " +
-	    	    "       VALUES(?, 'asdf')")
-	    	      .setParameter(1, id)
-	    	      .executeUpdate();*/
-		
-		menedzerEncji.getTransaction( ).begin( );
-		
-		/*procesor.dao.wersja.entity.Raport raport = new procesor.dao.wersja.entity.Raport();
-		raport.setIdentyfikator(2553);
-		raport.setData("18-02-2018, 11:06:05");
-		raport.setU¿ytkownik("okongrzegorz");
-		raport.setRaport("TEST");*/
-		
+	public void rozpocznijTransakcjê() {
+		menedzerEncji.getTransaction().begin();
+	}
+	
+	public void zamknijTransakcjê() {
+		menedzerEncji.getTransaction().commit();
+	}
+	
+	public void insertInReports(String data, String u¿ytkownik, String raport) {		
 		Query query = menedzerEncji.createNativeQuery("INSERT INTO raports (date, user, raport) VALUES(?, ?, ?)");
 		query.setParameter(1, data);
 		query.setParameter(2, u¿ytkownik);
 		query.setParameter(3, "RAPORT: " + raport);
 		query.executeUpdate();
-		
-		//menedzerEncji.close( );
-		//menedzerEncji.close( );
-		menedzerEncji.getTransaction().commit();
-	    /*entityManager.getTransaction().commit();
-	    entityManager.close();
-	    factory.close();*/
 	}
-	
-	/*String query = "insert into Employee values(1,?)";
-
-	em.createNativeQuery(query)
-	   .setParameter(1, "Tom")
-	   .executeUpdate();*/
-	
-	/*Query query = em.createQuery("INSERT INTO TestDataEntity (NAME, VALUE) VALUES (:name, :value)");
-	query.setParameter("name", name);
-	query.setParameter("value", value);
-	query.executeUpdate();*/
-	
-    /*EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "Eclipselink_JPA" );
-    
-    EntityManager entitymanager = emfactory.createEntityManager( );
-    entitymanager.getTransaction( ).begin( );
-
-    Employee employee = new Employee( ); 
-    employee.setEid( 1201 );
-    employee.setEname( "Gopal" );
-    employee.setSalary( 40000 );
-    employee.setDeg( "Technical Manager" );
-    
-    entitymanager.persist( employee );
-    entitymanager.getTransaction( ).commit( );
-
-    entitymanager.close( );
-    emfactory.close( );*/
 }
