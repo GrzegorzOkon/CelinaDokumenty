@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
-import javafx.scene.control.Alert;
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
 import procesor.Model;
@@ -168,5 +167,36 @@ public class Kontroler {
 	
 	public void wyszukajLokalnieNrAkt(TreeSet<String> numeryAkt) {
 		//model.zapiszTESTOWO();
+	}
+	
+	public void wyszukajLokalnieSymDok(TreeSet<String> symboleDokumentów) {
+		Thread watek = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				/*ArrayList<Dokument> dokumenty = new ArrayList<>();
+				List<Raport> raporty = new ArrayList<>();
+				
+				for (String symbolDokumentu : symDok) {
+					Dokument dokument = new Dokument(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);
+					dokumenty.add(dokument);
+					
+					try {
+						List<DokumentZCentralaDokumenty> dokumentyZTabeliDokumenty = model.findBySymDokInDokumenty(symbolDokumentu);
+						
+						dokument.setDokumentyZCentralaDokumenty(dokumentyZTabeliDokumenty);
+					} catch (Exception ex) {
+						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+					}
+				}
+				
+				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
+				raporty = model.generujRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);*/
+			}
+		});
+		
+		watek.start();		
 	}
 }

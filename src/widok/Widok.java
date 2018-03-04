@@ -127,6 +127,7 @@ public class Widok extends Application {
             	kontroler.wyszukajLokalnieNrAkt(walidujDane());
             } else if (opcjaNumerSystemowy.isSelected() == true) {
             } else {	
+            	kontroler.wyszukajLokalnieSymDok(walidujDane());
             }         	
 		});
         
