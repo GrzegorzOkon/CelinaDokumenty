@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-import procesor.dao.entity.DokumentZCentralaDokumenty;
-import procesor.dao.entity.DokumentZIzbyDokumenty;
+import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
+import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
 
 public class DokumentZIzby {
 	private final HashMap<Identyfikator, String> szukanyNumer = new HashMap<>();

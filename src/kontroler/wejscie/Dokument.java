@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.*;
 
 import kontroler.wejscie.Identyfikator;
-import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-import procesor.dao.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
+import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 
 public class Dokument {
 	private final HashMap<Identyfikator, String> szukanyNumer = new HashMap<>();

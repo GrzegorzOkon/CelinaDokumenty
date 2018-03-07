@@ -1,4 +1,4 @@
-package procesor.dao.entity;
+package procesor.dao.sybase.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
