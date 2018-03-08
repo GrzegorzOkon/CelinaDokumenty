@@ -19,7 +19,7 @@
       <class>procesor.dao.sqlite.entity.WystawionaWersja</class>
       <class>procesor.dao.sqlite.entity.Raport</class>
       <properties>
-         <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:C:\Users\Grzesiek\Documents\JCelinaDokumenty materiały\JCelinaDokumenty.sqlite" />
+         <property name="javax.persistence.jdbc.url" value="jdbc:sqlite://10.37.0.113/c$/Program Files/JCelinaDokumenty/JCelinaDokumenty.sqlite" />
          <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
          <property name="eclipselink.cache.shared.default" value="false"/>
       </properties>
