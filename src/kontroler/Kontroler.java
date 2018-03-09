@@ -59,21 +59,25 @@ public class Kontroler {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
 				List<Raport> raporty = new ArrayList<>();
 				
-				for (String numerAkt : numeryAkt) {
-					Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
-					dokumenty.add(dokument);
-					
+				for (String numerAkt : numeryAkt) {			
 					try {
 						List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok = model.findByNrAktInCntrValidDok(numerAkt);
-						dokument.setDokumentyZCentralaCntrValidDok(dokumentyZTabeliCntrValidDok);
 						
-						if (dokumentyZTabeliCntrValidDok != null) {				
+						if (dokumentyZTabeliCntrValidDok.size() > 0) {
 							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
+								Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
+								dokumenty.add(dokument);
+							
+								dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
+
 								if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
 									DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
 									dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);	
-								}
-							}				
+								}				
+							}
+						} else {
+							Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
+							dokumenty.add(dokument);
 						}
 					} catch (Exception ex) {
 
