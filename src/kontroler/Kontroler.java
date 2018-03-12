@@ -10,6 +10,7 @@ import kontroler.wejscie.Identyfikator;
 import procesor.Model;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
 import procesor.raporty.wejscie.Raport;
 import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
@@ -181,30 +182,48 @@ public class Kontroler {
 			@Override
 			public void run() {
 				ArrayList<DokumentZIzby> dokumenty = new ArrayList<>();
-				//List<Raport> raporty = new ArrayList<>();
-		
-				for (String identyfikatorDokumentu : idDoki) {
-					Dokument dokument = new Dokument(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);
-					dokumenty.add(dokument);
-			
-					try {
-						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);										
-						dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
+				List<Raport> raporty = new ArrayList<>();
 				
-						if (dokumentZTabeliDokumenty == null) {					
-							DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
-							dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
-						} 	
+				for (String identyfikatorDokumentu : identyfikatoryDokumentów) {			
+					try {
+						DokumentZIzby dokumentIzbowy = new DokumentZIzby(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);	
+										
+						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);
+						
+						dokumentIzbowy.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
+						dokumenty.add(dokumentIzbowy);
+						
+						if (dokumentZTabeliDokumenty != null) {
+							DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliDokumenty.getIdentyfikatorJednostki());
+						} else {
+							
+						}
+						/*if (dokumentyZTabeliCntrValidDok.size() > 0) {
+							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
+								Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
+								dokumenty.add(dokument);
+							
+								dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
+
+								if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
+									DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
+									dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);	
+								}				
+							}
+						} else {
+							Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
+							dokumenty.add(dokument);
+						}*/
 					} catch (Exception ex) {
 
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
-					}		
+					}	
 				}
-		
+				
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
 				//raporty = model.generujRaporty(dokumenty);
 				//widok.wyœwietlRaporty(raporty);
-				//model.zapiszDoAnalizy(raporty);*/
+				//model.zapiszDoAnalizy(raporty);
 			}
 		});
 		

@@ -11,6 +11,7 @@ import procesor.dao.sqlite.entity.WystawionaWersja;
 import procesor.dao.sqlite.service.JPASQLiteRepozytorium;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
 import procesor.dao.sybase.service.JPACelinaRepository;
 import procesor.raporty.GeneratorRaportów;
 import procesor.raporty.wejscie.Raport;
@@ -110,6 +111,18 @@ public class Model {
 		}
 	}
 
+	public DokumentZIzbyDokumenty findByIdDokInDokumenty(String idDok, String identyfikatorJednostki) throws Exception {
+		try {
+			
+			//if ()
+			return JPACelinaRepository.pobierzInstancje().findByIdDokInDokumenty(idDok);
+		} catch (NoResultException ex) {
+			return null;
+		} catch (Exception ex) {
+			throw ex;
+		}
+	}
+	
 	public List<DokumentZCentralaDokumenty> findBySymDokInDokumenty(String symDok) throws Exception {
 		List<DokumentZCentralaDokumenty> dokumentyZTabeliDokumenty;
 

@@ -16,7 +16,7 @@ public class DokumentZCentralaDokumenty {
    @Column(name = "id_dok")
    private String identyfikatorDokumentu;
    
-   @Column(name = "id_jedn")
+   @Column(name = "id_jedn", nullable = false)
    private String identyfikatorJednostki;
 	
    @Column(name = "id_rodz_dok")
