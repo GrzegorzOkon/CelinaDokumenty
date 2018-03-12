@@ -126,6 +126,7 @@ public class Widok extends Application {
             if (opcjaNumerW³asny.isSelected() == true) {
             	kontroler.wyszukajLokalnieNrAkt(walidujDane());
             } else if (opcjaNumerSystemowy.isSelected() == true) {
+            	kontroler.wyszukajLokalniePoIdentyfikatorzeDokumentu(walidujDane());
             } else {	
             	kontroler.wyszukajLokalnieSymDok(walidujDane());
             }         	
