@@ -1,11 +1,11 @@
-package procesor.dao.service;
+package procesor.dao.sybase.service;
 
 import java.util.List;
 
 import javax.persistence.*;
 
-import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-import procesor.dao.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
+import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 
 public class JPACelinaRepository {
 	private static final String SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK = "SELECT d FROM DokumentZCentralaCntrValidDok d WHERE d.numerWlasny = :numerAkt";

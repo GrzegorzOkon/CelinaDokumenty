@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.TreeSet;
 
 import kontroler.wejscie.Dokument;
+import kontroler.wejscie.DokumentZIzby;
 import kontroler.wejscie.Identyfikator;
 import procesor.Model;
-import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-import procesor.dao.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
+import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 import procesor.raporty.wejscie.Raport;
 import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
@@ -96,7 +97,7 @@ public class Kontroler {
 	}
 	
 	//
-	public void wyszukajWCentraliIdDok(TreeSet<String> idDoki) {
+	public void wyszukajWCentraliIdDok(TreeSet<String> identyfikatoryDokumentów) {
 		Thread watek = new Thread(new Runnable() {
 
 			@Override
@@ -104,7 +105,7 @@ public class Kontroler {
 				ArrayList<Dokument> dokumenty = new ArrayList<>();
 				List<Raport> raporty = new ArrayList<>();
 		
-				for (String identyfikatorDokumentu : idDoki) {
+				for (String identyfikatorDokumentu : identyfikatoryDokumentów) {
 					Dokument dokument = new Dokument(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);
 					dokumenty.add(dokument);
 			
@@ -171,6 +172,43 @@ public class Kontroler {
 	
 	public void wyszukajLokalnieNrAkt(TreeSet<String> numeryAkt) {
 		//model.zapiszTESTOWO();
+	}
+	
+	//
+	public void wyszukajLokalniePoIdentyfikatorzeDokumentu(TreeSet<String> identyfikatoryDokumentów) {
+		Thread watek = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				ArrayList<DokumentZIzby> dokumenty = new ArrayList<>();
+				//List<Raport> raporty = new ArrayList<>();
+		
+				for (String identyfikatorDokumentu : idDoki) {
+					Dokument dokument = new Dokument(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);
+					dokumenty.add(dokument);
+			
+					try {
+						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);										
+						dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
+				
+						if (dokumentZTabeliDokumenty == null) {					
+							DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
+							dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
+						} 	
+					} catch (Exception ex) {
+
+						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+					}		
+				}
+		
+				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
+				//raporty = model.generujRaporty(dokumenty);
+				//widok.wyœwietlRaporty(raporty);
+				//model.zapiszDoAnalizy(raporty);*/
+			}
+		});
+		
+		watek.start();
 	}
 	
 	public void wyszukajLokalnieSymDok(TreeSet<String> symboleDokumentów) {

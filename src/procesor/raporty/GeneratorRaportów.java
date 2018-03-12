@@ -5,8 +5,8 @@ import java.util.List;
 
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.Identyfikator;
-import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-import procesor.dao.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
+import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 import procesor.raporty.wejscie.KodyOddzia³ów;
 import procesor.raporty.wejscie.Raport;
 import procesor.raporty.wejscie.StatusyPrzetwarzania;

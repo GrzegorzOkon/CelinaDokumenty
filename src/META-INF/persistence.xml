@@ -2,8 +2,8 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
    
    <persistence-unit name="MySQL_JPA" transaction-type="RESOURCE_LOCAL">
-      <class>procesor.dao.entity.DokumentZCentralaCntrValidDok</class>
-      <class>procesor.dao.entity.DokumentZCentralaDokumenty</class>
+      <class>procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok</class>
+      <class>procesor.dao.sybase.entity.DokumentZCentralaDokumenty</class>
       <properties>
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_centr"/>
          <property name="javax.persistence.jdbc.user" value="root"/>
@@ -33,6 +33,18 @@
          <property name="javax.persistence.jdbc.user" value="xx"/>
          <property name="javax.persistence.jdbc.password" value="yy"/>
          <property name="javax.persistence.jdbc.driver" value="com.sybase.jdbc4.jdbc.SybDriver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+  
+   <persistence-unit name="Kraków_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="eclipselink.cache.shared.default" value="false"/>
          <property name="eclipselink.connection-pool.max" value="1"/>
       </properties>

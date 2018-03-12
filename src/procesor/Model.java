@@ -7,11 +7,11 @@ import java.util.List;
 import javax.persistence.NoResultException;
 
 import kontroler.wejscie.Dokument;
-import procesor.dao.entity.DokumentZCentralaCntrValidDok;
-import procesor.dao.entity.DokumentZCentralaDokumenty;
-import procesor.dao.service.JPACelinaRepository;
 import procesor.dao.sqlite.entity.WystawionaWersja;
 import procesor.dao.sqlite.service.JPASQLiteRepozytorium;
+import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
+import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
+import procesor.dao.sybase.service.JPACelinaRepository;
 import procesor.raporty.GeneratorRaportów;
 import procesor.raporty.wejscie.Raport;
 import procesor.wersja.KontrolerWersji;

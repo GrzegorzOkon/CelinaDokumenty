@@ -1,4 +1,4 @@
-package procesor.dao.entity;
+package procesor.dao.sybase.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -84,14 +84,9 @@ public class DokumentZCentralaDokumenty {
    
    public String getDataFormalnegoPrzyjecia( ) {
 	  return dataFormalnegoPrzyjecia;
-}
+   }
 	   
    public void setDataFormalnegoPrzyjecia(String dataFormalnegoPrzyjecia) {
 	  this.dataFormalnegoPrzyjecia = dataFormalnegoPrzyjecia;
-   }
-   
-   @Override
-   public String toString() {
-      return "Employee [eid=" + identyfikatorDokumentu + "]";
    }
 }
