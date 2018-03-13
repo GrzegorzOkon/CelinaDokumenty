@@ -13,7 +13,10 @@ import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
 import procesor.dao.sybase.service.JPACelinaRepository;
+import procesor.dao.sybase.service.JPAKrakówRepozytorium;
+import procesor.dao.sybase.service.JPARepozytorium;
 import procesor.raporty.GeneratorRaportów;
+import procesor.raporty.wejscie.KodyOddzia³ów;
 import procesor.raporty.wejscie.Raport;
 import procesor.wersja.KontrolerWersji;
 import procesor.wersja.wejscie.AktualnaWersja;
@@ -111,11 +114,9 @@ public class Model {
 		}
 	}
 
-	public DokumentZIzbyDokumenty findByIdDokInDokumenty(String idDok, String identyfikatorJednostki) throws Exception {
+	public DokumentZIzbyDokumenty findByIdDokInDokumenty(String identyfikatorDokumentu, String identyfikatorJednostki) throws Exception {	
 		try {
-			
-			//if ()
-			return JPACelinaRepository.pobierzInstancje().findByIdDokInDokumenty(idDok);
+			return pobierzRepozytorium(identyfikatorJednostki).findByIdDokInDokumenty(identyfikatorDokumentu);
 		} catch (NoResultException ex) {
 			return null;
 		} catch (Exception ex) {
@@ -139,6 +140,16 @@ public class Model {
 		return dokumentyZTabeliDokumenty;
 	}
 
+	private JPARepozytorium pobierzRepozytorium (String identyfikatorJednostki) {
+		JPARepozytorium repozytorium = null;
+		
+		switch (KodyOddzia³ów.pobierzInstancjê().pobierzKod(identyfikatorJednostki)) {
+			case "Oddzia³ Celny II w Krakowie, Izba Administracji Skarbowej w Krakowie" : repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+		}
+		
+		return repozytorium;
+	}
+	
 	public List<Raport> generujRaporty(List<Dokument> dokumenty) {
 		return GeneratorRaportów.pobierzInstancjê().utwórzRaport(dokumenty);
 	}

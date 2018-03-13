@@ -39,7 +39,7 @@
    </persistence-unit>
   
    <persistence-unit name="Kraków_JPA" transaction-type="RESOURCE_LOCAL">
-      <class>procesor.dao.entity.DokumentZIzbyDokumenty</class>
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
       <properties>
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
          <property name="javax.persistence.jdbc.user" value="root"/>

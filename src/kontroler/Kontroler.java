@@ -195,6 +195,7 @@ public class Kontroler {
 						
 						if (dokumentZTabeliDokumenty != null) {
 							DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliDokumenty.getIdentyfikatorJednostki());
+							dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
 						} else {
 							
 						}
