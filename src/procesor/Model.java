@@ -114,14 +114,12 @@ public class Model {
 		}
 	}
 
-	public DokumentZIzbyDokumenty findByIdDokInDokumenty(String identyfikatorDokumentu, String identyfikatorJednostki) throws Exception {	
+	public DokumentZIzbyDokumenty findByIdDokInDokumenty(String identyfikatorDokumentu, String identyfikatorJednostki) throws NullPointerException, Exception {	
 		try {
 			return pobierzRepozytorium(identyfikatorJednostki).findByIdDokInDokumenty(identyfikatorDokumentu);
 		} catch (NoResultException ex) {
 			return null;
-		} catch (Exception ex) {
-			throw ex;
-		}
+		} 
 	}
 	
 	public List<DokumentZCentralaDokumenty> findBySymDokInDokumenty(String symDok) throws Exception {
@@ -140,11 +138,59 @@ public class Model {
 		return dokumentyZTabeliDokumenty;
 	}
 
-	private JPARepozytorium pobierzRepozytorium (String identyfikatorJednostki) {
+	private JPARepozytorium pobierzRepozytorium(String identyfikatorJednostki) throws NullPointerException {
 		JPARepozytorium repozytorium = null;
+		String oddzia³ = KodyOddzia³ów.pobierzInstancjê().pobierzKod(identyfikatorJednostki);
 		
-		switch (KodyOddzia³ów.pobierzInstancjê().pobierzKod(identyfikatorJednostki)) {
-			case "Oddzia³ Celny II w Krakowie, Izba Administracji Skarbowej w Krakowie" : repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+		switch(oddzia³.substring(oddzia³.indexOf(",") + 2)) {
+			case "Izba Administracji Skarbowej w Lublinie" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Bia³ymstoku" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Gdañsku" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Katowicach" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Kielcach" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Krakowie" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w £odzi" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Olsztynie" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Opolu" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Poznaniu" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Rzeszowie" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Zielonej Górze" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Szczecinie" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Bydgoszczy" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej w Warszawie" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
+			case "Izba Administracji Skarbowej we Wroc³awiu" : 
+				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				break;
 		}
 		
 		return repozytorium;

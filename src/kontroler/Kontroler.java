@@ -196,6 +196,8 @@ public class Kontroler {
 						if (dokumentZTabeliDokumenty != null) {
 							DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliDokumenty.getIdentyfikatorJednostki());
 							dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
+							
+							//System.out.println(dokumentLokalnyZTabeliDokumenty.getIdentyfikatorDokumentu());
 						} else {
 							
 						}
@@ -215,6 +217,8 @@ public class Kontroler {
 							Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
 							dokumenty.add(dokument);
 						}*/
+					} catch (NullPointerException ex) {
+						//Wpis do raportu o braku kodu oddzia³u w opisach
 					} catch (Exception ex) {
 
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
