@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
    
-   <persistence-unit name="MySQL_JPA" transaction-type="RESOURCE_LOCAL">
+   <persistence-unit name="Centrala_JPA" transaction-type="RESOURCE_LOCAL">
       <class>procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok</class>
       <class>procesor.dao.sybase.entity.DokumentZCentralaDokumenty</class>
       <properties>
@@ -19,25 +19,72 @@
       <class>procesor.dao.sqlite.entity.WystawionaWersja</class>
       <class>procesor.dao.sqlite.entity.Raport</class>
       <properties>
-         <property name="javax.persistence.jdbc.url" value="jdbc:sqlite://10.37.0.113/c$/Program Files/JCelinaDokumenty/JCelinaDokumenty.sqlite" />
+         <property name="javax.persistence.jdbc.url" value="jdbc:sqlite://C:/Users/Grzesiek/Documents/JCelinaDokumenty materiały/JCelinaDokumenty.sqlite" />
          <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
          <property name="eclipselink.cache.shared.default" value="false"/>
       </properties>
    </persistence-unit>
-   
-   <persistence-unit name="Sybase_JPA" transaction-type="RESOURCE_LOCAL">
-      <class>procesor.dao.entity.DokumentZCentralaCntrValidDok</class>
-      <class>procesor.dao.entity.DokumentZCentralaDokumenty</class>
+  
+   <persistence-unit name="Lublin_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
       <properties>
-         <property name="javax.persistence.jdbc.url" value="jdbc:sybase:Tds:00.11.22.33:4444/celina_centr"/>
-         <property name="javax.persistence.jdbc.user" value="xx"/>
-         <property name="javax.persistence.jdbc.password" value="yy"/>
-         <property name="javax.persistence.jdbc.driver" value="com.sybase.jdbc4.jdbc.SybDriver"/>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="eclipselink.cache.shared.default" value="false"/>
          <property name="eclipselink.connection-pool.max" value="1"/>
       </properties>
    </persistence-unit>
-  
+
+   <persistence-unit name="Białystok_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Gdańsk_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Katowice_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Kielce_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
    <persistence-unit name="Kraków_JPA" transaction-type="RESOURCE_LOCAL">
       <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
       <properties>
@@ -50,4 +97,124 @@
       </properties>
    </persistence-unit>
   
+   <persistence-unit name="Łódź_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Olsztyn_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Opole_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Poznań_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Rzeszów_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="ZielonaGóra_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Szczecin_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Bydgoszcz_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Warszawa_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
+   <persistence-unit name="Wrocław_JPA" transaction-type="RESOURCE_LOCAL">
+      <class>procesor.dao.sybase.entity.DokumentZIzbyDokumenty</class>
+      <properties>
+         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/celina_uc"/>
+         <property name="javax.persistence.jdbc.user" value="root"/>
+         <property name="javax.persistence.jdbc.password" value="root"/>
+         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+         <property name="eclipselink.cache.shared.default" value="false"/>
+         <property name="eclipselink.connection-pool.max" value="1"/>
+      </properties>
+   </persistence-unit>
+
 </persistence>
