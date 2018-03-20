@@ -12,9 +12,25 @@ import procesor.dao.sqlite.service.JPASQLiteRepozytorium;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
+import procesor.dao.sybase.service.JPABia³ystokRepozytorium;
+import procesor.dao.sybase.service.JPABydgoszczRepozytorium;
 import procesor.dao.sybase.service.JPACelinaRepository;
+import procesor.dao.sybase.service.JPAGdañskRepozytorium;
+import procesor.dao.sybase.service.JPAKatowiceRepozytorium;
+import procesor.dao.sybase.service.JPAKielceRepozytorium;
 import procesor.dao.sybase.service.JPAKrakówRepozytorium;
+import procesor.dao.sybase.service.JPALublinRepozytorium;
+import procesor.dao.sybase.service.JPAOlsztynRepozytorium;
+import procesor.dao.sybase.service.JPAOpoleRepozytorium;
+import procesor.dao.sybase.service.JPAPoznañRepozytorium;
 import procesor.dao.sybase.service.JPARepozytorium;
+import procesor.dao.sybase.service.JPARzeszówRepozytorium;
+import procesor.dao.sybase.service.JPASzczecinRepozytorium;
+import procesor.dao.sybase.service.JPAWarszawaCUDORepozytorium;
+import procesor.dao.sybase.service.JPAWarszawaRepozytorium;
+import procesor.dao.sybase.service.JPAWroc³awRepozytorium;
+import procesor.dao.sybase.service.JPAZielonaGóraRepozytorium;
+import procesor.dao.sybase.service.JPA£ódŸRepozytorium;
 import procesor.raporty.GeneratorRaportów;
 import procesor.raporty.wejscie.KodyOddzia³ów;
 import procesor.raporty.wejscie.Raport;
@@ -138,58 +154,72 @@ public class Model {
 		return dokumentyZTabeliDokumenty;
 	}
 
+	/**
+	 * Zwraca repozytorium wybrane po przes³anym kodzie oddzia³u.
+	 * W przypadku braku oddzia³u w klasie KodyOddzia³ów zwracany jest wyj¹tek.
+	 * 
+	 * @param identyfikatorJednostki - kod oddzia³u po którym wybierane jest po³aczenie do bazy lokalnej.
+	 * 
+	 * @return JPARepozytorium - klasa abstrakcyjna po której dziedzicz¹ wszystkie repozytoria lokalne.
+	 * 
+	 * @throws NullPointerException - w przypadku braku przes³anego kodu w klasie KodyOddzia³ów. 
+	 */
 	private JPARepozytorium pobierzRepozytorium(String identyfikatorJednostki) throws NullPointerException {
 		JPARepozytorium repozytorium = null;
 		String oddzia³ = KodyOddzia³ów.pobierzInstancjê().pobierzKod(identyfikatorJednostki);
 		
 		switch(oddzia³.substring(oddzia³.indexOf(",") + 2)) {
 			case "Izba Administracji Skarbowej w Lublinie" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPALublinRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Bia³ymstoku" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPABia³ystokRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Gdañsku" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAGdañskRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Katowicach" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAKatowiceRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Kielcach" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAKielceRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Krakowie" : 
 				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w £odzi" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPA£ódŸRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Olsztynie" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAOlsztynRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Opolu" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAOpoleRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Poznaniu" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAPoznañRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Rzeszowie" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPARzeszówRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Zielonej Górze" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAZielonaGóraRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Szczecinie" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPASzczecinRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Bydgoszczy" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPABydgoszczRepozytorium.pobierzInstancje();
 				break;
 			case "Izba Administracji Skarbowej w Warszawie" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				if (identyfikatorJednostki.equals("443020")) {
+					repozytorium = JPAWarszawaCUDORepozytorium.pobierzInstancje();
+				} else {
+					repozytorium = JPAWarszawaRepozytorium.pobierzInstancje();
+				};
 				break;
 			case "Izba Administracji Skarbowej we Wroc³awiu" : 
-				repozytorium = JPAKrakówRepozytorium.pobierzInstancje();
+				repozytorium = JPAWroc³awRepozytorium.pobierzInstancje();
 				break;
 		}
 		

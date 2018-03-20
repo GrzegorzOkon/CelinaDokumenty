@@ -19,7 +19,7 @@ public class JPACelinaRepository {
 	private EntityManager menedzerEncji;
 	
 	private JPACelinaRepository() {
-		menedzerEncjiFabryka = Persistence.createEntityManagerFactory("MySQL_JPA");
+		menedzerEncjiFabryka = Persistence.createEntityManagerFactory("Centrala_JPA");
 		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
 	}
 	
