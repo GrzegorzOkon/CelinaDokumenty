@@ -130,6 +130,19 @@ public class Model {
 		}
 	}
 
+	/**
+	 * Zwraca dokument z lokalnej tabeli dokumenty.
+	 * 
+	 * @param identyfikatorDokumentu - numer identyfikacyjny (w bazie kolumna id_dok) po którym przeprowadzane jest wyszukiwanie.
+	 * 
+	 * @param identyfikatorJednostki - kod oddzia³u po którym wybierane jest okreœlone po³aczenie do bazy lokalnej.
+	 * 
+	 * @return DokumentZIzbyDokumenty - dokument z tabeli dokumenty w bazie lokalnej.
+	 * 
+	 * @throws NullPointerException - w przypadku braku przes³anego kodu w klasie KodyOddzia³ów. 
+	 * 
+	 * @throws Exception - gdy nie mo¿na uzyskaæ po³aczenia do bazy.
+	 */
 	public DokumentZIzbyDokumenty findByIdDokInDokumenty(String identyfikatorDokumentu, String identyfikatorJednostki) throws NullPointerException, Exception {	
 		try {
 			return pobierzRepozytorium(identyfikatorJednostki).findByIdDokInDokumenty(identyfikatorDokumentu);

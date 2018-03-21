@@ -187,40 +187,26 @@ public class Kontroler {
 				for (String identyfikatorDokumentu : identyfikatoryDokumentów) {			
 					try {
 						DokumentZIzby dokumentIzbowy = new DokumentZIzby(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);	
-										
-						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);
+						dokumenty.add(dokumentIzbowy);	
 						
+						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);
 						dokumentIzbowy.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
-						dokumenty.add(dokumentIzbowy);
 						
 						if (dokumentZTabeliDokumenty != null) {
 							DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliDokumenty.getIdentyfikatorJednostki());
 							dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
-							
-							//System.out.println(dokumentLokalnyZTabeliDokumenty.getIdentyfikatorDokumentu());
 						} else {
+							DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
+							dokumentIzbowy.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
 							
+							if (dokumentZTabeliCntrValidDok != null) {
+								DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliCntrValidDok.getJednostkaPrzeznaczenia());
+								dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
+							} 
 						}
-						/*if (dokumentyZTabeliCntrValidDok.size() > 0) {
-							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
-								Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
-								dokumenty.add(dokument);
-							
-								dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
-
-								if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
-									DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
-									dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);	
-								}				
-							}
-						} else {
-							Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
-							dokumenty.add(dokument);
-						}*/
 					} catch (NullPointerException ex) {
 						//Wpis do raportu o braku kodu oddzia³u w opisach
 					} catch (Exception ex) {
-
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 					}	
 				}

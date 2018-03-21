@@ -210,11 +210,14 @@ public class Widok extends Application {
 		return uporzadkowaneWiersze;
 	}
 	
-	public synchronized void wyœwietlRaporty(List<Raport> raporty) {
-		
+	public synchronized void wyœwietlRaporty(List<Raport> raporty) {	
 		for(Raport raport : raporty) {
 			poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku() + "\n\n");
 			poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora());
 		}
+	}
+	
+	public synchronized void wyœwietlTestowo(String raporcik) {
+		poleRaportuDlaAdministratora.appendText(raporcik);
 	}
 }

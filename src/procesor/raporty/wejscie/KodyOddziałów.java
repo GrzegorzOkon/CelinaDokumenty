@@ -36,7 +36,7 @@ public class KodyOddzia³ów {
 	private void inicjalizujKody() {	
 		kodyOddzia³ów.put("301010", "Oddzia³ Celny w Bia³ej Podlaskiej, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("301020", "Oddzia³ Celny w Ma³aszewiczach, Izba Administracji Skarbowej w Lublinie");
-		kodyOddzia³ów.put("301040", "Oddzia³ Celny w Koroszczynie, Oddzia³ Celny w Ma³aszewiczach, Izba Administracji Skarbowej w Lublinie");
+		kodyOddzia³ów.put("301040", "Oddzia³ Celny w Koroszczynie, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("302010", "Oddzia³ Celny w Lublinie, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("302020", "Oddzia³ Celny w Pu³awach, Izba Administracji Skarbowej w Lublinie");
 		kodyOddzia³ów.put("302040", "Oddzia³ Celny w Che³mie, Izba Administracji Skarbowej w Lublinie");
