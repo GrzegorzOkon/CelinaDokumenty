@@ -21,7 +21,7 @@ public class DokumentZCentralaCntrValidDok {
 	@Column(name = "id_rodz_dok")
 	private String identyfikatorRodzajuDokumentu;
 	
-	@Column(name = "jedn_przezn")
+	@Column(name = "jedn_przezn", nullable = true)
 	private String jednostkaPrzeznaczenia;
 	
 	@Column(name = "status_przetw")

@@ -128,7 +128,7 @@ public class Widok extends Application {
             } else if (opcjaNumerSystemowy.isSelected() == true) {
             	kontroler.wyszukajLokalniePoIdentyfikatorzeDokumentu(walidujDane());
             } else {	
-            	kontroler.wyszukajLokalnieSymDok(walidujDane());
+            	kontroler.wyszukajLokalniePoSymboluDokumentu(walidujDane());
             }         	
 		});
         
@@ -155,7 +155,7 @@ public class Widok extends Application {
         poleDziennikaZdarzeñ = new TextArea();
         zakladka3.setContent(poleDziennikaZdarzeñ);
         
-        scena = new Scene(kontenerZakladek, 800, 600);
+        scena = new Scene(kontenerZakladek, 700, 600);
     }
     
     /**

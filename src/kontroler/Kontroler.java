@@ -200,8 +200,10 @@ public class Kontroler {
 							dokumentIzbowy.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
 							
 							if (dokumentZTabeliCntrValidDok != null) {
-								DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliCntrValidDok.getJednostkaPrzeznaczenia());
-								dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
+								if (dokumentZTabeliCntrValidDok.getJednostkaPrzeznaczenia() != null) {
+									DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu, dokumentZTabeliCntrValidDok.getJednostkaPrzeznaczenia());
+									dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
+								}
 							} 
 						}
 					} catch (NullPointerException ex) {
@@ -221,31 +223,56 @@ public class Kontroler {
 		watek.start();
 	}
 	
-	public void wyszukajLokalnieSymDok(TreeSet<String> symboleDokumentów) {
+    /**
+     * Wyszukuje dokumenty w bazie centralnej po podanych symbolach dokumentów 
+     * i nastêpnie szuka w bazach lokalnych po odpowiadaj¹cych im identyfikatorach dokumentów
+     * 
+     * @param symboleDokumentów jest list¹ symboli dokumentów (sym_dok w bazie) po których ma nast¹piæ wyszukiwanie
+     */ 
+	public void wyszukajLokalniePoSymboluDokumentu(TreeSet<String> symboleDokumentów) {
+		
 		Thread watek = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
-				/*ArrayList<Dokument> dokumenty = new ArrayList<>();
+				
+				ArrayList<DokumentZIzby> dokumenty = new ArrayList<>();
 				List<Raport> raporty = new ArrayList<>();
 				
-				for (String symbolDokumentu : symDok) {
-					Dokument dokument = new Dokument(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);
-					dokumenty.add(dokument);
+				for (String symbolDokumentu : symboleDokumentów) {
 					
 					try {
+						
 						List<DokumentZCentralaDokumenty> dokumentyZTabeliDokumenty = model.findBySymDokInDokumenty(symbolDokumentu);
 						
-						dokument.setDokumentyZCentralaDokumenty(dokumentyZTabeliDokumenty);
-					} catch (Exception ex) {
+						if (dokumentyZTabeliDokumenty != null) {
+							
+							for (DokumentZCentralaDokumenty dokumentZTabeliDokumenty : dokumentyZTabeliDokumenty) {
+								
+								DokumentZIzby dokumentIzbowy = new DokumentZIzby(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);	
+								dokumentIzbowy.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
+								dokumenty.add(dokumentIzbowy);	
+																
+								DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliDokumenty.getIdentyfikatorDokumentu(), dokumentZTabeliDokumenty.getIdentyfikatorJednostki());
+								dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty);
+							}
+						} else {
+							
+							DokumentZIzby dokumentIzbowy = new DokumentZIzby(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);	
+							dokumenty.add(dokumentIzbowy);	
+						}
+					} catch(NullPointerException ex) {
+						
+						//Wpis do raportu o braku kodu oddzia³u w opisach
+					} catch(Exception ex) {
+						
 						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
 					}
 				}
-				
+
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujRaporty(dokumenty);
-				widok.wyœwietlRaporty(raporty);
-				model.zapiszDoAnalizy(raporty);*/
+				//raporty = model.generujRaporty(dokumenty);
+				//widok.wyœwietlRaporty(raporty);
+				//model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
