@@ -124,7 +124,7 @@ public class Widok extends Application {
 		// Przypisanie dzia³ania do przycisku sprawdzenia we wszystkich izbach
         SprawdzLokalnie.setOnAction((event) -> {		    
             if (opcjaNumerW³asny.isSelected() == true) {
-            	kontroler.wyszukajLokalnieNrAkt(walidujDane());
+            	kontroler.wyszukajLokalniePoNumerzeAkt(walidujDane());
             } else if (opcjaNumerSystemowy.isSelected() == true) {
             	kontroler.wyszukajLokalniePoIdentyfikatorzeDokumentu(walidujDane());
             } else {	

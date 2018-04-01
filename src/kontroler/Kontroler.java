@@ -171,8 +171,63 @@ public class Kontroler {
 		watek.start();
 	}
 	
-	public void wyszukajLokalnieNrAkt(TreeSet<String> numeryAkt) {
-		//model.zapiszTESTOWO();
+    /**
+     * Wyszukuje dokumenty w bazie centralnej po podanych numerach w³asnych 
+     * i nastêpnie szuka w bazach lokalnych po odpowiadaj¹cych im identyfikatorach dokumentów
+     * 
+     * @param numeryAkt jest list¹ numerów w³asnych (nr_akt w bazie) po których ma nast¹piæ wyszukiwanie
+     */ 
+	public void wyszukajLokalniePoNumerzeAkt(TreeSet<String> numeryAkt) {
+		
+		Thread watek = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				
+				ArrayList<DokumentZIzby> dokumenty = new ArrayList<>();
+				List<Raport> raporty = new ArrayList<>();
+
+				for (String numerAkt : numeryAkt) {
+	
+					try {
+						
+						List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok = model.findByNrAktInCntrValidDok(numerAkt);
+
+						if (dokumentyZTabeliCntrValidDok != null) {
+							
+							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
+
+								DokumentZIzby dokumentIzbowy = new DokumentZIzby(Identyfikator.NUMER_AKT, numerAkt);	
+								dokumentIzbowy.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
+								dokumenty.add(dokumentIzbowy);	
+								
+								DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
+								dokumentIzbowy.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
+
+								DokumentZIzbyDokumenty dokumentLokalnyZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu(), dokumentZTabeliCntrValidDok.getJednostkaPrzeznaczenia());
+								dokumentIzbowy.setDokumentyZIzbyDokumenty(dokumentLokalnyZTabeliDokumenty.getSymbolDokumentu());
+							}
+						} else {
+							
+							DokumentZIzby dokumentIzbowy = new DokumentZIzby(Identyfikator.NUMER_AKT, numerAkt);	
+							dokumenty.add(dokumentIzbowy);	
+						}
+					} catch(NullPointerException ex) {
+						
+						//Wpis do raportu o braku kodu oddzia³u w opisach
+					} catch(Exception ex) {
+						
+						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+					}
+				}
+
+				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
+				//raporty = model.generujRaporty(dokumenty);
+				//widok.wyœwietlRaporty(raporty);
+				//model.zapiszDoAnalizy(raporty);
+			}
+		});
+		
+		watek.start();
 	}
 	
 	//
@@ -224,7 +279,7 @@ public class Kontroler {
 	}
 	
     /**
-     * Wyszukuje dokumenty w bazie centralnej po podanych symbolach dokumentów 
+     * Wyszukuje dokumenty w bazie centralnej po podanych symbolach dokumentów (sym_dok)
      * i nastêpnie szuka w bazach lokalnych po odpowiadaj¹cych im identyfikatorach dokumentów
      * 
      * @param symboleDokumentów jest list¹ symboli dokumentów (sym_dok w bazie) po których ma nast¹piæ wyszukiwanie
