@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.NoResultException;
 
 import kontroler.wejscie.Dokument;
+import kontroler.wejscie.DokumentZIzby;
 import procesor.dao.sqlite.entity.WystawionaWersja;
 import procesor.dao.sqlite.service.JPASQLiteRepozytorium;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
@@ -239,10 +240,14 @@ public class Model {
 		return repozytorium;
 	}
 	
-	public List<Raport> generujRaporty(List<Dokument> dokumenty) {
-		return GeneratorRaportów.pobierzInstancjê().utwórzRaport(dokumenty);
+	public List<Raport> generujCentralneRaporty(List<Dokument> dokumenty) {
+		return GeneratorRaportów.pobierzInstancjê().utwórzCentralnyRaport(dokumenty);
 	}
 
+	public List<Raport> generujLokalneRaporty(List<DokumentZIzby> dokumenty) {
+		return GeneratorRaportów.pobierzInstancjê().utwórzLokalnyRaport(dokumenty);
+	}
+	
 	public void zapiszDoAnalizy(List<Raport> raporty) {
 		String data = pobierzSpersonalizowan¹Datê();
 		String u¿ytkownik = null;

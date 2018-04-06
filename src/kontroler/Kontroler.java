@@ -65,7 +65,7 @@ public class Kontroler {
 					try {
 						List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok = model.findByNrAktInCntrValidDok(numerAkt);
 						
-						if (dokumentyZTabeliCntrValidDok.size() > 0) {
+						if (dokumentyZTabeliCntrValidDok != null) {
 							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
 								Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
 								dokumenty.add(dokument);
@@ -88,7 +88,7 @@ public class Kontroler {
 				}
 				
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujRaporty(dokumenty);
+				raporty = model.generujCentralneRaporty(dokumenty);
 				widok.wyœwietlRaporty(raporty);
 				model.zapiszDoAnalizy(raporty);
 			}
@@ -125,7 +125,7 @@ public class Kontroler {
 				}
 		
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujRaporty(dokumenty);
+				raporty = model.generujCentralneRaporty(dokumenty);
 				widok.wyœwietlRaporty(raporty);
 				model.zapiszDoAnalizy(raporty);
 			}
@@ -162,7 +162,7 @@ public class Kontroler {
 				}
 				
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujRaporty(dokumenty);
+				raporty = model.generujCentralneRaporty(dokumenty);
 				widok.wyœwietlRaporty(raporty);
 				model.zapiszDoAnalizy(raporty);
 			}
@@ -221,9 +221,9 @@ public class Kontroler {
 				}
 
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				//raporty = model.generujRaporty(dokumenty);
-				//widok.wyœwietlRaporty(raporty);
-				//model.zapiszDoAnalizy(raporty);
+				raporty = model.generujLokalneRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
@@ -269,9 +269,9 @@ public class Kontroler {
 				}
 				
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				//raporty = model.generujRaporty(dokumenty);
-				//widok.wyœwietlRaporty(raporty);
-				//model.zapiszDoAnalizy(raporty);
+				raporty = model.generujLokalneRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
@@ -325,9 +325,9 @@ public class Kontroler {
 				}
 
 				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				//raporty = model.generujRaporty(dokumenty);
-				//widok.wyœwietlRaporty(raporty);
-				//model.zapiszDoAnalizy(raporty);
+				raporty = model.generujLokalneRaporty(dokumenty);
+				widok.wyœwietlRaporty(raporty);
+				model.zapiszDoAnalizy(raporty);
 			}
 		});
 		
