@@ -37,6 +37,7 @@ import procesor.raporty.wejscie.KodyOddzia³ów;
 import procesor.raporty.wejscie.Raport;
 import procesor.wersja.KontrolerWersji;
 import procesor.wersja.wejscie.AktualnaWersja;
+import procesor.zdarzenia.RejestratorZdarzeñ;
 import widok.Widok;
 
 /**
@@ -44,15 +45,14 @@ import widok.Widok;
  * 
  * @author Grzegorz Okoñ
  */
-/**
- * @author Grzesiek
- *
- */
 public class Model {
 	private Widok widok;
 
 	public Model(Widok widok) {
+		
 		this.widok = widok;
+		
+		RejestratorZdarzeñ.przeka¿Referencjê(this);
 	}
 
 	public String pobierzOpis() {
@@ -60,25 +60,41 @@ public class Model {
 	}
 
 	public void porównajWersje() {
+		
 		AktualnaWersja aktualnaWersja = KontrolerWersji.pobierzInstancjê().pobierzAktualn¹Wersjê();
 		WystawionaWersja wystawionaWersja = null;
 
 		try {
+			
+			RejestratorZdarzeñ.pobierzInstancjê().info("Próba po³aczenia z serwerem aktualizacji...");
+			RejestratorZdarzeñ.pobierzInstancjê().info("\\\\10.37.0.113\\c$\\Program Files\\JCelinaDokumenty\\JCelinaDokumenty.sqlite");
+			
 			wystawionaWersja = JPASQLiteRepozytorium.pobierzInstancjê().findInVersion();
 		} catch (Exception ex) {
 
+			RejestratorZdarzeñ.pobierzInstancjê().error("Nie uda³o po³¹czyæ siê z serwerem aktualizacji");
 		}
 
-		if (!aktualnaWersja.equals(wystawionaWersja)) {
-			String tytu³ = "Komunikat o wersji...";
+		if (aktualnaWersja.equals(wystawionaWersja)) {
+			
+			RejestratorZdarzeñ.pobierzInstancjê().info("U¿ywasz aktualnej wersji programu");
+		} else {
+			
+			/*String tytu³ = "Komunikat o wersji...";
 			String nag³ówek = "Pojawi³a siê aktualizacja oprogramowania.";
 			String treœæ = "Na serwerze jest wystawiona aplikacja " + wystawionaWersja.getNazwa() + " v"
 					+ wystawionaWersja.getMajor() + "." + wystawionaWersja.getMinor() + "."
 					+ wystawionaWersja.getRelease() + " (rev. " + wystawionaWersja.getKompilacja() + ").\n"
 					+ "Posiadasz wersjê " + aktualnaWersja.getLokalnyMajor() + "." + aktualnaWersja.getLokalnyMinor()
 					+ "." + aktualnaWersja.getLokalnyRelease() + " (rev. " + aktualnaWersja.getLokalnaKomplilacja()
-					+ ").\n\n" + wystawionaWersja.getŒcie¿ka();
-
+					+ ").\n\n" + wystawionaWersja.getŒcie¿ka();*/
+			RejestratorZdarzeñ.pobierzInstancjê().info("Pojawi³a siê aktualizacja oprogramowania");
+			RejestratorZdarzeñ.pobierzInstancjê().info("Na serwerze jest wystawiona aplikacja " + wystawionaWersja.getNazwa() + " v"
+				+ wystawionaWersja.getMajor() + "." + wystawionaWersja.getMinor()
+				+ wystawionaWersja.getRelease() + " (rev. " + wystawionaWersja.getKompilacja() + ")");
+			RejestratorZdarzeñ.pobierzInstancjê().info("Posiadasz wersjê " + aktualnaWersja.getLokalnyMajor() + "." + aktualnaWersja.getLokalnyMinor()
+				+ "." + aktualnaWersja.getLokalnyRelease() + " (rev. " + aktualnaWersja.getLokalnaKomplilacja()+ ")");
+			RejestratorZdarzeñ.pobierzInstancjê().info("Œcie¿ka: " + wystawionaWersja.getŒcie¿ka());	
 		}
 	}
 
@@ -267,6 +283,12 @@ public class Model {
 		JPASQLiteRepozytorium.pobierzInstancjê().zamknijTransakcjê();
 	}
 
+	
+	public void zapiszDoDziennikaZdarzeñ(String zdarzenie) {
+		
+		widok.wyœwietlZdarzenie(zdarzenie);
+	}
+	
 	/**
 	 * Bie¿¹ca data jest podana w formacie 15-07-2015, 14:17:45.
 	 */

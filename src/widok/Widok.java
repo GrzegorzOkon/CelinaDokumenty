@@ -100,8 +100,8 @@ public class Widok extends Application {
         
         kontenerprzyciskow = new HBox(16);
         
-        SprawdzWCentrali = new Button("Sprawdz w centrali");
-        SprawdzLokalnie = new Button("Sprawdz lokalnie");
+        SprawdzWCentrali = new Button("SprawdŸ w centrali");
+        SprawdzLokalnie = new Button("SprawdŸ lokalnie");
         Wyczysc = new Button("Wyczyœæ");
         Zamknij = new Button("Zamknij");
         
@@ -133,11 +133,16 @@ public class Widok extends Application {
 		});
         
 		// Przypisuje czyszczenie pól do przycisku Wyczyœæ
-        Wyczysc.setOnAction((event) -> {		    
+        Wyczysc.setOnAction((event) -> {
+        	
         	poleWyszukiwania.clear();
         	poleRaportuDlaHelpDesku.clear();
         	poleRaportuDlaAdministratora.clear();
-        	poleDziennikaZdarzeñ.clear();
+		});
+        
+        Zamknij.setOnAction((event) -> {
+        	
+        	primaryStage.close();
 		});
         
         konternerDolny.setRight(kontenerprzyciskow);
@@ -211,13 +216,16 @@ public class Widok extends Application {
 	}
 	
 	public synchronized void wyœwietlRaporty(List<Raport> raporty) {	
+		
 		for(Raport raport : raporty) {
+			
 			poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku() + "\n\n");
 			poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora());
 		}
 	}
 	
-	public synchronized void wyœwietlTestowo(String raporcik) {
-		poleRaportuDlaAdministratora.appendText(raporcik);
+	public synchronized void wyœwietlZdarzenie(String zdarzenie) {
+		
+		poleDziennikaZdarzeñ.appendText(zdarzenie);
 	}
 }
