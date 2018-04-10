@@ -216,7 +216,7 @@ public class Kontroler {
 						//Wpis do raportu o braku kodu oddzia³u w opisach
 					} catch(Exception ex) {
 						
-						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+
 					}
 				}
 
@@ -264,7 +264,7 @@ public class Kontroler {
 					} catch (NullPointerException ex) {
 						//Wpis do raportu o braku kodu oddzia³u w opisach
 					} catch (Exception ex) {
-						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+
 					}	
 				}
 				
@@ -319,8 +319,7 @@ public class Kontroler {
 						
 						//Wpis do raportu o braku kodu oddzia³u w opisach
 					} catch(Exception ex) {
-						
-						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
+
 					}
 				}
 

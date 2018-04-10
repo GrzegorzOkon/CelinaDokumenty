@@ -254,6 +254,7 @@ public class GeneratorRaportów {
 			
 			// Generowanie raportów dla numerów dla których nie ma dokumentów
 			if (dokument.getDokumentyZCentralaCntrValidDok() == null && dokument.getDokumentyZCentralaDokumenty() == null && dokument.getDokumentyZIzbyDokumenty() == null) {
+				
 				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {				
 					raportDlaHelpDesku += "Szukanego dokumentu o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
 						+ " brak w bazach centralnej oraz lokalnych.";
@@ -270,7 +271,10 @@ public class GeneratorRaportów {
 					raportDlaAdministratora += "Szukany sym_dok " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
 						+ " nie wystêpuje w bazach centralnej oraz lokalnych.\n\n";
 				}
+				
+				raporty.add(new Raport(raportDlaHelpDesku, raportDlaAdministratora));	
 			} else if (dokument.getDokumentyZCentralaCntrValidDok() != null && dokument.getDokumentyZCentralaDokumenty() == null && dokument.getDokumentyZIzbyDokumenty() == null) {  //numery s¹ jedynie w cntr_valid_dok
+				
 				for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
 					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
 						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w bazach lokalnych."
@@ -305,7 +309,7 @@ public class GeneratorRaportów {
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: " - brak opisu dla danego kodu.\n\n")
 								: "");
-					} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
+					} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true ) {
 						raportDlaHelpDesku += "Szukany dokument o numerze systemowym " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + " znajduje siê w bazie centralnej, natomiast brak go w bazach lokalnych."
 							+ ((dokumentCntrValidDok.getNumerWlasny() != null) 
 								? " Dokument ma nadany numer w³asny " + dokumentCntrValidDok.getNumerWlasny() + "."
@@ -340,10 +344,13 @@ public class GeneratorRaportów {
 										: " - brak opisu dla danego kodu.\n\n")
 								: "");	
 					}
+					
+					raporty.add(new Raport(raportDlaHelpDesku, raportDlaAdministratora));	
 				}
 			} else if (dokument.getDokumentyZCentralaDokumenty() != null && dokument.getDokumentyZIzbyDokumenty() == null) {  //numer jest w dokumentach
-				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
-					for (DokumentZCentralaDokumenty dok : dokument.getDokumentyZCentralaDokumenty()) {		
+				for (DokumentZCentralaDokumenty dok : dokument.getDokumentyZCentralaDokumenty()) {	
+					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
+						
 						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w bazach lokalnych."			
 							+ ((dok.getIdentyfikatorDokumentu() != null) 
 								? " Ma nadany numer systemowy " + dok.getIdentyfikatorDokumentu() + "."
@@ -379,9 +386,8 @@ public class GeneratorRaportów {
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) + ".\n\n"
 									: " - brak opisu dla danego kodu.\n\n")
 								: "");
-					}
-				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
-					for (DokumentZCentralaDokumenty dok : dokument.getDokumentyZCentralaDokumenty()) {	
+					} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
+
 						raportDlaHelpDesku += "Szukany dokument o numerze systemowym " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + " znajduje siê w bazie centralnej, natomiast brak go w bazach lokalnych."			
 							+ ((dok.getSymbolDokumentu() != null)
 								? " Posiada numer ewidencyjny " + dok.getSymbolDokumentu() + "."
@@ -411,9 +417,7 @@ public class GeneratorRaportów {
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) + ".\n\n"
 									: " - brak opisu dla danego kodu.\n\n")
 								: "");	
-					}
-				} else {
-					for (DokumentZCentralaDokumenty dok : dokument.getDokumentyZCentralaDokumenty()) {	
+					} else {
 						raportDlaHelpDesku += "Szukany dokument o numerze ewidencyjnym " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) + " znajduje siê w bazie centralnej, natomiast brak go w bazach lokalnych."			
 							+ ((dok.getIdentyfikatorDokumentu() != null) 
 								? " Ma nadany numer systemowy " + dok.getIdentyfikatorDokumentu() + "."
@@ -444,10 +448,13 @@ public class GeneratorRaportów {
 									: " - brak opisu dla danego kodu.\n\n")
 								: "");
 					}
+					
+					raporty.add(new Raport(raportDlaHelpDesku, raportDlaAdministratora));	
 				}
 			} else if (dokument.getDokumentyZIzbyDokumenty() != null) { 
-				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
-					for (DokumentZIzbyDokumenty dok : dokument.getDokumentyZIzbyDokumenty()) {		
+				for (DokumentZIzbyDokumenty dok : dokument.getDokumentyZIzbyDokumenty()) {
+					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
+		
 						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie lokalnej."			
 							+ ((dok.getIdentyfikatorDokumentu() != null) 
 								? " Ma nadany numer systemowy " + dok.getIdentyfikatorDokumentu() + "."
@@ -483,9 +490,7 @@ public class GeneratorRaportów {
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) + ".\n\n"
 									: " - brak opisu dla danego kodu.\n\n")
 								: "");
-					}
-				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
-					for (DokumentZIzbyDokumenty dok : dokument.getDokumentyZIzbyDokumenty()) {	
+					} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {	
 						raportDlaHelpDesku += "Szukany dokument o numerze systemowym " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + " znajduje siê w bazie lokalnej."			
 							+ ((dok.getSymbolDokumentu() != null)
 								? " Posiada numer ewidencyjny " + dok.getSymbolDokumentu() + "."
@@ -515,9 +520,7 @@ public class GeneratorRaportów {
 									? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dok.getIdentyfikatorJednostki()) + ".\n\n"
 									: " - brak opisu dla danego kodu.\n\n")
 								: "");	
-					}
-				} else {
-					for (DokumentZIzbyDokumenty dok : dokument.getDokumentyZIzbyDokumenty()) {	
+					} else {
 						raportDlaHelpDesku += "Szukany dokument o numerze ewidencyjnym " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) + " znajduje siê w bazie lokalnej."	
 							+ ((dok.getIdentyfikatorDokumentu() != null) 
 								? " Ma nadany numer systemowy " + dok.getIdentyfikatorDokumentu() + "."
@@ -548,13 +551,12 @@ public class GeneratorRaportów {
 									: " - brak opisu dla danego kodu.\n\n")
 								: "");
 					}
-				}				
+					
+					raporty.add(new Raport(raportDlaHelpDesku, raportDlaAdministratora));	
+				}		
 			}
-			
-			raporty.add(new Raport(raportDlaHelpDesku, raportDlaAdministratora));	
 		}
 		
-		return raporty;
-		
-		}
+		return raporty;	
+	}
 }
