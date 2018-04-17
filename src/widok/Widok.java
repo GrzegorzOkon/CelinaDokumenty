@@ -199,17 +199,18 @@ public class Widok extends Application {
     }
     
     /**
-     * Metoda spradzaj¹ca wprowadzone dane do formatki pod k¹tem duplikatów i usuwania spacji.
+     * Metoda spradzaj¹ca wprowadzone dane do formatki pod k¹tem duplikatów i zbêdnych danych.
      * 
-     * @return wiersze
-     * 			 Lista posortowanych alfabetycznie numerów dokumentów.
+     * @return uporzadkowaneWiersze - lista posortowanych alfabetycznie numerów dokumentów bez duplikatów
      */   
 	private TreeSet<String> walidujDane() {
-		String[] nieobrobioneWiersze = poleWyszukiwania.getText().split("\n");
-		TreeSet<String> uporzadkowaneWiersze = new TreeSet<>();
 
+		TreeSet<String> uporzadkowaneWiersze = new TreeSet<>();
+		String[] nieobrobioneWiersze = poleWyszukiwania.getText().split("\n");
+		
 		for (String nieobrobionyWiersz : nieobrobioneWiersze) {
-			uporzadkowaneWiersze.add(nieobrobionyWiersz.trim());	//usuwa spacje i nie dopisuje duplikatów
+			//usuwa zbêdne znaki, spacje i nie dopisuje duplikatów
+			uporzadkowaneWiersze.add(nieobrobionyWiersz.replaceAll(",|;|\\.|'|\"", "").trim());	
 		}
 		
 		return uporzadkowaneWiersze;

@@ -230,7 +230,12 @@ public class Kontroler {
 		watek.start();
 	}
 	
-	//
+    /**
+     * Wyszukuje dokumenty w bazie centralnej po podanych identyfikatorach dokumentów (id_dok)
+     * i nastêpnie szuka w bazach lokalnych po tych samych numerach
+     * 
+     * @param identyfikatoryDokumentów jest list¹ identyfikatorów dokumentów (id_dok w bazie) po których ma nast¹piæ wyszukiwanie
+     */ 
 	public void wyszukajLokalniePoIdentyfikatorzeDokumentu(TreeSet<String> identyfikatoryDokumentów) {
 		Thread watek = new Thread(new Runnable() {
 
