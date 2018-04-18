@@ -10,9 +10,9 @@ public class AktualnaWersja {
     private int lokalnyMajor = 2;
     private int lokalnyMinor = 0;
     private int lokalnyRelease = 0;
-    private int lokalnyBuild = 0;
+    private int lokalnyBuild = 2;
     private String lokalnyTyp = "GA";
-    private int lokalnaKomplilacja = 20180410;
+    private int lokalnaKomplilacja = 20180418;
     
 	private AktualnaWersja() {}
 	
@@ -63,10 +63,11 @@ public class AktualnaWersja {
 		WystawionaWersja wystawionaWersja = (WystawionaWersja)obj;
 		
 		if (this.lokalnaNazwa.equals(wystawionaWersja.getNazwa()) && this.lokalnyMajor == wystawionaWersja.getMajor() 
-			&& this.lokalnyMinor == wystawionaWersja.getMinor() && this.lokalnyRelease == wystawionaWersja.getRelease() 
-			&& this.lokalnaKomplilacja == wystawionaWersja.getKompilacja()) {
+			&& this.lokalnyMinor == wystawionaWersja.getMinor() && this.lokalnyRelease == wystawionaWersja.getRelease()) {
+			
 			return true;
 		} else {
+			
 			return false;
 		}
 	}

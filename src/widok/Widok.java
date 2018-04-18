@@ -155,12 +155,13 @@ public class Widok extends Application {
         
         poleRaportuDlaAdministratora = new TextArea();
         poleRaportuDlaAdministratora.setEditable(false);
+        poleRaportuDlaAdministratora.setWrapText(true);
         zakladka2.setContent(poleRaportuDlaAdministratora);
         
         poleDziennikaZdarzeñ = new TextArea();
         zakladka3.setContent(poleDziennikaZdarzeñ);
         
-        scena = new Scene(kontenerZakladek, 700, 600);
+        scena = new Scene(kontenerZakladek, 600, 600);
     }
     
     /**
