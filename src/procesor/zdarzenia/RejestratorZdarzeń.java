@@ -74,6 +74,19 @@ public class RejestratorZdarzeñ {
 		zapiszDoDziennika(tekst, 0);
 	}
 	
+	/** Metoda loguje w dzienniku zdarzeñ wpisy z flag¹ debug
+	 * 
+     * @param tekst Opis zdarzenia
+     * 
+     * @param logArea pole tekstowe dla logowania zdarzeñ aplikacji
+     * 
+     * @since 2.0
+     */
+	public void debug(String tekst){
+
+		zapiszDoDziennika(tekst, 3);
+	}
+	
 	  /** Metoda loguje w dzienniku zdarzeñ wpisy z flag¹ w zale¿noœci od parametru wejœciowego flaga
 
      * @param text Opis zdarzenia
@@ -109,7 +122,7 @@ public class RejestratorZdarzeñ {
 
         if (flaga == 3){
 
-                //logArea.append(getCurrentTimeStamp() + "   DEBUG " + text + System.getProperty("line.separator"));
+        	model.zapiszDoDziennikaZdarzeñ(pobierzAktualnyZnacznikCzasu() + "   DEBUG  " + tekst + System.getProperty("line.separator"));
         }
 
         //logArea.setCaretPosition(logArea.getDocument().getLength());

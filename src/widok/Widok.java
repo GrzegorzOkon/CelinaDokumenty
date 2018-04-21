@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import kontroler.Kontroler;
 import procesor.Model;
 import procesor.raporty.wejscie.Raport;
+import procesor.zdarzenia.RejestratorZdarzeñ;
 
 public class Widok extends Application {
 	
@@ -208,10 +209,17 @@ public class Widok extends Application {
 
 		TreeSet<String> uporzadkowaneWiersze = new TreeSet<>();
 		String[] nieobrobioneWiersze = poleWyszukiwania.getText().split("\n");
+		int licznik = 0;
 		
 		for (String nieobrobionyWiersz : nieobrobioneWiersze) {
 			//usuwa zbêdne znaki, spacje i nie dopisuje duplikatów
 			uporzadkowaneWiersze.add(nieobrobionyWiersz.replaceAll(",|;|\\.|'|\"", "").trim());	
+		}
+		
+		for (String wiersz : uporzadkowaneWiersze) {
+			
+			++licznik;
+			RejestratorZdarzeñ.pobierzInstancjê().debug("Dokument " + licznik + ": " + wiersz);
 		}
 		
 		return uporzadkowaneWiersze;
