@@ -66,7 +66,7 @@ public class Model {
 
 		try {
 			
-			RejestratorZdarzeñ.pobierzInstancjê().info("Próba po³aczenia z serwerem aktualizacji...");
+			RejestratorZdarzeñ.pobierzInstancjê().info("Próba po³¹czenia z serwerem aktualizacji...");
 			RejestratorZdarzeñ.pobierzInstancjê().info("\\\\10.37.0.113\\c$\\Program Files\\JCelinaDokumenty\\JCelinaDokumenty.sqlite");
 			
 			wystawionaWersja = JPASQLiteRepozytorium.pobierzInstancjê().findInVersion();

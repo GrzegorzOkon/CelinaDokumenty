@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
+import procesor.zdarzenia.RejestratorZdarzeñ;
 
 public class JPACelinaRepository {
 	private static final String SELECT_DOKUMENT_BY_NRAKT_IN_CNTRVALIDDOK = "SELECT d FROM DokumentZCentralaCntrValidDok d WHERE d.numerWlasny = :numerAkt";
@@ -21,6 +22,10 @@ public class JPACelinaRepository {
 	private JPACelinaRepository() {
 		menedzerEncjiFabryka = Persistence.createEntityManagerFactory("Centrala_JPA");
 		menedzerEncji = menedzerEncjiFabryka.createEntityManager();
+		
+		if (menedzerEncji.isOpen())
+			RejestratorZdarzeñ.pobierzInstancjê().info("Próba po³¹czenia z baz¹ danych " + menedzerEncji.getProperties().get("javax.persistence.jdbc.url").toString().substring(menedzerEncji.getProperties().get("javax.persistence.jdbc.url").toString().indexOf(":") + 1)
+												   	   + " poprzez " + menedzerEncji.getProperties().get("javax.persistence.jdbc.url").toString().substring(0, menedzerEncji.getProperties().get("javax.persistence.jdbc.url").toString().indexOf(":")));
 	}
 	
 	public static JPACelinaRepository pobierzInstancje() {

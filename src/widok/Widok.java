@@ -218,8 +218,7 @@ public class Widok extends Application {
 		
 		for (String wiersz : uporzadkowaneWiersze) {
 			
-			++licznik;
-			RejestratorZdarzeñ.pobierzInstancjê().debug("Dokument " + licznik + ": " + wiersz);
+			RejestratorZdarzeñ.pobierzInstancjê().debug("Dokument " + ++licznik + ": " + wiersz);
 		}
 		
 		return uporzadkowaneWiersze;
