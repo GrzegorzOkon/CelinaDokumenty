@@ -9,10 +9,10 @@ public class AktualnaWersja {
     private String lokalnaNazwa = "JCelinaDokumenty";
     private int lokalnyMajor = 2;
     private int lokalnyMinor = 0;
-    private int lokalnyRelease = 0;
-    private int lokalnyBuild = 3;
+    private int lokalnyRelease = 1;
+    private int lokalnyBuild = 1;
     private String lokalnyTyp = "GA";
-    private int lokalnaKomplilacja = 20180421;
+    private int lokalnaKomplilacja = 20180517;
     
 	private AktualnaWersja() {}
 	

@@ -25,7 +25,7 @@ public class DokumentZCentralaDokumenty {
    @Column(name = "sym_dok")
    private String symbolDokumentu;
 	
-   @Column(name = "status")
+   @Column(name = "status", nullable = false)
    private String statusPrzetwarzania;
 	
    @Column(name = "data_formal_przyj")
