@@ -1,7 +1,6 @@
 package procesor.wersja.wejscie;
 
 import procesor.dao.sqlite.entity.WystawionaWersja;
-import procesor.wersja.KontrolerWersji;
 
 public class AktualnaWersja {
 	private static AktualnaWersja instancja;
@@ -10,9 +9,9 @@ public class AktualnaWersja {
     private int lokalnyMajor = 2;
     private int lokalnyMinor = 0;
     private int lokalnyRelease = 1;
-    private int lokalnyBuild = 3;
+    private int lokalnyBuild = 4;
     private String lokalnyTyp = "GA";
-    private int lokalnaKomplilacja = 20180523;
+    private int lokalnaKomplilacja = 20180524;
     
 	private AktualnaWersja() {}
 	

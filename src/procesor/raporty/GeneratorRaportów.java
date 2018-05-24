@@ -58,10 +58,9 @@ public class GeneratorRaportów {
 			} else if (dokument.getDokumentyZCentralaCntrValidDok() != null && dokument.getDokumentyZCentralaDokumenty() == null) {  //numery s¹ jedynie w cntr_valid_dok
 				for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
 					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
-						raportDlaHelpDesku += "Szukany numer w³asny " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej."
-							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
-								? " Dokument ma nadany numer systemowy " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + "."
-								: "")
+						
+						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej."
+							+ " Ma przypisany numer systemowy " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + "."
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
 								? " Jest w statusie " + dokumentCntrValidDok.getStatusPrzetwarzania()
 									+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) != null)
@@ -69,18 +68,16 @@ public class GeneratorRaportów {
 										: ".")
 								: "")	
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? " Ma przypisan¹ jednostkê przeznaczenia " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? " Jego jednostka przeznaczenia to " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + "."
 										: ".")
 								: "");	
-						raportDlaAdministratora += "Szukany " + ((dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true)
-								? "nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT)
-								: "")
-							+ " znajduje siê w tabeli cntr_valid_dok.\n"
+						
+						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w tabeli cntr_valid_dok.\n"
 							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
-								? "Dokument ma nadany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
-								: "\n")
+								? "Ma przypisany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
+								: "")
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
 								? "Jest w status_przetw " + dokumentCntrValidDok.getStatusPrzetwarzania()
 									+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) != null)
@@ -88,7 +85,7 @@ public class GeneratorRaportów {
 										: " - brak opisu dla danego statusu.\n")
 								: "")
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? "Ma przypisan¹ jedn_przezn " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? "Jego jedn_przezn to " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: " - brak opisu dla danego kodu.\n\n")
