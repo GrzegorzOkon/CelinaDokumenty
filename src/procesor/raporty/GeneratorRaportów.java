@@ -74,7 +74,7 @@ public class GeneratorRaportów {
 										: ".")
 								: "");	
 						
-						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w tabeli cntr_valid_dok.\n"
+						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w tabeli cntr_valid_dok, ale brak go w tabeli dokumenty.\n"
 							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
 								? "Ma przypisany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
 								: "")
@@ -222,22 +222,21 @@ public class GeneratorRaportów {
 			
 			// Generowanie raportów dla numerów dla których nie ma dokumentów
 			if (dokument.getDokumentyZCentralaCntrValidDok() == null && dokument.getDokumentyZCentralaDokumenty() == null && dokument.getDokumentyZIzbyDokumenty() == null) {
-				
-				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {				
-					raportDlaHelpDesku += "Szukanego dokumentu o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-						+ " brak w bazach centralnej oraz lokalnych.";
-					raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) 
-						+ " nie wystêpuje w bazach centralnej oraz lokalnych.\n\n";
+				if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {		
+					
+					raportDlaHelpDesku += "Szukanego dokumentu o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " brak w bazach centralnej oraz lokalnej.";
+					
+					raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " nie wystêpuje w centrali w tabelach cntr_valid_dok, dokumenty oraz lokalnej dokumenty.\n\n";
 				} else if (dokument.getSzukanyNumer().containsKey(Identyfikator.IDENTYFIKATOR_DOKUMENTU) == true) {
-					raportDlaHelpDesku += "Szukanego dokumentu o numerze systemowym " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-						+ " brak w bazach centralnej oraz lokalnych.";
-					raportDlaAdministratora += "Szukany id_dok " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) 
-						+ " nie wystêpuje w bazach centralnej oraz lokalnych.\n\n";
+					
+					raportDlaHelpDesku += "Szukanego dokumentu o numerze systemowym " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + " brak w bazach centralnej oraz lokalnej.";
+					
+					raportDlaAdministratora += "Szukany id_dok " + dokument.getSzukanyNumer().get(Identyfikator.IDENTYFIKATOR_DOKUMENTU) + " nie wystêpuje w centrali w tabelach cntr_valid_dok, dokumenty oraz lokalnej dokumenty.\n\n";				
 				} else {
-					raportDlaHelpDesku += "Szukanego dokumentu o numerze ewidencyjnym " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
-						+ " brak w bazach centralnej oraz lokalnych.";	
-					raportDlaAdministratora += "Szukany sym_dok " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) 
-						+ " nie wystêpuje w bazach centralnej oraz lokalnych.\n\n";
+					
+					raportDlaHelpDesku += "Szukanego dokumentu o numerze ewidencyjnym " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) + " brak w bazach centralnej oraz lokalnej.";	
+					
+					raportDlaAdministratora += "Szukany sym_dok " + dokument.getSzukanyNumer().get(Identyfikator.SYMBOL_DOKUMENTU) + " nie wystêpuje w centrali w tabelach cntr_valid_dok, dokumenty oraz lokalnej dokumenty.\n\n";
 				}
 				
 				raporty.add(new Raport(raportDlaHelpDesku, raportDlaAdministratora));	
@@ -245,26 +244,26 @@ public class GeneratorRaportów {
 				
 				for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
 					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
-						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w bazach lokalnych."
-							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
-								? " Ma nadany numer systemowy " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + "."
-								: "")
+						
+						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w lokalnej."
+							+ " Ma przypisany numer systemowy " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + "."
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
 								? " Jest w statusie " + dokumentCntrValidDok.getStatusPrzetwarzania()
 									+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) != null)
 										? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) + "."
 										: ".")
-								: "")	
+									: "")	
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? " Ma przypisan¹ jednostkê przeznaczenia " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? " Jego jednostka przeznaczenia to " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + "."
 										: ".")
 								: "");	
-						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w tabeli cntr_valid_dok, ale nie ma go w bazach lokalnych.\n"
+						
+						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w centrali w tabeli cntr_valid_dok, ale brakuje go w centralnej i lokalnej tabeli dokumenty\n"
 							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
-								? "Dokument ma nadany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
-								: "\n")
+								? "Ma przypisany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
+								: "")
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
 								? "Jest w status_przetw " + dokumentCntrValidDok.getStatusPrzetwarzania()
 									+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) != null)
@@ -272,7 +271,7 @@ public class GeneratorRaportów {
 										: " - brak opisu dla danego statusu.\n")
 								: "")
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? "Ma przypisan¹ jedn_przezn " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? "Jego jedn_przezn to " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + ".\n\n"
 										: " - brak opisu dla danego kodu.\n\n")
