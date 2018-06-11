@@ -245,20 +245,20 @@ public class GeneratorRaportów {
 				for (DokumentZCentralaCntrValidDok dokumentCntrValidDok : dokument.getDokumentyZCentralaCntrValidDok()) {
 					if (dokument.getSzukanyNumer().containsKey(Identyfikator.NUMER_AKT) == true) {
 						
-						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w lokalnej."
+						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w lokalnej"
+							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
+								? " jednostki " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
+										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + "."
+										: ".")
+								: ".")
 							+ " Ma przypisany numer systemowy " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + "."
 							+ ((dokumentCntrValidDok.getStatusPrzetwarzania() != null)
 								? " Jest w statusie " + dokumentCntrValidDok.getStatusPrzetwarzania()
 									+ ((StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) != null)
 										? " - " + StatusyPrzetwarzania.pobierzInstancjê().pobierzOpisStatusu(dokumentCntrValidDok.getIdentyfikatorRodzajuDokumentu(), dokumentCntrValidDok.getStatusPrzetwarzania(), Tabela.CNTR_VALID_DOK) + "."
 										: ".")
-									: "")	
-							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? " Jego jednostka przeznaczenia to " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
-									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
-										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + "."
-										: ".")
-								: "");	
+									: "");
 						
 						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w centrali w tabeli cntr_valid_dok, ale brakuje go w centralnej i lokalnej tabeli dokumenty\n"
 							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
