@@ -3,6 +3,7 @@ package widok;
 import java.util.*;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.TabPane.TabClosingPolicy;
@@ -227,9 +228,8 @@ public class Widok extends Application {
 	public synchronized void wyœwietlRaporty(List<Raport> raporty) {	
 		
 		for(Raport raport : raporty) {
-			
-			poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku() + "\n\n");
-			poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora());
+			Platform.runLater(() -> poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku() + "\n\n"));
+			Platform.runLater(() ->	poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora()));
 		}
 	}
 	

@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.DokumentZIzby;
 import kontroler.wejscie.Identyfikator;
+import kontroler.wejscie.WyszukajWCentraliPoNumerachAktZadanie;
 import procesor.Model;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
@@ -14,6 +18,7 @@ import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
 import procesor.raporty.wejscie.Raport;
 import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
+import static javafx.concurrent.Worker.State.READY;
 
 /**
  * Klasa kontrolera w architekturze mvc.
@@ -53,48 +58,24 @@ public class Kontroler {
 		w¹tek.start();
 	}
 	
+	/**
+	 * Metoda szuka dokumentów w bazie centralnej po przes³anych numerach w³asnych
+	 * 
+	 * @param numeryAkt - numery w³asne dokumentów
+	 */
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {
-		Thread watek = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				ArrayList<Dokument> dokumenty = new ArrayList<>();
-				List<Raport> raporty = new ArrayList<>();
-				
-				for (String numerAkt : numeryAkt) {			
-					try {
-						List<DokumentZCentralaCntrValidDok> dokumentyZTabeliCntrValidDok = model.findByNrAktInCntrValidDok(numerAkt);
-						
-						if (dokumentyZTabeliCntrValidDok != null) {
-							for (DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok : dokumentyZTabeliCntrValidDok) {
-								Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
-								dokumenty.add(dokument);
-							
-								dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
-
-								if (dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu() != null) {						
-									DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(dokumentZTabeliCntrValidDok.getIdentyfikatorDokumentu());
-									dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);	
-								}				
-							}
-						} else {
-							Dokument dokument = new Dokument(Identyfikator.NUMER_AKT, numerAkt);
-							dokumenty.add(dokument);
-						}
-					} catch (Exception ex) {
-
-						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
-					}	
-				}
-				
-				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujCentralneRaporty(dokumenty);
-				widok.wyœwietlRaporty(raporty);
-				model.zapiszDoAnalizy(raporty);
-			}
-		});
-		
-		watek.start();
+		uruchomZadanie(new WyszukajWCentraliPoNumerachAktZadanie(widok, model, numeryAkt));
+	}
+	
+	/**
+	 * Metoda uruchamia d³ugotrwa³e zadania w tle
+	 * 
+	 * @param zadanie - obiekt typu Task do wykonania
+	 */
+	private void uruchomZadanie(Task<ObservableList<Long>> zadanie) {		
+		Thread w¹tekWTle = new Thread(zadanie);
+		w¹tekWTle.setDaemon(true);
+		w¹tekWTle.start();
 	}
 	
 	//
