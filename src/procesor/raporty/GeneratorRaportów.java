@@ -247,7 +247,7 @@ public class GeneratorRaportów {
 						
 						raportDlaHelpDesku += "Szukany dokument o numerze w³asnym " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w bazie centralnej, natomiast brak go w lokalnej"
 							+ ((dokumentCntrValidDok.getJednostkaPrzeznaczenia() != null)
-								? " jednostki " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
+								? " jednostce " + dokumentCntrValidDok.getJednostkaPrzeznaczenia()
 									+ ((KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) != null)
 										? " - " + KodyOddzia³ów.pobierzInstancjê().pobierzKod(dokumentCntrValidDok.getJednostkaPrzeznaczenia()) + "."
 										: ".")
@@ -260,7 +260,7 @@ public class GeneratorRaportów {
 										: ".")
 									: "");
 						
-						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w centrali w tabeli cntr_valid_dok, ale brakuje go w centralnej i lokalnej tabeli dokumenty\n"
+						raportDlaAdministratora += "Szukany nr_akt " + dokument.getSzukanyNumer().get(Identyfikator.NUMER_AKT) + " znajduje siê w centrali w tabeli cntr_valid_dok, ale brakuje go w centralnej i lokalnej tabeli dokumenty.\n"
 							+ ((dokumentCntrValidDok.getIdentyfikatorDokumentu() != null) 
 								? "Ma przypisany id_dok " + dokumentCntrValidDok.getIdentyfikatorDokumentu() + ".\n"
 								: "")
