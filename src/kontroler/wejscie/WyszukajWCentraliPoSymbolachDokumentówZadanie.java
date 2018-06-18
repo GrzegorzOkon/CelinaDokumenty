@@ -12,12 +12,12 @@ import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 import procesor.raporty.wejscie.Raport;
 import widok.Widok;
 
-public class WyszukajWCentraliPoSymbolachDokumentów extends Task<ObservableList<Long>> {
+public class WyszukajWCentraliPoSymbolachDokumentówZadanie extends Task<ObservableList<Long>> {
 	private Widok widok = null;
 	private Model model = null;
 	private TreeSet<String> symboleDokumentów = null;
 	
-	public WyszukajWCentraliPoSymbolachDokumentów(Widok widok, Model model, TreeSet<String> symboleDokumentów) {
+	public WyszukajWCentraliPoSymbolachDokumentówZadanie(Widok widok, Model model, TreeSet<String> symboleDokumentów) {
 		this.widok = widok;
 		this.model = model;
 		this.symboleDokumentów = symboleDokumentów;

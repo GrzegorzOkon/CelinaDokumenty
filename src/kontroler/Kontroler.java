@@ -3,23 +3,15 @@ package kontroler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
-
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import kontroler.wejscie.Dokument;
-import kontroler.wejscie.DokumentZIzby;
-import kontroler.wejscie.Identyfikator;
-import kontroler.wejscie.WyszukajWCentraliPoIdentyfikatorachDokumentówZadanie;
-import kontroler.wejscie.WyszukajWCentraliPoNumerachAktZadanie;
+import kontroler.wejscie.*;
 import procesor.Model;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
 import procesor.dao.sybase.entity.DokumentZCentralaDokumenty;
 import procesor.dao.sybase.entity.DokumentZIzbyDokumenty;
 import procesor.raporty.wejscie.Raport;
-import procesor.wersja.wejscie.AktualnaWersja;
 import widok.Widok;
-import static javafx.concurrent.Worker.State.READY;
 
 /**
  * Klasa kontrolera w architekturze mvc.
@@ -83,7 +75,7 @@ public class Kontroler {
      * @param symDok - lista numerów symboli dokumentów po których nast¹pi wyszukiwanie w bazie
      */ 
 	public void wyszukajWCentraliSymDok(TreeSet<String> symboleDokumentów) {
-		uruchomZadanie(new WyszukajWCentraliPoIdentyfikatorachDokumentówZadanie(widok, model, symboleDokumentów));
+		uruchomZadanie(new WyszukajWCentraliPoSymbolachDokumentówZadanie(widok, model, symboleDokumentów));
 	}
 	
 	/**
