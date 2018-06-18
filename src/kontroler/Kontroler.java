@@ -10,6 +10,7 @@ import javafx.concurrent.Task;
 import kontroler.wejscie.Dokument;
 import kontroler.wejscie.DokumentZIzby;
 import kontroler.wejscie.Identyfikator;
+import kontroler.wejscie.WyszukajWCentraliPoIdentyfikatorachDokumentówZadanie;
 import kontroler.wejscie.WyszukajWCentraliPoNumerachAktZadanie;
 import procesor.Model;
 import procesor.dao.sybase.entity.DokumentZCentralaCntrValidDok;
@@ -59,12 +60,30 @@ public class Kontroler {
 	}
 	
 	/**
-	 * Metoda szuka dokumentów w bazie centralnej po przes³anych numerach w³asnych
+	 * Metoda wyszukuj¹ca dokumenty w bazie centralnej po podanych numerach w³asnych dokumentów i tworz¹ca z otrzymanych danych raporty
 	 * 
-	 * @param numeryAkt - numery w³asne dokumentów
+	 * @param numeryAkt - lista numerów w³asnych dokumentów po których nast¹pi wyszukiwanie w bazie
 	 */
 	public void wyszukajWCentraliNrAkt(TreeSet<String> numeryAkt) {
 		uruchomZadanie(new WyszukajWCentraliPoNumerachAktZadanie(widok, model, numeryAkt));
+	}
+	
+	/**
+	 * Metoda wyszukuj¹ca dokumenty w bazie centralnej po podanych identyfikatorach dokumentów i tworz¹ca z otrzymanych danych raporty
+	 * 
+	 * @param identyfikatoryDokumentów - lista identyfikatorów dokumentów po których nast¹pi wyszukiwanie w bazie
+	 */
+	public void wyszukajWCentraliIdDok(TreeSet<String> identyfikatoryDokumentów) {
+		uruchomZadanie(new WyszukajWCentraliPoIdentyfikatorachDokumentówZadanie(widok, model, identyfikatoryDokumentów));
+	}
+	
+    /**
+     * Metoda wyszukuj¹ca dokumenty w bazie centralnej po podanych symbolach dokumentów i tworz¹ca z otrzymanych danych raporty
+     * 
+     * @param symDok - lista numerów symboli dokumentów po których nast¹pi wyszukiwanie w bazie
+     */ 
+	public void wyszukajWCentraliSymDok(TreeSet<String> symboleDokumentów) {
+		uruchomZadanie(new WyszukajWCentraliPoIdentyfikatorachDokumentówZadanie(widok, model, symboleDokumentów));
 	}
 	
 	/**
@@ -76,80 +95,6 @@ public class Kontroler {
 		Thread w¹tekWTle = new Thread(zadanie);
 		w¹tekWTle.setDaemon(true);
 		w¹tekWTle.start();
-	}
-	
-	//
-	public void wyszukajWCentraliIdDok(TreeSet<String> identyfikatoryDokumentów) {
-		Thread watek = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				ArrayList<Dokument> dokumenty = new ArrayList<>();
-				List<Raport> raporty = new ArrayList<>();
-		
-				for (String identyfikatorDokumentu : identyfikatoryDokumentów) {
-					Dokument dokument = new Dokument(Identyfikator.IDENTYFIKATOR_DOKUMENTU, identyfikatorDokumentu);
-					dokumenty.add(dokument);
-			
-					try {
-						DokumentZCentralaDokumenty dokumentZTabeliDokumenty = model.findByIdDokInDokumenty(identyfikatorDokumentu);										
-						dokument.setDokumentyZCentralaDokumenty(dokumentZTabeliDokumenty);
-				
-						if (dokumentZTabeliDokumenty == null) {					
-							DokumentZCentralaCntrValidDok dokumentZTabeliCntrValidDok = model.findByIdDokInCntrValidDok(identyfikatorDokumentu);
-							dokument.setDokumentyZCentralaCntrValidDok(dokumentZTabeliCntrValidDok);
-						} 	
-					} catch (Exception ex) {
-
-						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
-					}		
-				}
-		
-				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujCentralneRaporty(dokumenty);
-				widok.wyœwietlRaporty(raporty);
-				model.zapiszDoAnalizy(raporty);
-			}
-		});
-		
-		watek.start();
-	}
-	
-    /**
-     * Metoda wyszukuj¹ca dokumenty w bazie centralnej po podanych symbolach dokumentów i tworz¹ca z otrzymanych danych raporty.
-     * 
-     * @param symDok
-     * 			 Lista numerów symboli dokumentów po których nastapi wyszukiwanie w bazie.
-     */ 
-	public void wyszukajWCentraliSymDok(TreeSet<String> symDok) {
-		Thread watek = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				ArrayList<Dokument> dokumenty = new ArrayList<>();
-				List<Raport> raporty = new ArrayList<>();
-				
-				for (String symbolDokumentu : symDok) {
-					Dokument dokument = new Dokument(Identyfikator.SYMBOL_DOKUMENTU, symbolDokumentu);
-					dokumenty.add(dokument);
-					
-					try {
-						List<DokumentZCentralaDokumenty> dokumentyZTabeliDokumenty = model.findBySymDokInDokumenty(symbolDokumentu);
-						
-						dokument.setDokumentyZCentralaDokumenty(dokumentyZTabeliDokumenty);
-					} catch (Exception ex) {
-						break;  //wyœwietla raz komunikat b³êdu dla listy komunikatów
-					}
-				}
-				
-				// Wyœwietla odpowiedni raport oraz zapisuje dane "na boku" do ewentualnej analizy
-				raporty = model.generujCentralneRaporty(dokumenty);
-				widok.wyœwietlRaporty(raporty);
-				model.zapiszDoAnalizy(raporty);
-			}
-		});
-		
-		watek.start();
 	}
 	
     /**
