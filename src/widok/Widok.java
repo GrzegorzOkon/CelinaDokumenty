@@ -115,22 +115,22 @@ public class Widok extends Application {
 		// Przypisanie dzia³ania do przycisku sprawdzenia w centrali
         SprawdzWCentrali.setOnAction((event) -> {		    
             if (opcjaNumerW³asny.isSelected() == true) {
-            	kontroler.wyszukajWCentraliNrAkt(walidujDane());
+            	kontroler.wyszukajWCentraliPoNumerachAkt(walidujDane());
             } else if (opcjaNumerSystemowy.isSelected() == true) {
-            	kontroler.wyszukajWCentraliIdDok(walidujDane());
+            	kontroler.wyszukajWCentraliPoIdentyfikatorachDokumentów(walidujDane());
             } else {
-            	kontroler.wyszukajWCentraliSymDok(walidujDane());
+            	kontroler.wyszukajWCentraliPoSymbolachDokumentów(walidujDane());
             }         	
 		});
         
 		// Przypisanie dzia³ania do przycisku sprawdzenia we wszystkich izbach
         SprawdzLokalnie.setOnAction((event) -> {		    
             if (opcjaNumerW³asny.isSelected() == true) {
-            	kontroler.wyszukajLokalniePoNumerzeAkt(walidujDane());
+            	kontroler.wyszukajLokalniePoNumerachAkt(walidujDane());
             } else if (opcjaNumerSystemowy.isSelected() == true) {
-            	kontroler.wyszukajLokalniePoIdentyfikatorzeDokumentu(walidujDane());
+            	kontroler.wyszukajLokalniePoIdentyfikatorachDokumentów(walidujDane());
             } else {	
-            	kontroler.wyszukajLokalniePoSymboluDokumentu(walidujDane());
+            	kontroler.wyszukajLokalniePoSymbolachDokumentów(walidujDane());
             }         	
 		});
         
@@ -226,15 +226,13 @@ public class Widok extends Application {
 	}
 	
 	public synchronized void wyœwietlRaporty(List<Raport> raporty) {	
-		
 		for(Raport raport : raporty) {
 			Platform.runLater(() -> poleRaportuDlaHelpDesku.appendText(raport.getRaportDlaHelpDesku() + "\n\n"));
 			Platform.runLater(() ->	poleRaportuDlaAdministratora.appendText(raport.getRaportDlaAdministratora()));
 		}
 	}
 	
-	public synchronized void wyœwietlZdarzenie(String zdarzenie) {
-		
+	public synchronized void wyœwietlZdarzenie(String zdarzenie) {	
 		poleDziennikaZdarzeñ.appendText(zdarzenie);
 	}
 }

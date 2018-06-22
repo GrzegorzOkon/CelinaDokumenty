@@ -9,9 +9,9 @@ public class AktualnaWersja {
     private int lokalnyMajor = 2;
     private int lokalnyMinor = 0;
     private int lokalnyRelease = 2;
-    private int lokalnyBuild = 4;
+    private int lokalnyBuild = 5;
     private String lokalnyTyp = "GA";
-    private int lokalnaKomplilacja = 20180618;
+    private int lokalnaKomplilacja = 20180622;
     
 	private AktualnaWersja() {}
 	
