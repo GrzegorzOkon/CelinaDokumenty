@@ -10,6 +10,8 @@ import java.util.*;
 public class StatusyPrzetwarzania {
 	private static volatile StatusyPrzetwarzania instancja;
 	
+	private Map<String, String> statusyPODWCntrValidDok;
+	private Map<String, String> statusyPZCWCntrValidDok;
 	private Map<String, String> statusyCntrValidDok;
 	
 	private Map<String, String> statusyDHU;
@@ -64,9 +66,10 @@ public class StatusyPrzetwarzania {
 	public String pobierzOpisStatusu(String rodzajDokumentu, String statusPrzetwarzania, Tabela tabela) {
 		if (tabela.equals(tabela.CNTR_VALID_DOK)) {
 			switch(rodzajDokumentu) {
-				case "PWD2" : return pobierzStatusCntrValidDok(statusPrzetwarzania);
-			
-				default : return null;
+				case "POD" : return pobierzStatusPODWCntrValidDok(statusPrzetwarzania);
+				case "PZC" : return pobierzStatusPZCWCntrValidDok(statusPrzetwarzania);
+				
+				default : return pobierzStatusCntrValidDok(statusPrzetwarzania);
 			}
 		} else {
 			switch(rodzajDokumentu) {
@@ -110,6 +113,57 @@ public class StatusyPrzetwarzania {
 				default : return null;
 			}
 		}
+	}
+	
+	private String pobierzStatusPODWCntrValidDok(String statusPrzetwarzania) {
+		if (statusyPODWCntrValidDok == null) {
+			inicjalizujStatusyPODWCntrValidDok();
+		} 	
+		
+		return statusyPODWCntrValidDok.get(statusPrzetwarzania);
+	}
+	
+	private void inicjalizujStatusyPODWCntrValidDok() {
+		statusyPODWCntrValidDok = new HashMap<>();
+		
+		statusyPODWCntrValidDok.put("F", "walidacja formalna (w trakcie)");
+		statusyPODWCntrValidDok.put("G", "udostêpniony");
+		statusyPODWCntrValidDok.put("N", "dokument niepoprawny");
+		statusyPODWCntrValidDok.put("O", "oczekiwanie na przes³anie do jednostki");
+		statusyPODWCntrValidDok.put("P", "do udostêpnienia");
+		statusyPODWCntrValidDok.put("S", "inicjalny, oczekiwanie na walidacjê formaln¹");
+		statusyPODWCntrValidDok.put("U", "anulowany przez u¿ytkownika ");
+		statusyPODWCntrValidDok.put("X", "utworzony");
+		statusyPODWCntrValidDok.put("X", "potwierdzono powiadomienie");
+		statusyPODWCntrValidDok.put("Z", "zakoñczono obs³ugê");
+		statusyPODWCntrValidDok.put("W", "dokument oczekuje na ponown¹ weryfikacjê podpisu");
+		statusyPODWCntrValidDok.put("_", "inicjalny dla dokumentów IST przes³anych webcel-em");
+		statusyPODWCntrValidDok.put("*", "nadawany dla deklaracji Intrastat, dla których wyst¹pi³ b³¹d");
+	}
+	
+	private String pobierzStatusPZCWCntrValidDok(String statusPrzetwarzania) {
+		if (statusyPZCWCntrValidDok == null) {
+			inicjalizujStatusyPZCWCntrValidDok();
+		} 	
+		
+		return statusyPZCWCntrValidDok.get(statusPrzetwarzania);
+	}
+	
+	private void inicjalizujStatusyPZCWCntrValidDok() {
+		statusyPZCWCntrValidDok = new HashMap<>();
+		
+		statusyPZCWCntrValidDok.put("F", "walidacja formalna (w trakcie)");
+		statusyPZCWCntrValidDok.put("N", "dokument niepoprawny");
+		statusyPZCWCntrValidDok.put("O", "wygenerowany");
+		statusyPZCWCntrValidDok.put("P", "udostêpniony");
+		statusyPZCWCntrValidDok.put("S", "inicjalny, oczekiwanie na walidacjê formaln¹");
+		statusyPZCWCntrValidDok.put("U", "anulowany przez u¿ytkownika ");
+		statusyPZCWCntrValidDok.put("X", "pobrany");
+		statusyPZCWCntrValidDok.put("Y", "podpisany");
+		statusyPZCWCntrValidDok.put("Z", "zakoñczono obs³ugê");
+		statusyPZCWCntrValidDok.put("W", "dokument oczekuje na ponown¹ weryfikacjê podpisu");
+		statusyPZCWCntrValidDok.put("_", "inicjalny dla dokumentów IST przes³anych webcel-em");
+		statusyPZCWCntrValidDok.put("*", "nadawany dla deklaracji Intrastat, dla których wyst¹pi³ b³¹d");
 	}
 	
 	private String pobierzStatusCntrValidDok(String statusPrzetwarzania) {
